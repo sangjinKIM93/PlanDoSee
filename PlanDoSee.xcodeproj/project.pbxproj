@@ -11,6 +11,14 @@
 		480490122A3D871C00C10DC9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480490112A3D871C00C10DC9 /* ContentView.swift */; };
 		480490142A3D871F00C10DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 480490132A3D871F00C10DC9 /* Assets.xcassets */; };
 		480490182A3D871F00C10DC9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 480490172A3D871F00C10DC9 /* Preview Assets.xcassets */; };
+		481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */; };
+		481FE3222A3E965100B4FC9A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 481FE3212A3E965100B4FC9A /* Introspect */; };
+		481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3232A3F2DC300B4FC9A /* TaskRow.swift */; };
+		481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3262A3F2DDB00B4FC9A /* Task.swift */; };
+		481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */; };
+		48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */; };
+		48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6E2A3D8C2900C95F61 /* View+extension.swift */; };
+		48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +28,13 @@
 		480490132A3D871F00C10DC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		480490152A3D871F00C10DC9 /* PlanDoSee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlanDoSee.entitlements; sourceTree = "<group>"; };
 		480490172A3D871F00C10DC9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SJTextEditor.swift; sourceTree = "<group>"; };
+		481FE3232A3F2DC300B4FC9A /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		481FE3262A3F2DDB00B4FC9A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListFooter.swift; sourceTree = "<group>"; };
+		48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		48D47B6E2A3D8C2900C95F61 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
+		48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				481FE3222A3E965100B4FC9A /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +54,7 @@
 			children = (
 				4804900E2A3D871C00C10DC9 /* PlanDoSee */,
 				4804900D2A3D871C00C10DC9 /* Products */,
+				481FE3202A3E965100B4FC9A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,6 +69,9 @@
 		4804900E2A3D871C00C10DC9 /* PlanDoSee */ = {
 			isa = PBXGroup;
 			children = (
+				481FE3252A3F2DCF00B4FC9A /* Model */,
+				481FE31A2A3E89B000B4FC9A /* View */,
+				48D47B6B2A3D8BA700C95F61 /* Extension */,
 				4804900F2A3D871C00C10DC9 /* PlanDoSeeApp.swift */,
 				480490112A3D871C00C10DC9 /* ContentView.swift */,
 				480490132A3D871F00C10DC9 /* Assets.xcassets */,
@@ -67,6 +87,41 @@
 				480490172A3D871F00C10DC9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		481FE31A2A3E89B000B4FC9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */,
+				481FE3232A3F2DC300B4FC9A /* TaskRow.swift */,
+				481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		481FE3202A3E965100B4FC9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		481FE3252A3F2DCF00B4FC9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				481FE3262A3F2DDB00B4FC9A /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		48D47B6B2A3D8BA700C95F61 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */,
+				48D47B6E2A3D8C2900C95F61 /* View+extension.swift */,
+				48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +140,9 @@
 			dependencies = (
 			);
 			name = PlanDoSee;
+			packageProductDependencies = (
+				481FE3212A3E965100B4FC9A /* Introspect */,
+			);
 			productName = PlanDoSee;
 			productReference = 4804900C2A3D871C00C10DC9 /* PlanDoSee.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +171,9 @@
 				Base,
 			);
 			mainGroup = 480490032A3D871C00C10DC9;
+			packageReferences = (
+				481FE31D2A3E957100B4FC9A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+			);
 			productRefGroup = 4804900D2A3D871C00C10DC9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +200,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */,
+				481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */,
 				480490122A3D871C00C10DC9 /* ContentView.swift in Sources */,
 				480490102A3D871C00C10DC9 /* PlanDoSeeApp.swift in Sources */,
+				481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */,
+				48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */,
+				48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */,
+				481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */,
+				48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +422,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		481FE31D2A3E957100B4FC9A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		481FE3212A3E965100B4FC9A /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 481FE31D2A3E957100B4FC9A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 480490042A3D871C00C10DC9 /* Project object */;
 }
