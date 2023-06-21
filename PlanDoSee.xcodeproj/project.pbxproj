@@ -11,8 +11,13 @@
 		480490122A3D871C00C10DC9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480490112A3D871C00C10DC9 /* ContentView.swift */; };
 		480490142A3D871F00C10DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 480490132A3D871F00C10DC9 /* Assets.xcassets */; };
 		480490182A3D871F00C10DC9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 480490172A3D871F00C10DC9 /* Preview Assets.xcassets */; };
+		481B3C122A4325F400837FBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C112A4325F400837FBF /* FirebaseAuth */; };
+		481B3C142A4325F400837FBF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C132A4325F400837FBF /* FirebaseFirestore */; };
+		481B3C162A4325F400837FBF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C152A4325F400837FBF /* FirebaseFirestoreSwift */; };
+		481B3C1C2A43297100837FBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C1B2A43297100837FBF /* LoginView.swift */; };
+		481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C1E2A432A0100837FBF /* LoginViewModel.swift */; };
+		481B3C212A432B2F00837FBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 481B3C202A432B2F00837FBF /* GoogleService-Info.plist */; };
 		481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */; };
-		481FE3222A3E965100B4FC9A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 481FE3212A3E965100B4FC9A /* Introspect */; };
 		481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3232A3F2DC300B4FC9A /* TaskRow.swift */; };
 		481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3262A3F2DDB00B4FC9A /* Task.swift */; };
 		481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */; };
@@ -28,6 +33,9 @@
 		480490132A3D871F00C10DC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		480490152A3D871F00C10DC9 /* PlanDoSee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlanDoSee.entitlements; sourceTree = "<group>"; };
 		480490172A3D871F00C10DC9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		481B3C1B2A43297100837FBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		481B3C1E2A432A0100837FBF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		481B3C202A432B2F00837FBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SJTextEditor.swift; sourceTree = "<group>"; };
 		481FE3232A3F2DC300B4FC9A /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		481FE3262A3F2DDB00B4FC9A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -42,7 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				481FE3222A3E965100B4FC9A /* Introspect in Frameworks */,
+				481B3C122A4325F400837FBF /* FirebaseAuth in Frameworks */,
+				481B3C142A4325F400837FBF /* FirebaseFirestore in Frameworks */,
+				481B3C162A4325F400837FBF /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +79,14 @@
 		4804900E2A3D871C00C10DC9 /* PlanDoSee */ = {
 			isa = PBXGroup;
 			children = (
+				481B3C1D2A4329F700837FBF /* ViewModel */,
+				481B3C1A2A43282900837FBF /* Resources */,
+				481B3C192A4327E200837FBF /* Auth */,
 				481FE3252A3F2DCF00B4FC9A /* Model */,
 				481FE31A2A3E89B000B4FC9A /* View */,
 				48D47B6B2A3D8BA700C95F61 /* Extension */,
 				4804900F2A3D871C00C10DC9 /* PlanDoSeeApp.swift */,
 				480490112A3D871C00C10DC9 /* ContentView.swift */,
-				480490132A3D871F00C10DC9 /* Assets.xcassets */,
 				480490152A3D871F00C10DC9 /* PlanDoSee.entitlements */,
 				480490162A3D871F00C10DC9 /* Preview Content */,
 			);
@@ -89,12 +101,37 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		481B3C192A4327E200837FBF /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		481B3C1A2A43282900837FBF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				481B3C202A432B2F00837FBF /* GoogleService-Info.plist */,
+				480490132A3D871F00C10DC9 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		481B3C1D2A4329F700837FBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				481B3C1E2A432A0100837FBF /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		481FE31A2A3E89B000B4FC9A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */,
 				481FE3232A3F2DC300B4FC9A /* TaskRow.swift */,
 				481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */,
+				481B3C1B2A43297100837FBF /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,7 +178,9 @@
 			);
 			name = PlanDoSee;
 			packageProductDependencies = (
-				481FE3212A3E965100B4FC9A /* Introspect */,
+				481B3C112A4325F400837FBF /* FirebaseAuth */,
+				481B3C132A4325F400837FBF /* FirebaseFirestore */,
+				481B3C152A4325F400837FBF /* FirebaseFirestoreSwift */,
 			);
 			productName = PlanDoSee;
 			productReference = 4804900C2A3D871C00C10DC9 /* PlanDoSee.app */;
@@ -172,7 +211,7 @@
 			);
 			mainGroup = 480490032A3D871C00C10DC9;
 			packageReferences = (
-				481FE31D2A3E957100B4FC9A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				481B3C102A4325F400837FBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 4804900D2A3D871C00C10DC9 /* Products */;
 			projectDirPath = "";
@@ -190,6 +229,7 @@
 			files = (
 				480490182A3D871F00C10DC9 /* Preview Assets.xcassets in Resources */,
 				480490142A3D871F00C10DC9 /* Assets.xcassets in Resources */,
+				481B3C212A432B2F00837FBF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,12 +242,14 @@
 			files = (
 				481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */,
 				481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */,
+				481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */,
 				480490122A3D871C00C10DC9 /* ContentView.swift in Sources */,
 				480490102A3D871C00C10DC9 /* PlanDoSeeApp.swift in Sources */,
 				481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */,
 				48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */,
 				48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */,
 				481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */,
+				481B3C1C2A43297100837FBF /* LoginView.swift in Sources */,
 				48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +379,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PlanDoSee;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -345,8 +388,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -375,6 +417,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PlanDoSee;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -383,8 +426,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -424,21 +466,31 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		481FE31D2A3E957100B4FC9A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+		481B3C102A4325F400837FBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.1;
+				minimumVersion = 9.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		481FE3212A3E965100B4FC9A /* Introspect */ = {
+		481B3C112A4325F400837FBF /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 481FE31D2A3E957100B4FC9A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
+			package = 481B3C102A4325F400837FBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		481B3C132A4325F400837FBF /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 481B3C102A4325F400837FBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		481B3C152A4325F400837FBF /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 481B3C102A4325F400837FBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

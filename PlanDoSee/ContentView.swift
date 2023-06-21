@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @State private var currentDay: Date = .init()
     @State private var todoList: [Task] = [Task()]
+    @State private var seeText: String = ""
     
     var body: some View {
         VStack {
@@ -38,6 +39,9 @@ struct ContentView: View {
                     }
                 }
             }
+            TextEditor(text: $seeText)
+                .frame(height: 150)
+                .font(.system(size: 16))
         }
         .padding()
     }
