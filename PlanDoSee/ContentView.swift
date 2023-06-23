@@ -13,11 +13,20 @@ struct ContentView: View {
     @State private var todoList: [Task] = [Task()]
     @State private var seeText: String = ""
     
+    @AppStorage("login_status") var status = false
     var body: some View {
         VStack {
-            Text(Date().toString("MMM YYYY"))
-                .hAlign(.leading)
-                .padding(.top, 15)
+            HStack {
+                Text(Date().toString("MMM YYYY"))
+                    .hAlign(.leading)
+                    .padding(.top, 15)
+                
+                Button {
+                    status = false
+                } label: {
+                    Text("logOut")
+                }
+            }
             
             WeekRow()
 

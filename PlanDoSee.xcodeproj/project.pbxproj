@@ -14,9 +14,12 @@
 		481B3C122A4325F400837FBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C112A4325F400837FBF /* FirebaseAuth */; };
 		481B3C142A4325F400837FBF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C132A4325F400837FBF /* FirebaseFirestore */; };
 		481B3C162A4325F400837FBF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C152A4325F400837FBF /* FirebaseFirestoreSwift */; };
-		481B3C1C2A43297100837FBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C1B2A43297100837FBF /* LoginView.swift */; };
 		481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C1E2A432A0100837FBF /* LoginViewModel.swift */; };
 		481B3C212A432B2F00837FBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 481B3C202A432B2F00837FBF /* GoogleService-Info.plist */; };
+		481B3C232A44788E00837FBF /* EntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C222A44788E00837FBF /* EntranceView.swift */; };
+		481B3C272A44863200837FBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C262A44863200837FBF /* LoginView.swift */; };
+		481B3C292A44863B00837FBF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C282A44863B00837FBF /* SignUpView.swift */; };
+		481B3C2B2A45B85800837FBF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C2A2A45B85800837FBF /* LoadingView.swift */; };
 		481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */; };
 		481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3232A3F2DC300B4FC9A /* TaskRow.swift */; };
 		481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3262A3F2DDB00B4FC9A /* Task.swift */; };
@@ -33,9 +36,12 @@
 		480490132A3D871F00C10DC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		480490152A3D871F00C10DC9 /* PlanDoSee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlanDoSee.entitlements; sourceTree = "<group>"; };
 		480490172A3D871F00C10DC9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		481B3C1B2A43297100837FBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		481B3C1E2A432A0100837FBF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		481B3C202A432B2F00837FBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		481B3C222A44788E00837FBF /* EntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceView.swift; sourceTree = "<group>"; };
+		481B3C262A44863200837FBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		481B3C282A44863B00837FBF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		481B3C2A2A45B85800837FBF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SJTextEditor.swift; sourceTree = "<group>"; };
 		481FE3232A3F2DC300B4FC9A /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		481FE3262A3F2DDB00B4FC9A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -131,7 +137,10 @@
 				481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */,
 				481FE3232A3F2DC300B4FC9A /* TaskRow.swift */,
 				481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */,
-				481B3C1B2A43297100837FBF /* LoginView.swift */,
+				481B3C222A44788E00837FBF /* EntranceView.swift */,
+				481B3C262A44863200837FBF /* LoginView.swift */,
+				481B3C282A44863B00837FBF /* SignUpView.swift */,
+				481B3C2A2A45B85800837FBF /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,11 +254,14 @@
 				481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */,
 				480490122A3D871C00C10DC9 /* ContentView.swift in Sources */,
 				480490102A3D871C00C10DC9 /* PlanDoSeeApp.swift in Sources */,
+				481B3C2B2A45B85800837FBF /* LoadingView.swift in Sources */,
 				481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */,
+				481B3C272A44863200837FBF /* LoginView.swift in Sources */,
 				48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */,
+				481B3C292A44863B00837FBF /* SignUpView.swift in Sources */,
 				48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */,
+				481B3C232A44788E00837FBF /* EntranceView.swift in Sources */,
 				481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */,
-				481B3C1C2A43297100837FBF /* LoginView.swift in Sources */,
 				48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

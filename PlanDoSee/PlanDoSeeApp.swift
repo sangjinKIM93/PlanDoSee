@@ -10,12 +10,19 @@ import SwiftUI
 
 @main
 struct PlanDoSeeApp: App {
+    
+    @AppStorage("login_status") var status = false
+    
     init() {
         FirebaseApp.configure()
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if status {
+                ContentView()
+            } else {
+                EntranceView()
+            }
         }
     }
 }

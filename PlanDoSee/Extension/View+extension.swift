@@ -15,4 +15,8 @@ extension View {
     func vAlign(_ alignment: Alignment) -> some View {
         self.frame(maxHeight: .infinity, alignment: alignment)
     }
+    
+    func getRect() -> CGRect {
+        return NSScreen.main!.visibleFrame
+    }
 }
