@@ -19,7 +19,7 @@ struct PlanDoSeeApp: App {
     var body: some Scene {
         WindowGroup {
             if status {
-                ContentView()
+                PlanDoSeeView()
             } else {
                 EntranceView()
             }
