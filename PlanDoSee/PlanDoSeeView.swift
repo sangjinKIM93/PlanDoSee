@@ -73,6 +73,13 @@ struct PlanDoSeeView: View {
                     todoList = tasks
                 }
         }
+        .onChange(of: currentDay, perform: { newValue in
+            FireStoreRepository.shared.getTodo(
+                date: currentDay.toString(DateStyle.storeId.rawValue),
+                userId: userId) { tasks in
+                    todoList = tasks
+                }
+        })
     }
     
     private func binding(for task: Task) -> Binding<Task> {
