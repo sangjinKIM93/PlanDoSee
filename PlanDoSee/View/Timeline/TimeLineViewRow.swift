@@ -17,6 +17,8 @@ struct TimeLineViewRow: View {
             VStack() {
                 // 여러개의 textEditor에 대응하기 위해서는 각각의 데이터 스트림이 있어야해
                 SJTextEditor()
+                // 여기서 데이터를 받아서
+                // 데이터 받아서 저장하는 로직을 vm으로 뺄까?
                 Rectangle()
                     .stroke(.gray.opacity(0.5),
                             style: StrokeStyle(lineWidth: 0.5, lineCap: .butt, lineJoin: .bevel, dash: [5], dashPhase: 5))

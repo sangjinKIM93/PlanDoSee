@@ -29,6 +29,7 @@
 		48357FEF2A46B68B00BDD209 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48357FEE2A46B68B00BDD209 /* TimeLineView.swift */; };
 		48357FF12A46B6A400BDD209 /* TimeLineViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48357FF02A46B6A400BDD209 /* TimeLineViewRow.swift */; };
 		48357FF42A46B70F00BDD209 /* WeekRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48357FF32A46B70F00BDD209 /* WeekRow.swift */; };
+		4899A9492A46E48E00EE9AC2 /* PlanDoSeeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899A9482A46E48E00EE9AC2 /* PlanDoSeeInteractor.swift */; };
 		48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */; };
 		48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6E2A3D8C2900C95F61 /* View+extension.swift */; };
 		48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */; };
@@ -56,6 +57,7 @@
 		48357FEE2A46B68B00BDD209 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
 		48357FF02A46B6A400BDD209 /* TimeLineViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewRow.swift; sourceTree = "<group>"; };
 		48357FF32A46B70F00BDD209 /* WeekRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRow.swift; sourceTree = "<group>"; };
+		4899A9482A46E48E00EE9AC2 /* PlanDoSeeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDoSeeInteractor.swift; sourceTree = "<group>"; };
 		48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		48D47B6E2A3D8C2900C95F61 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				481B3C1E2A432A0100837FBF /* LoginViewModel.swift */,
 				481B3C2C2A45D35200837FBF /* FireStoreRepository.swift */,
+				4899A9482A46E48E00EE9AC2 /* PlanDoSeeInteractor.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			files = (
 				481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */,
 				481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */,
+				4899A9492A46E48E00EE9AC2 /* PlanDoSeeInteractor.swift in Sources */,
 				481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */,
 				480490122A3D871C00C10DC9 /* PlanDoSeeView.swift in Sources */,
 				480490102A3D871C00C10DC9 /* PlanDoSeeApp.swift in Sources */,

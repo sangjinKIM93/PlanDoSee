@@ -15,6 +15,9 @@ struct PlanDoSeeView: View {
     
     @AppStorage("login_status") var status = false
     @AppStorage("user_id") var userId = ""
+    
+    let interactor = PlanDoSeeInteractor()
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,15 +25,6 @@ struct PlanDoSeeView: View {
                     .hAlign(.leading)
                     .padding(.top, 15)
                 
-                Button {
-                    FireStoreRepository.shared.saveTodo(
-                        date: currentDay.toString(DateStyle.storeId.rawValue),
-                        task: todoList.first ?? Task(),
-                        userId: userId
-                    )
-                } label: {
-                    Text("Save Plan")
-                }
                 Button {
                     status = false
                     userId = ""
@@ -47,7 +41,7 @@ struct PlanDoSeeView: View {
                         Section(footer: TodoListFooter(todoList: $todoList)) {
                             ForEach(todoList, id: \.self) { task in
                                 TaskRow(task: task) { task in
-                                    savePlan(task: task)
+                                    saveTodo(task: task)
                                 }
                             }
                             
@@ -67,18 +61,14 @@ struct PlanDoSeeView: View {
         }
         .padding()
         .onAppear {
-            FireStoreRepository.shared.getTodo(
-                date: currentDay.toString(DateStyle.storeId.rawValue),
-                userId: userId) { tasks in
-                    todoList = tasks
-                }
+            getTodo { tasks in
+                todoList = tasks
+            }
         }
         .onChange(of: currentDay, perform: { newValue in
-            FireStoreRepository.shared.getTodo(
-                date: currentDay.toString(DateStyle.storeId.rawValue),
-                userId: userId) { tasks in
-                    todoList = tasks
-                }
+            getTodo { tasks in
+                todoList = tasks
+            }
         })
     }
     
@@ -88,12 +78,23 @@ struct PlanDoSeeView: View {
         }
         return $todoList[taskIndex]
     }
-    
-    private func savePlan(task: Task) {
-        FireStoreRepository.shared.saveTodo(
+}
+
+// MARK: side effects
+extension PlanDoSeeView {
+    func saveTodo(task: Task) {
+        interactor.saveTodo(
             date: currentDay.toString(DateStyle.storeId.rawValue),
             task: task,
             userId: userId
+        )
+    }
+    
+    func getTodo(success: @escaping ([Task]) -> Void) {
+        interactor.getTodo(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            userId: userId,
+            success: success
         )
     }
 }
