@@ -14,3 +14,7 @@ extension Date {
         return formatter.string(from: self)
     }
 }
+
+enum DateStyle: String {
+    case storeId = "yyyyMMdd"
+}

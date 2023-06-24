@@ -24,6 +24,7 @@ class LoginViewModel: ObservableObject {
     @Published var error = false
     
     @AppStorage("login_status") var status = false
+    @AppStorage("user_id") var userId = ""
     
     func loginUser() {
         withAnimation{ isLoading = true }
@@ -46,6 +47,7 @@ class LoginViewModel: ObservableObject {
                 errorMsg = "Login Success"
                 error.toggle()
                 status = true
+                userId = userName
             }
         }
     }

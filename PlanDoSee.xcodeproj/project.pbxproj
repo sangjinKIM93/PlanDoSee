@@ -20,10 +20,12 @@
 		481B3C272A44863200837FBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C262A44863200837FBF /* LoginView.swift */; };
 		481B3C292A44863B00837FBF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C282A44863B00837FBF /* SignUpView.swift */; };
 		481B3C2B2A45B85800837FBF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C2A2A45B85800837FBF /* LoadingView.swift */; };
+		481B3C2D2A45D35200837FBF /* FireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C2C2A45D35200837FBF /* FireStoreRepository.swift */; };
 		481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */; };
 		481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3232A3F2DC300B4FC9A /* TaskRow.swift */; };
 		481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3262A3F2DDB00B4FC9A /* Task.swift */; };
 		481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */; };
+		48357FEA2A46994800BDD209 /* Codable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48357FE92A46994800BDD209 /* Codable+Extension.swift */; };
 		48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */; };
 		48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6E2A3D8C2900C95F61 /* View+extension.swift */; };
 		48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */; };
@@ -42,10 +44,12 @@
 		481B3C262A44863200837FBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		481B3C282A44863B00837FBF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		481B3C2A2A45B85800837FBF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		481B3C2C2A45D35200837FBF /* FireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreRepository.swift; sourceTree = "<group>"; };
 		481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SJTextEditor.swift; sourceTree = "<group>"; };
 		481FE3232A3F2DC300B4FC9A /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		481FE3262A3F2DDB00B4FC9A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListFooter.swift; sourceTree = "<group>"; };
+		48357FE92A46994800BDD209 /* Codable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extension.swift"; sourceTree = "<group>"; };
 		48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		48D47B6E2A3D8C2900C95F61 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				481B3C1E2A432A0100837FBF /* LoginViewModel.swift */,
+				481B3C2C2A45D35200837FBF /* FireStoreRepository.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */,
 				48D47B6E2A3D8C2900C95F61 /* View+extension.swift */,
 				48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */,
+				48357FE92A46994800BDD209 /* Codable+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -258,6 +264,8 @@
 				481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */,
 				481B3C272A44863200837FBF /* LoginView.swift in Sources */,
 				48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */,
+				48357FEA2A46994800BDD209 /* Codable+Extension.swift in Sources */,
+				481B3C2D2A45D35200837FBF /* FireStoreRepository.swift in Sources */,
 				481B3C292A44863B00837FBF /* SignUpView.swift in Sources */,
 				48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */,
 				481B3C232A44788E00837FBF /* EntranceView.swift in Sources */,

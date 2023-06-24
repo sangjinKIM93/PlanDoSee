@@ -11,6 +11,8 @@ struct TaskRow: View {
     
     @State var task: Task
     
+    var endEditing: ((Task) -> Void)?
+    
     var body: some View {
         HStack(alignment: .center) {
             Button {
@@ -29,7 +31,11 @@ struct TaskRow: View {
                 return task.title
             }, set: { value in
                 task.title = value
-            }))
+            }), onEditingChanged: { changed in
+                if !changed {
+                    endEditing?(task)
+                }
+            })
             .font(.system(size: 16))
             .frame(height: 40)
             .foregroundColor(task.isCompleted ? .gray : .primary)
@@ -39,6 +45,6 @@ struct TaskRow: View {
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        TaskRow(task: Task(title: "", isCompleted: false))
+        TaskRow(task: Task(title: ""))
     }
 }

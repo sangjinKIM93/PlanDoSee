@@ -7,8 +7,20 @@
 
 import Foundation
 
-struct Task: Hashable {
-    let id: UUID = .init()
-    var title: String = ""
-    var isCompleted: Bool = false
+struct Task: Codable, Hashable {
+    let id: UUID
+    var title: String
+    var isCompleted: Bool
+    
+    init(id: UUID = .init(), title: String = "", isCompleted: Bool = false) {
+        self.id = id
+        self.title = title
+        self.isCompleted = isCompleted
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case isCompleted
+    }
 }

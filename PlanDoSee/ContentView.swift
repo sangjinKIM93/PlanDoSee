@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var seeText: String = ""
     
     @AppStorage("login_status") var status = false
+    @AppStorage("user_id") var userId = ""
     var body: some View {
         VStack {
             HStack {
@@ -22,7 +23,17 @@ struct ContentView: View {
                     .padding(.top, 15)
                 
                 Button {
+                    FireStoreRepository.shared.saveTodo(
+                        date: currentDay.toString(DateStyle.storeId.rawValue),
+                        task: todoList.first ?? Task(),
+                        userId: userId
+                    )
+                } label: {
+                    Text("Save Plan")
+                }
+                Button {
                     status = false
+                    userId = ""
                 } label: {
                     Text("logOut")
                 }
@@ -35,7 +46,9 @@ struct ContentView: View {
                     List {
                         Section(footer: TodoListFooter(todoList: $todoList)) {
                             ForEach(todoList, id: \.self) { task in
-                                TaskRow(task: task)
+                                TaskRow(task: task) { task in
+                                    savePlan(task: task)
+                                }
                             }
                             
                         }
@@ -53,6 +66,13 @@ struct ContentView: View {
                 .font(.system(size: 16))
         }
         .padding()
+        .onAppear {
+            FireStoreRepository.shared.getTodo(
+                date: currentDay.toString(DateStyle.storeId.rawValue),
+                userId: userId) { tasks in
+                    todoList = tasks
+                }
+        }
     }
     
     @ViewBuilder
@@ -107,6 +127,21 @@ struct ContentView: View {
         }
         .padding(.vertical, 10)
         .padding(.horizontal, -15)
+    }
+    
+    private func binding(for task: Task) -> Binding<Task> {
+        guard let taskIndex = todoList.firstIndex(where: {$0.id == task.id}) else {
+            fatalError("Can't find scrum in array")
+        }
+        return $todoList[taskIndex]
+    }
+    
+    private func savePlan(task: Task) {
+        FireStoreRepository.shared.saveTodo(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            task: task,
+            userId: userId
+        )
     }
 }
 
