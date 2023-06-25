@@ -8,17 +8,30 @@
 import SwiftUI
 
 struct TimeLineViewRow: View {
-    var hour: Date
+    var timeLine: TimeLine
+    var onChangeDebounced: ((TimeLine) -> Void)?
+    
+    @StateObject private var debounceObject = DebounceObject(skipFirst: true)
+    
+    init(timeLine: TimeLine, onChangeDebounced: ((TimeLine) -> Void)?) {
+        self.timeLine = timeLine
+        self.onChangeDebounced = onChangeDebounced
+    }
     
     var body: some View {
         HStack(alignment: .top) {
-            Text(hour.toString("HH"))
+            Text(timeLine.hour)
                 .frame(width: 25, alignment: .leading)
             VStack() {
-                // 여러개의 textEditor에 대응하기 위해서는 각각의 데이터 스트림이 있어야해
-                SJTextEditor()
-                // 여기서 데이터를 받아서
-                // 데이터 받아서 저장하는 로직을 vm으로 뺄까?
+                TextEditor(text: $debounceObject.text)
+                    .font(.system(size: 14))
+                    .frame(minHeight: 15)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .scrollIndicators(.never)
+                    .onChange(of: debounceObject.debouncedText, perform: { value in
+                        onChangeDebounced?(TimeLine(hour: timeLine.hour, content: value))
+                    })
+                    
                 Rectangle()
                     .stroke(.gray.opacity(0.5),
                             style: StrokeStyle(lineWidth: 0.5, lineCap: .butt, lineJoin: .bevel, dash: [5], dashPhase: 5))
@@ -28,6 +41,9 @@ struct TimeLineViewRow: View {
         }
         .hAlign(.leading)
         .padding(.vertical, 15)
+        .onAppear {
+            debounceObject.text = timeLine.content
+        }
     }
 }
 

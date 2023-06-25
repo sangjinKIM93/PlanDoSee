@@ -55,12 +55,61 @@ class FireStoreRepository {
                 do {
                     let task: Task = try Task.decode(dictionary: document.data())
                     tasks.append(task)
+                    print("Get Todo")
                 } catch {
                     print("FireStore get decode Error: \(error.localizedDescription)")
                 }
             }
             
             success(tasks)
+        }
+    }
+    
+    func saveTimeline(
+        date: String,
+        timeLine: TimeLine,
+        userId: String
+    ) {
+        do {
+            try db.collection(userId).document("do")
+                .collection(date).document(timeLine.hour)
+                .setData(from: timeLine) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+        } catch {
+            print("FireStore Save Error: \(error.localizedDescription)")
+        }
+    }
+    
+    func getTiemline(
+        date: String,
+        userId: String,
+        success: @escaping (([TimeLine]) -> Void)
+    ) {
+        let docRef = db.collection(userId).document("do")
+            .collection(date)
+        var timelines: [TimeLine] = []
+        
+        docRef.getDocuments { querySnapshot, error in
+            guard error == nil else {
+                print("Error getting documents: \(error?.localizedDescription)")
+                return
+            }
+            for document in querySnapshot!.documents {
+                do {
+                    let timeLine: TimeLine = try TimeLine.decode(dictionary: document.data())
+                    timelines.append(timeLine)
+                    print("Get Timeline")
+                } catch {
+                    print("FireStore get decode Error: \(error.localizedDescription)")
+                }
+            }
+            
+            success(timelines)
         }
     }
 }

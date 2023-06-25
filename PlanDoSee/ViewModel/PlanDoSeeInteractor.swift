@@ -32,4 +32,28 @@ class PlanDoSeeInteractor {
             success: success
         )
     }
+    
+    func saveTimeline(
+        date: String,
+        timeLine: TimeLine,
+        userId: String
+    ) {
+        FireStoreRepository.shared.saveTimeline(
+            date: date,
+            timeLine: timeLine,
+            userId: userId
+        )
+    }
+    
+    func getTimeLine(
+        date: String,
+        userId: String,
+        success: @escaping (([TimeLine]) -> Void)
+    ) {
+        FireStoreRepository.shared.getTiemline(
+            date: date,
+            userId: userId,
+            success: success
+        )
+    }
 }

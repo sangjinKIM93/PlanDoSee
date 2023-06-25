@@ -11,12 +11,17 @@ struct PlanDoSeeView: View {
     
     @State private var currentDay: Date = .init()
     @State private var todoList: [Task] = [Task()]
+    @State private var timeLines: [TimeLine] = []
     @State private var seeText: String = ""
     
     @AppStorage("login_status") var status = false
     @AppStorage("user_id") var userId = ""
     
     let interactor = PlanDoSeeInteractor()
+    
+    init() {
+        timeLines = dummyTimeLines()
+    }
     
     var body: some View {
         VStack {
@@ -50,8 +55,12 @@ struct PlanDoSeeView: View {
                     }
                 }
                 VStack {
-                    List {
-                        TimeLineView()
+                    List() {
+                        ForEach(timeLines, id: \.self) { timeline in
+                            TimeLineViewRow(timeLine: timeline) {  timeline in
+                                saveTimeline(timeLine: timeline)
+                            }
+                        }
                     }
                 }
             }
@@ -64,10 +73,24 @@ struct PlanDoSeeView: View {
             getTodo { tasks in
                 todoList = tasks
             }
+            getTimeLines { list in
+                if list.isEmpty {
+                    timeLines = dummyTimeLines()
+                } else {
+                    timeLines = resetTimeLines(list)
+                }
+            }
         }
         .onChange(of: currentDay, perform: { newValue in
             getTodo { tasks in
                 todoList = tasks
+            }
+            getTimeLines { list in
+                if list.isEmpty {
+                    timeLines = dummyTimeLines()
+                } else {
+                    timeLines = resetTimeLines(list)
+                }
             }
         })
     }
@@ -77,6 +100,29 @@ struct PlanDoSeeView: View {
             fatalError("Can't find scrum in array")
         }
         return $todoList[taskIndex]
+    }
+    
+    private func dummyTimeLines() -> [TimeLine] {
+        let timelines = Calendar.current.hours
+            .map { hour in
+                let hourString = hour.toString("HH")
+                return TimeLine(hour: hourString, content: "")
+            }
+        
+        return timelines
+    }
+    
+    private func resetTimeLines(_ list: [TimeLine]) -> [TimeLine] {
+        var timelines: [TimeLine] = []
+        for hour in Calendar.current.hours {
+            let hourString = hour.toString("HH")
+            let timeLine = TimeLine(
+                hour: hourString,
+                content: list.first{$0.hour == hourString}.map{$0.content} ?? ""
+            )
+            timelines.append(timeLine)
+        }
+        return timelines
     }
 }
 
@@ -92,6 +138,22 @@ extension PlanDoSeeView {
     
     func getTodo(success: @escaping ([Task]) -> Void) {
         interactor.getTodo(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            userId: userId,
+            success: success
+        )
+    }
+    
+    func saveTimeline(timeLine: TimeLine) {
+        interactor.saveTimeline(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            timeLine: timeLine,
+            userId: userId
+        )
+    }
+    
+    func getTimeLines(success: @escaping ([TimeLine]) -> Void) {
+        interactor.getTimeLine(
             date: currentDay.toString(DateStyle.storeId.rawValue),
             userId: userId,
             success: success
