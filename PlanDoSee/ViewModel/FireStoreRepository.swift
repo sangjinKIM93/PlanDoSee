@@ -16,6 +16,7 @@ class FireStoreRepository {
     
     private init() {}
     
+    // PLAN
     func saveTodo(
         date: String,
         task: Task,
@@ -65,6 +66,7 @@ class FireStoreRepository {
         }
     }
     
+    // DO
     func saveTimeline(
         date: String,
         timeLine: TimeLine,
@@ -110,6 +112,44 @@ class FireStoreRepository {
             }
             
             success(timelines)
+        }
+    }
+    
+    // SEE
+    func saveSee(
+        date: String,
+        see: String,
+        userId: String
+    ) {
+        db.collection(userId).document("see")
+            .collection(date).document(date)
+            .setData(["data": see])
+            { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
+    }
+    
+    func getSee(
+        date: String,
+        userId: String,
+        success: @escaping ((String) -> Void)
+    ) {
+        let docRef = db.collection(userId).document("see")
+            .collection(date)
+        
+        docRef.getDocuments { querySnapshot, error in
+            guard error == nil else {
+                print("Error getting documents: \(error?.localizedDescription)")
+                return
+            }
+            if let document = querySnapshot?.documents.first,
+               let seeData = document["data"] as? String {
+                success(seeData)
+            }
         }
     }
 }

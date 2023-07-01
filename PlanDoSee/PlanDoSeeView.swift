@@ -12,7 +12,7 @@ struct PlanDoSeeView: View {
     @State private var currentDay: Date = .init()
     @State private var todoList: [Task] = [Task()]
     @State private var timeLines: [TimeLine] = []
-    @State private var seeText: String = ""
+    @StateObject private var seeText = DebounceObject(skipFirst: true)
     
     @AppStorage("login_status") var status = false
     @AppStorage("user_id") var userId = ""
@@ -64,9 +64,12 @@ struct PlanDoSeeView: View {
                     }
                 }
             }
-            TextEditor(text: $seeText)
+            TextEditor(text: $seeText.text)
                 .frame(height: 150)
                 .font(.system(size: 16))
+                .onChange(of: seeText.debouncedText, perform: { newValue in
+                    saveSee(see: newValue)
+                })
         }
         .padding()
         .onAppear {
@@ -80,6 +83,9 @@ struct PlanDoSeeView: View {
                     timeLines = resetTimeLines(list)
                 }
             }
+            getSee { see in
+                seeText.text = see
+            }
         }
         .onChange(of: currentDay, perform: { newValue in
             getTodo { tasks in
@@ -91,6 +97,9 @@ struct PlanDoSeeView: View {
                 } else {
                     timeLines = resetTimeLines(list)
                 }
+            }
+            getSee { see in
+                seeText.text = see
             }
         })
     }
@@ -154,6 +163,22 @@ extension PlanDoSeeView {
     
     func getTimeLines(success: @escaping ([TimeLine]) -> Void) {
         interactor.getTimeLine(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            userId: userId,
+            success: success
+        )
+    }
+    
+    func saveSee(see: String) {
+        interactor.saveSee(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            see: see,
+            userId: userId
+        )
+    }
+    
+    func getSee(success: @escaping (String) -> Void) {
+        interactor.getSee(
             date: currentDay.toString(DateStyle.storeId.rawValue),
             userId: userId,
             success: success

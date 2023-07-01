@@ -56,4 +56,28 @@ class PlanDoSeeInteractor {
             success: success
         )
     }
+    
+    func saveSee(
+        date: String,
+        see: String,
+        userId: String
+    ) {
+        FireStoreRepository.shared.saveSee(
+            date: date,
+            see: see,
+            userId: userId
+        )
+    }
+    
+    func getSee(
+        date: String,
+        userId: String,
+        success: @escaping ((String) -> Void)
+    ) {
+        FireStoreRepository.shared.getSee(
+            date: date,
+            userId: userId,
+            success: success
+        )
+    }
 }
