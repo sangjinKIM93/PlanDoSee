@@ -34,6 +34,7 @@
 		48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */; };
 		48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6E2A3D8C2900C95F61 /* View+extension.swift */; };
 		48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */; };
+		48D48A9A2A4FE7A300F2F55B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D48A992A4FE7A300F2F55B /* TextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		48D47B6E2A3D8C2900C95F61 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
+		48D48A992A4FE7A300F2F55B /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				4899A94F2A47F23C00EE9AC2 /* DebounceObject.swift */,
+				48D48A992A4FE7A300F2F55B /* TextView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */,
+				48D48A9A2A4FE7A300F2F55B /* TextView.swift in Sources */,
 				481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */,
 				4899A9492A46E48E00EE9AC2 /* PlanDoSeeInteractor.swift in Sources */,
 				481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */,
