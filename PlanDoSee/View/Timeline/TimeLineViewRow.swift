@@ -9,13 +9,16 @@ import SwiftUI
 
 struct TimeLineViewRow: View {
     var timeLine: TimeLine
-    var onChangeDebounced: ((TimeLine) -> Void)?
+    var endEditing: ((TimeLine) -> Void)?
     
+    @State var text = ""
+    @State var isEditing = false
+    @State var dynamicHeight: CGFloat = 15
     @StateObject private var debounceObject = DebounceObject(skipFirst: true)
     
-    init(timeLine: TimeLine, onChangeDebounced: ((TimeLine) -> Void)?) {
+    init(timeLine: TimeLine, endEditing: ((TimeLine) -> Void)?) {
         self.timeLine = timeLine
-        self.onChangeDebounced = onChangeDebounced
+        self.endEditing = endEditing
     }
     
     var body: some View {
@@ -24,12 +27,13 @@ struct TimeLineViewRow: View {
                 .frame(width: 25, alignment: .leading)
             VStack() {
                 TextEditor(text: $debounceObject.text)
+                    .scrollDisabled(true)
                     .font(.system(size: 14))
                     .frame(minHeight: 15)
                     .fixedSize(horizontal: false, vertical: true)
                     .scrollIndicators(.never)
                     .onChange(of: debounceObject.debouncedText, perform: { value in
-                        onChangeDebounced?(TimeLine(hour: timeLine.hour, content: value))
+                        endEditing?(TimeLine(hour: timeLine.hour, content: value))
                     })
                     
                 Rectangle()

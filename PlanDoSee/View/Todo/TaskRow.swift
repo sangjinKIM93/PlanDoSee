@@ -10,6 +10,7 @@ import SwiftUI
 struct TaskRow: View {
     
     @State var task: Task
+    @StateObject private var debounceObject = DebounceObject(skipFirst: true)
     
     var endEditing: ((Task) -> Void)?
     
@@ -24,21 +25,24 @@ struct TaskRow: View {
             }
             .buttonStyle(.plain)
             .frame(height: 40)
+            .onChange(of: task.isCompleted, perform: { newValue in
+                task.isCompleted = newValue
+                endEditing?(task)
+            })
             
             Spacer(minLength: 0)
             
-            TextField("todo list", text: .init(get: {
-                return task.title
-            }, set: { value in
-                task.title = value
-            }), onEditingChanged: { changed in
-                if !changed {
-                    endEditing?(task)
-                }
-            })
+            TextField("todo list", text: $debounceObject.text)
             .font(.system(size: 16))
             .frame(height: 40)
             .foregroundColor(task.isCompleted ? .gray : .primary)
+            .onChange(of: debounceObject.debouncedText, perform: { newValue in
+                task.title = newValue
+                endEditing?(task)
+            })
+        }
+        .onAppear {
+            debounceObject.text = task.title
         }
     }
 }
