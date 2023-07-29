@@ -8,6 +8,12 @@
 import Foundation
 
 extension Calendar {
+    var currentHour: Int {
+        let date = Date()
+        let hour = self.component(.hour, from: date)
+        return hour
+    }
+    
     var hours: [Date] {
         let startOfDay = self.startOfDay(for: Date())
         var hours: [Date] = []

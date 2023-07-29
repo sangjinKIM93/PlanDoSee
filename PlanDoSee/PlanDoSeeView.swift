@@ -61,12 +61,19 @@ struct PlanDoSeeView: View {
                     Text("Do")
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    List() {
-                        ForEach(timeLines, id: \.self) { timeline in
-                            TimeLineViewRow(timeLine: timeline) {  timeline in
-                                saveTimeline(timeLine: timeline)
+                    ScrollViewReader { proxy in
+                        List() {
+                            ForEach(timeLines, id: \.self) { timeline in
+                                TimeLineViewRow(timeLine: timeline) {  timeline in
+                                    saveTimeline(timeLine: timeline)
+                                }
+                                .id(timeline)
                             }
                         }
+                        .onChange(of: timeLines, perform: { newValue in
+                            let target = timeLines.first { $0.hour == String(Calendar.current.currentHour) }
+                            proxy.scrollTo(target, anchor: .top)
+                        })
                     }
                 }
             }
