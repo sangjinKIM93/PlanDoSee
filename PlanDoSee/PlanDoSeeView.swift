@@ -41,7 +41,10 @@ struct PlanDoSeeView: View {
             WeekRow(currentDay: $currentDay)
 
             HStack {
-                VStack {
+                VStack(spacing: 10) {
+                    Text("Plan")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     List {
                         Section(footer: TodoListFooter(todoList: $todoList)) {
                             ForEach(todoList, id: \.self) { task in
@@ -54,7 +57,10 @@ struct PlanDoSeeView: View {
                         
                     }
                 }
-                VStack {
+                VStack(spacing: 10) {
+                    Text("Do")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     List() {
                         ForEach(timeLines, id: \.self) { timeline in
                             TimeLineViewRow(timeLine: timeline) {  timeline in
@@ -64,12 +70,18 @@ struct PlanDoSeeView: View {
                     }
                 }
             }
-            TextEditor(text: $seeText.text)
-                .frame(height: 150)
-                .font(.system(size: 16))
-                .onChange(of: seeText.debouncedText, perform: { newValue in
-                    saveSee(see: newValue)
-                })
+            Spacer().frame(height: 20)
+            VStack(spacing: 10) {
+                Text("See")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                TextEditor(text: $seeText.text)
+                    .frame(height: 150)
+                    .font(.system(size: 16))
+                    .onChange(of: seeText.debouncedText, perform: { newValue in
+                        saveSee(see: newValue)
+                    })
+            }
         }
         .padding()
         .onAppear {
