@@ -14,6 +14,7 @@ struct PlanDoSeeView: View {
     @State private var todoList: [Task] = [Task()]
     @State private var timeLines: [TimeLine] = []
     @StateObject private var seeText = DebounceObject(skipFirst: true)
+    @State private var showingEvaluationAlert: Bool = false
     
     @AppStorage("login_status") var status = false
     @AppStorage("user_id") var userId = ""
@@ -25,111 +26,124 @@ struct PlanDoSeeView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Text(currentDay.toString("MMM YYYY"))
-                    .hAlign(.leading)
-                    .padding(.top, 15)
-                
-                Button {
-                    status = false
-                    userId = ""
-                } label: {
-                    Text("logOut")
+        ZStack {
+            VStack {
+                HStack {
+                    Text(currentDay.toString("MMM YYYY"))
+                        .hAlign(.leading)
+                        .padding(.top, 15)
+                    
+                    Button("오늘 하루 평가하기") {
+                        showingEvaluationAlert = true
+                    }
+                    Button {
+                        status = false
+                        userId = ""
+                    } label: {
+                        Text("logOut")
+                    }
                 }
-            }
-            
-            WeekRow(currentWeek: $currentWeek,
-                    currentDay: $currentDay)
-
-            HStack {
-                VStack(spacing: 10) {
-                    Text("Plan")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    List {
-                        Section(footer: TodoListFooter(todoList: $todoList)) {
-                            ForEach(todoList, id: \.self) { task in
-                                TaskRow(
-                                    task: task,
-                                    deleteData: { task in
-                                        deleteTodo(task: task)
-                                        todoList = todoList.filter { $0.id != task.id }
-                                    },
-                                    saveData: { task in
-                                        saveTodo(task: task)
-                                    },
-                                    didTapEnter: {
-                                        todoList.append(Task())
-                                    }
-                                )
+                
+                WeekRow(currentWeek: $currentWeek,
+                        currentDay: $currentDay)
+                
+                HStack {
+                    VStack(spacing: 10) {
+                        Text("Plan")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        List {
+                            Section(footer: TodoListFooter(todoList: $todoList)) {
+                                ForEach(todoList, id: \.self) { task in
+                                    TaskRow(
+                                        task: task,
+                                        deleteData: { task in
+                                            deleteTodo(task: task)
+                                            todoList = todoList.filter { $0.id != task.id }
+                                        },
+                                        saveData: { task in
+                                            saveTodo(task: task)
+                                        },
+                                        didTapEnter: {
+                                            todoList.append(Task())
+                                        }
+                                    )
+                                }
+                                
                             }
                             
                         }
-                        
                     }
-                }
-                VStack(spacing: 10) {
-                    Text("Do")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    ScrollViewReader { proxy in
-                        List() {
-                            ForEach(timeLines, id: \.self) { timeline in
-                                TimeLineViewRow(timeLine: timeline) {  timeline in
-                                    saveTimeline(timeLine: timeline)
+                    VStack(spacing: 10) {
+                        Text("Do")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        ScrollViewReader { proxy in
+                            List() {
+                                ForEach(timeLines, id: \.self) { timeline in
+                                    TimeLineViewRow(timeLine: timeline) {  timeline in
+                                        saveTimeline(timeLine: timeline)
+                                    }
+                                    .id(timeline)
                                 }
-                                .id(timeline)
                             }
+                            .onChange(of: timeLines, perform: { newValue in
+                                let target = timeLines.first { $0.hour == String(Calendar.current.currentHour) }
+                                proxy.scrollTo(target, anchor: .top)
+                            })
                         }
-                        .onChange(of: timeLines, perform: { newValue in
-                            let target = timeLines.first { $0.hour == String(Calendar.current.currentHour) }
-                            proxy.scrollTo(target, anchor: .top)
-                        })
                     }
                 }
+                Spacer().frame(height: 20)
+                
+                SeeView(seeText: seeText) { content in
+                    saveSee(see: content)
+                }
             }
-            Spacer().frame(height: 20)
+            .padding()
+            .onAppear {
+                getTodo { tasks in
+                    todoList = tasks
+                }
+                getTimeLines { list in
+                    if list.isEmpty {
+                        timeLines = dummyTimeLines()
+                    } else {
+                        timeLines = resetTimeLines(list)
+                    }
+                }
+                getSee { see in
+                    seeText.text = see
+                } failure: {
+                    seeText.text = ""
+                }
+            }
+            .onChange(of: currentDay, perform: { newValue in
+                getTodo { tasks in
+                    todoList = tasks
+                }
+                getTimeLines { list in
+                    if list.isEmpty {
+                        timeLines = dummyTimeLines()
+                    } else {
+                        timeLines = resetTimeLines(list)
+                    }
+                }
+                getSee { see in
+                    seeText.text = see
+                } failure: {
+                    seeText.text = ""
+                }
+            })
             
-            SeeView(seeText: seeText) { content in
-                saveSee(see: content)
-            }
+            EvaluationPopup(presentAlert: $showingEvaluationAlert, successAction: {
+                print("동그라미")
+            }, middleAction: {
+                print("세모")
+            }, failAction: {
+                print("엑스")
+            })
         }
-        .padding()
-        .onAppear {
-            getTodo { tasks in
-                todoList = tasks
-            }
-            getTimeLines { list in
-                if list.isEmpty {
-                    timeLines = dummyTimeLines()
-                } else {
-                    timeLines = resetTimeLines(list)
-                }
-            }
-            getSee { see in
-                seeText.text = see
-            } failure: {
-                seeText.text = ""
-            }
-        }
-        .onChange(of: currentDay, perform: { newValue in
-            getTodo { tasks in
-                todoList = tasks
-            }
-            getTimeLines { list in
-                if list.isEmpty {
-                    timeLines = dummyTimeLines()
-                } else {
-                    timeLines = resetTimeLines(list)
-                }
-            }
-            getSee { see in
-                seeText.text = see
-            } failure: {
-                seeText.text = ""
-            }
-        })
     }
     
     private func binding(for task: Task) -> Binding<Task> {

@@ -13,21 +13,19 @@ struct SeeView: View {
     var saveSee: ((String) -> Void)?
     
     var body: some View {
-        VStack(spacing: 10) {
-            HStack {
+        ZStack {
+            VStack(spacing: 10) {
                 Text("See")
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Button("오늘 하루 평가하기") {
-                    print("팝업 띄우기")
-                }
+                    
+                TextEditor(text: $seeText.text)
+                    .frame(height: 150)
+                    .font(.system(size: 16))
+                    .onChange(of: seeText.debouncedText, perform: { newValue in
+                        saveSee?(newValue)
+                    })
             }
-            TextEditor(text: $seeText.text)
-                .frame(height: 150)
-                .font(.system(size: 16))
-                .onChange(of: seeText.debouncedText, perform: { newValue in
-                    saveSee?(newValue)
-                })
         }
     }
 }
