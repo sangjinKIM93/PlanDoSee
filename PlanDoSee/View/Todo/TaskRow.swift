@@ -14,6 +14,7 @@ struct TaskRow: View {
     
     var deleteData: ((Task) -> Void)?
     var saveData: ((Task) -> Void)?
+    var didTapEnter: (() -> Void)?
     
     var body: some View {
         HStack(alignment: .center) {
@@ -41,6 +42,9 @@ struct TaskRow: View {
                 task.title = newValue
                 saveData?(task)
             })
+            .onSubmit {
+                didTapEnter?()
+            }
             
             Image(systemName: "x.square")
                 .onTapGesture {
@@ -49,6 +53,11 @@ struct TaskRow: View {
         }
         .onAppear {
             debounceObject.text = task.title
+        }
+        .onChange(of: task.isCompleted) { isCompleted in
+            if isCompleted {
+                NSApp.keyWindow?.makeFirstResponder(nil)
+            }
         }
     }
 }

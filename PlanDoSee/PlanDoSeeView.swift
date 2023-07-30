@@ -56,6 +56,9 @@ struct PlanDoSeeView: View {
                                     },
                                     saveData: { task in
                                         saveTodo(task: task)
+                                    },
+                                    didTapEnter: {
+                                        todoList.append(Task())
                                     }
                                 )
                             }
