@@ -48,9 +48,16 @@ struct PlanDoSeeView: View {
                     List {
                         Section(footer: TodoListFooter(todoList: $todoList)) {
                             ForEach(todoList, id: \.self) { task in
-                                TaskRow(task: task) { task in
-                                    saveTodo(task: task)
-                                }
+                                TaskRow(
+                                    task: task,
+                                    deleteData: { task in
+                                        deleteTodo(task: task)
+                                        todoList = todoList.filter { $0.id != task.id }
+                                    },
+                                    saveData: { data in
+                                        saveTodo(task: task)
+                                    }
+                                )
                             }
                             
                         }
@@ -158,6 +165,14 @@ struct PlanDoSeeView: View {
 extension PlanDoSeeView {
     func saveTodo(task: Task) {
         interactor.saveTodo(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            task: task,
+            userId: userId
+        )
+    }
+    
+    func deleteTodo(task: Task) {
+        interactor.deleteTodo(
             date: currentDay.toString(DateStyle.storeId.rawValue),
             task: task,
             userId: userId

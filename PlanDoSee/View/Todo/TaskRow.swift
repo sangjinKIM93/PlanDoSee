@@ -12,7 +12,8 @@ struct TaskRow: View {
     @State var task: Task
     @StateObject private var debounceObject = DebounceObject(skipFirst: true)
     
-    var endEditing: ((Task) -> Void)?
+    var deleteData: ((Task) -> Void)?
+    var saveData: ((Task) -> Void)?
     
     var body: some View {
         HStack(alignment: .center) {
@@ -27,7 +28,7 @@ struct TaskRow: View {
             .frame(height: 40)
             .onChange(of: task.isCompleted, perform: { newValue in
                 task.isCompleted = newValue
-                endEditing?(task)
+                saveData?(task)
             })
             
             Spacer(minLength: 0)
@@ -38,8 +39,13 @@ struct TaskRow: View {
             .foregroundColor(task.isCompleted ? .gray : .primary)
             .onChange(of: debounceObject.debouncedText, perform: { newValue in
                 task.title = newValue
-                endEditing?(task)
+                saveData?(task)
             })
+            
+            Image(systemName: "x.square")
+                .onTapGesture {
+                    deleteData?(task)
+                }
         }
         .onAppear {
             debounceObject.text = task.title

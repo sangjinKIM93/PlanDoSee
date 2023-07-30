@@ -38,6 +38,22 @@ class FireStoreRepository {
 
     }
     
+    func deleteTodo(
+        date: String,
+        task: Task,
+        userId: String
+    ) {
+        db.collection(userId).document("plan")
+            .collection(date).document(task.id.uuidString)
+            .delete() { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully deleted!")
+                }
+            }
+    }
+    
     func getTodo(
         date: String,
         userId: String,

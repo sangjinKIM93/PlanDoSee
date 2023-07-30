@@ -21,6 +21,18 @@ class PlanDoSeeInteractor {
         )
     }
     
+    func deleteTodo(
+        date: String,
+        task: Task,
+        userId: String
+    ) {
+        FireStoreRepository.shared.deleteTodo(
+            date: date,
+            task: task,
+            userId: userId
+        )
+    }
+    
     func getTodo(
         date: String,
         userId: String,
