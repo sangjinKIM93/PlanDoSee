@@ -54,7 +54,7 @@ struct PlanDoSeeView: View {
                                         deleteTodo(task: task)
                                         todoList = todoList.filter { $0.id != task.id }
                                     },
-                                    saveData: { data in
+                                    saveData: { task in
                                         saveTodo(task: task)
                                     }
                                 )
