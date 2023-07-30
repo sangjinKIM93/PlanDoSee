@@ -9,11 +9,16 @@ import SwiftUI
 
 struct WeekRow: View {
     
+    @Binding var currentWeek: [WeekDay]
     @Binding var currentDay: Date
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(Calendar.current.currentWeek) { weekDay in
+            Image(systemName: "chevron.left")
+                .onTapGesture {
+                    goToBeforeWeek()
+                }
+            ForEach(currentWeek) { weekDay in
                 let status = Calendar.current.isDate(weekDay.date, inSameDayAs: currentDay)
                 VStack(spacing: 6) {
                     Text(weekDay.string.prefix(3))
@@ -29,14 +34,30 @@ struct WeekRow: View {
                     currentDay = weekDay.date
                 }
             }
+            Image(systemName: "chevron.right")
+                .onTapGesture {
+                    goToNextWeek()
+                }
         }
         .padding(.vertical, 10)
-        .padding(.horizontal, -15)
+        .padding(.horizontal, 15)
     }
-}
-
-struct WeekRow_Previews: PreviewProvider {
-    static var previews: some View {
-        WeekRow(currentDay: .constant(.init()))
+    
+    func goToBeforeWeek() {
+        let beforeWeek = Calendar.current.beforeWeek(date: currentDay)
+        currentWeek = beforeWeek
+        
+        if let lastDay = beforeWeek.last {
+            currentDay = lastDay.date
+        }
+    }
+    
+    func goToNextWeek() {
+        let nextWeek = Calendar.current.nextWeek(date: currentDay)
+        currentWeek = nextWeek
+        
+        if let firstDay = nextWeek.first {
+            currentDay = firstDay.date
+        }
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlanDoSeeView: View {
     
+    @State private var currentWeek: [WeekDay] = Calendar.current.currentWeek
     @State private var currentDay: Date = .init()
     @State private var todoList: [Task] = [Task()]
     @State private var timeLines: [TimeLine] = []
@@ -26,7 +27,7 @@ struct PlanDoSeeView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(Date().toString("MMM YYYY"))
+                Text(currentDay.toString("MMM YYYY"))
                     .hAlign(.leading)
                     .padding(.top, 15)
                 
@@ -38,7 +39,8 @@ struct PlanDoSeeView: View {
                 }
             }
             
-            WeekRow(currentDay: $currentDay)
+            WeekRow(currentWeek: $currentWeek,
+                    currentDay: $currentDay)
 
             HStack {
                 VStack(spacing: 10) {

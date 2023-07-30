@@ -43,10 +43,33 @@ extension Calendar {
         return week
     }
     
-    struct WeekDay: Identifiable {
-        var id: UUID = .init()
-        var string: String
-        var date: Date
-        var isToday: Bool = false
+    
+    func beforeWeek(date: Date) -> [WeekDay] {
+        return changeWeek(date: date, added: -7)
     }
+    func nextWeek(date: Date) -> [WeekDay] {
+        return changeWeek(date: date, added: 7)
+    }
+    
+    func changeWeek(date: Date, added: Int) -> [WeekDay] {
+        guard let firstWeekDay = self.dateInterval(of: .weekOfMonth, for: date)?.start else {
+            return []
+        }
+        var week: [WeekDay] = []
+        for index in 0..<7 {
+            if let day = self.date(byAdding: .day, value: index + added, to: firstWeekDay) {
+                let weekDaySymbol = day.toString("EEEE") // ex) Monday
+                week.append(.init(string: weekDaySymbol, date: day))
+            }
+        }
+        return week
+    }
+}
+
+
+struct WeekDay: Identifiable {
+    var id: UUID = .init()
+    var string: String
+    var date: Date
+    var isToday: Bool = false
 }
