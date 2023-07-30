@@ -84,12 +84,14 @@ class PlanDoSeeInteractor {
     func getSee(
         date: String,
         userId: String,
-        success: @escaping ((String) -> Void)
+        success: @escaping ((String) -> Void),
+        failure: @escaping (() -> Void)
     ) {
         FireStoreRepository.shared.getSee(
             date: date,
             userId: userId,
-            success: success
+            success: success,
+            failure: failure
         )
     }
 }

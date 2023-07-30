@@ -152,7 +152,8 @@ class FireStoreRepository {
     func getSee(
         date: String,
         userId: String,
-        success: @escaping ((String) -> Void)
+        success: @escaping ((String) -> Void),
+        failure: @escaping (() -> Void)
     ) {
         let docRef = db.collection(userId).document("see")
             .collection(date)
@@ -160,11 +161,15 @@ class FireStoreRepository {
         docRef.getDocuments { querySnapshot, error in
             guard error == nil else {
                 print("Error getting documents: \(error?.localizedDescription)")
+                failure()
                 return
             }
             if let document = querySnapshot?.documents.first,
                let seeData = document["data"] as? String {
+                print("Get See")
                 success(seeData)
+            } else {
+                failure()
             }
         }
     }

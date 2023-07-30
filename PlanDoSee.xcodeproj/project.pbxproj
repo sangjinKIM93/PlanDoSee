@@ -11,6 +11,7 @@
 		480490122A3D871C00C10DC9 /* PlanDoSeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480490112A3D871C00C10DC9 /* PlanDoSeeView.swift */; };
 		480490142A3D871F00C10DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 480490132A3D871F00C10DC9 /* Assets.xcassets */; };
 		480490182A3D871F00C10DC9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 480490172A3D871F00C10DC9 /* Preview Assets.xcassets */; };
+		480BCF3D2A762056000638D1 /* SeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCF3C2A762056000638D1 /* SeeView.swift */; };
 		481B3C122A4325F400837FBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C112A4325F400837FBF /* FirebaseAuth */; };
 		481B3C142A4325F400837FBF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C132A4325F400837FBF /* FirebaseFirestore */; };
 		481B3C162A4325F400837FBF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C152A4325F400837FBF /* FirebaseFirestoreSwift */; };
@@ -44,6 +45,7 @@
 		480490132A3D871F00C10DC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		480490152A3D871F00C10DC9 /* PlanDoSee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlanDoSee.entitlements; sourceTree = "<group>"; };
 		480490172A3D871F00C10DC9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		480BCF3C2A762056000638D1 /* SeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeView.swift; sourceTree = "<group>"; };
 		481B3C1E2A432A0100837FBF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		481B3C202A432B2F00837FBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		481B3C222A44788E00837FBF /* EntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		480BCF392A762024000638D1 /* See */ = {
+			isa = PBXGroup;
+			children = (
+				480BCF3C2A762056000638D1 /* SeeView.swift */,
+			);
+			path = See;
+			sourceTree = "<group>";
+		};
 		481B3C192A4327E200837FBF /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +163,7 @@
 		481FE31A2A3E89B000B4FC9A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				480BCF392A762024000638D1 /* See */,
 				48357FF22A46B70000BDD209 /* Calendar */,
 				48357FED2A46B5EC00BDD209 /* Timeline */,
 				48357FEC2A46B5E200BDD209 /* Todo */,
@@ -314,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */,
+				480BCF3D2A762056000638D1 /* SeeView.swift in Sources */,
 				48D48A9A2A4FE7A300F2F55B /* TextView.swift in Sources */,
 				481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */,
 				4899A9492A46E48E00EE9AC2 /* PlanDoSeeInteractor.swift in Sources */,

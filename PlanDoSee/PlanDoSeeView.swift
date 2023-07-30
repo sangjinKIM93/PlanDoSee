@@ -90,16 +90,9 @@ struct PlanDoSeeView: View {
                 }
             }
             Spacer().frame(height: 20)
-            VStack(spacing: 10) {
-                Text("See")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                TextEditor(text: $seeText.text)
-                    .frame(height: 150)
-                    .font(.system(size: 16))
-                    .onChange(of: seeText.debouncedText, perform: { newValue in
-                        saveSee(see: newValue)
-                    })
+            
+            SeeView(seeText: seeText) { content in
+                saveSee(see: content)
             }
         }
         .padding()
@@ -116,6 +109,8 @@ struct PlanDoSeeView: View {
             }
             getSee { see in
                 seeText.text = see
+            } failure: {
+                seeText.text = ""
             }
         }
         .onChange(of: currentDay, perform: { newValue in
@@ -131,6 +126,8 @@ struct PlanDoSeeView: View {
             }
             getSee { see in
                 seeText.text = see
+            } failure: {
+                seeText.text = ""
             }
         })
     }
@@ -216,11 +213,15 @@ extension PlanDoSeeView {
         )
     }
     
-    func getSee(success: @escaping (String) -> Void) {
+    func getSee(
+        success: @escaping (String) -> Void,
+        failure: @escaping () -> Void
+    ) {
         interactor.getSee(
             date: currentDay.toString(DateStyle.storeId.rawValue),
             userId: userId,
-            success: success
+            success: success,
+            failure: failure
         )
     }
 }
