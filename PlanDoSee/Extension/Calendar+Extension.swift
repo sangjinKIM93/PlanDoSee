@@ -64,6 +64,10 @@ extension Calendar {
         }
         return week
     }
+    
+    func startDayOfWeek(date: Date) -> Date {
+        return self.dateInterval(of: .weekOfMonth, for: date)?.start ?? Date()
+    }
 }
 
 
@@ -72,4 +76,5 @@ struct WeekDay: Identifiable {
     var string: String
     var date: Date
     var isToday: Bool = false
+    var evaluation: EvaluationType = .good
 }

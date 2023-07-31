@@ -26,6 +26,7 @@ struct WeekRow: View {
                     Text(weekDay.date.toString("dd"))
                         .font(.system(size: 16))
                         .fontWeight(status ? .semibold : .regular)
+                    EvaluationImage(type: weekDay.evaluation)
                 }
                 .foregroundColor(status ? .blue : .gray)
                 .hAlign(.center)
@@ -58,6 +59,20 @@ struct WeekRow: View {
         
         if let firstDay = nextWeek.first {
             currentDay = firstDay.date
+        }
+    }
+    
+    @ViewBuilder
+    func EvaluationImage(type: EvaluationType) -> some View {
+        switch type {
+        case .good:
+            Image(systemName: "circle.fill")
+        case .soso:
+            Image(systemName: "triangle.fill")
+        case .bad:
+            Image(systemName: "x.circle")
+        case .none:
+            EmptyView()
         }
     }
 }

@@ -13,6 +13,7 @@ struct PlanDoSeeView: View {
     @State private var currentDay: Date = .init()
     @State private var todoList: [Task] = [Task()]
     @State private var timeLines: [TimeLine] = []
+    @State private var evaluation: EvaluationType = .none
     @StateObject private var seeText = DebounceObject(skipFirst: true)
     @State private var showingEvaluationAlert: Bool = false
     
@@ -44,6 +45,7 @@ struct PlanDoSeeView: View {
                     }
                 }
                 
+                // 이번주 정보를 다 가져와서 넣어줘야한다.
                 WeekRow(currentWeek: $currentWeek,
                         currentDay: $currentDay)
                 
@@ -137,11 +139,11 @@ struct PlanDoSeeView: View {
             })
             
             EvaluationPopup(presentAlert: $showingEvaluationAlert, successAction: {
-                print("동그라미")
+                saveEvaluation(evaluation: .good)
             }, middleAction: {
-                print("세모")
+                saveEvaluation(evaluation: .soso)
             }, failAction: {
-                print("엑스")
+                saveEvaluation(evaluation: .bad)
             })
         }
     }
@@ -236,6 +238,17 @@ extension PlanDoSeeView {
             userId: userId,
             success: success,
             failure: failure
+        )
+    }
+    
+    func saveEvaluation(
+        evaluation: EvaluationType
+    ) {
+        interactor.saveEvaluation(
+            startDayOfWeek: Calendar.current.startDayOfWeek(date: currentDay).toString("yyMMdd"),
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            evaluation: evaluation.rawValue,
+            userId: userId
         )
     }
 }

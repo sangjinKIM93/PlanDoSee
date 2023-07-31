@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum EvaluationType: String {
+    case good
+    case soso
+    case bad
+    case none
+}
+
 struct EvaluationPopup: View {
     
     @Binding var presentAlert: Bool

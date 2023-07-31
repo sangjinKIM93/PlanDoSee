@@ -94,4 +94,18 @@ class PlanDoSeeInteractor {
             failure: failure
         )
     }
+    
+    func saveEvaluation(
+        startDayOfWeek: String,
+        date: String,
+        evaluation: String,
+        userId: String
+    ) {
+        FireStoreRepository.shared.saveEvaluation(
+            startDayOfWeek: startDayOfWeek,
+            date: date,
+            evaluation: evaluation,
+            userId: userId
+        )
+    }
 }

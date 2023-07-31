@@ -173,4 +173,23 @@ class FireStoreRepository {
             }
         }
     }
+    
+    // Evaluation
+    func saveEvaluation(
+        startDayOfWeek: String,
+        date: String,
+        evaluation: String,
+        userId: String
+    ) {
+        db.collection(userId).document("evaluation")
+            .collection(startDayOfWeek).document(date)
+            .setData(["data" : evaluation]) // 업데이트 되는 개념인지 살펴봐야해.
+            { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
+    }
 }
