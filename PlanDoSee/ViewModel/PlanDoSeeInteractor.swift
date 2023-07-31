@@ -108,4 +108,16 @@ class PlanDoSeeInteractor {
             userId: userId
         )
     }
+    
+    func getEvaluations(
+        startDayOfWeek: String,
+        userId: String,
+        success: @escaping (([String: String]) -> Void)
+    ) {
+        FireStoreRepository.shared.getEvaluation(
+            startDayOfWeek: startDayOfWeek,
+            userId: userId,
+            success: success
+        )
+    }
 }

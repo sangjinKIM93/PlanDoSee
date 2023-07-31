@@ -26,7 +26,6 @@ struct WeekRow: View {
                     Text(weekDay.date.toString("dd"))
                         .font(.system(size: 16))
                         .fontWeight(status ? .semibold : .regular)
-                    EvaluationImage(type: weekDay.evaluation)
                 }
                 .foregroundColor(status ? .blue : .gray)
                 .hAlign(.center)
@@ -34,6 +33,11 @@ struct WeekRow: View {
                 .onTapGesture {
                     currentDay = weekDay.date
                 }
+                .overlay(content: {
+                    EvaluationImage(type: weekDay.evaluation)
+                        .font(.system(size: 60))
+                        .allowsHitTesting(false)
+                })
             }
             Image(systemName: "chevron.right")
                 .onTapGesture {
@@ -66,13 +70,13 @@ struct WeekRow: View {
     func EvaluationImage(type: EvaluationType) -> some View {
         switch type {
         case .good:
-            Image(systemName: "circle.fill")
+            Image(systemName: "circle")
         case .soso:
-            Image(systemName: "triangle.fill")
+            Image(systemName: "triangle")
         case .bad:
-            Image(systemName: "x.circle")
+            Image(systemName: "xmark")
         case .none:
-            EmptyView()
+            Spacer()
         }
     }
 }

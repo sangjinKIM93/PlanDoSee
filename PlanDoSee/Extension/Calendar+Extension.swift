@@ -76,5 +76,5 @@ struct WeekDay: Identifiable {
     var string: String
     var date: Date
     var isToday: Bool = false
-    var evaluation: EvaluationType = .good
+    var evaluation: EvaluationType = .none
 }

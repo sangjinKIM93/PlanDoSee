@@ -192,4 +192,30 @@ class FireStoreRepository {
                 }
             }
     }
+    
+    func getEvaluation(
+        startDayOfWeek: String,
+        userId: String,
+        success: @escaping (([String: String]) -> Void)
+    ) {
+        let docRef = db.collection(userId).document("evaluation")
+            .collection(startDayOfWeek)
+        
+        docRef.getDocuments { querySnapshot, error in
+            guard error == nil else {
+                print("Error getting documents: \(error?.localizedDescription)")
+                return
+            }
+            guard let querySnapshot = querySnapshot else {
+                return
+            }
+            var dict = [String: String]()
+            for document in querySnapshot.documents {
+                if let evaluation = document["data"] as? String {
+                    dict[document.documentID] = evaluation
+                }
+            }
+            success(dict)
+        }
+    }
 }

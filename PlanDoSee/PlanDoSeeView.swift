@@ -119,6 +119,11 @@ struct PlanDoSeeView: View {
                 } failure: {
                     seeText.text = ""
                 }
+                
+                getEvluation{ dict in
+                    let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
+                    self.currentWeek = currentWeek
+                }
             }
             .onChange(of: currentDay, perform: { newValue in
                 getTodo { tasks in
@@ -135,6 +140,11 @@ struct PlanDoSeeView: View {
                     seeText.text = see
                 } failure: {
                     seeText.text = ""
+                }
+                
+                getEvluation{ dict in
+                    let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
+                    self.currentWeek = currentWeek
                 }
             })
             
@@ -249,6 +259,16 @@ extension PlanDoSeeView {
             date: currentDay.toString(DateStyle.storeId.rawValue),
             evaluation: evaluation.rawValue,
             userId: userId
+        )
+    }
+    
+    func getEvluation(
+        success: @escaping (([String: String]) -> Void)
+    ) {
+        interactor.getEvaluations(
+            startDayOfWeek: Calendar.current.startDayOfWeek(date: currentDay).toString("yyMMdd"),
+            userId: userId,
+            success: success
         )
     }
 }
