@@ -35,6 +35,7 @@ struct WeekRow: View {
                 }
                 .overlay(content: {
                     EvaluationImage(type: weekDay.evaluation)
+                        .opacity(0.3)
                         .font(.system(size: 60))
                         .allowsHitTesting(false)
                 })
@@ -71,10 +72,13 @@ struct WeekRow: View {
         switch type {
         case .good:
             Image(systemName: "circle")
+                .foregroundColor(.blue)
         case .soso:
             Image(systemName: "triangle")
+                .foregroundColor(.yellow)
         case .bad:
             Image(systemName: "xmark")
+                .foregroundColor(.red)
         case .none:
             Spacer()
         }
