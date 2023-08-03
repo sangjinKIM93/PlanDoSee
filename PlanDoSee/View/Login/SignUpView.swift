@@ -52,6 +52,9 @@ struct SignUpView: View {
                     .padding(.horizontal)
                     .background(Color.white.opacity(0.13))
                     .cornerRadius(8)
+                    .foregroundColor(.white)
+                    .autocorrectionDisabled()
+                    .autocapitalization(.none)
                 
                 Spacer()
                     .frame(height: 20)
@@ -67,6 +70,7 @@ struct SignUpView: View {
                     .padding(.horizontal)
                     .background(Color.white.opacity(0.13))
                     .cornerRadius(8)
+                    .foregroundColor(.white)
                 
                 Spacer()
                     .frame(height: 20)
@@ -82,6 +86,7 @@ struct SignUpView: View {
                     .padding(.horizontal)
                     .background(Color.white.opacity(0.13))
                     .cornerRadius(8)
+                    .foregroundColor(.white)
             }
             
             Spacer()
