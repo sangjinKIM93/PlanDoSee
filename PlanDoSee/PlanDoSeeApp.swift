@@ -19,7 +19,14 @@ struct PlanDoSeeApp: App {
     var body: some Scene {
         WindowGroup {
             if status {
+                #if os(iOS)
+                PlanDoSeeiOSView()
+                #elseif os(macOS)
                 PlanDoSeeView()
+                #else
+                println("OMG, it's that mythical new Apple product!!!")
+                #endif
+                
             } else {
                 EntranceView()
             }

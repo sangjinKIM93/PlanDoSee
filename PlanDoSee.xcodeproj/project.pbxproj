@@ -15,6 +15,7 @@
 		480BCF3F2A762E03000638D1 /* EvaluationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCF3E2A762E03000638D1 /* EvaluationPopup.swift */; };
 		480BCF412A763F8F000638D1 /* SeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCF402A763F8F000638D1 /* SeeModel.swift */; };
 		480BCF442A78036C000638D1 /* DateMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCF432A78036C000638D1 /* DateMaker.swift */; };
+		480BCF462A7BD023000638D1 /* PlanDoSeeiOSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCF452A7BD023000638D1 /* PlanDoSeeiOSView.swift */; };
 		481B3C122A4325F400837FBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C112A4325F400837FBF /* FirebaseAuth */; };
 		481B3C142A4325F400837FBF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C132A4325F400837FBF /* FirebaseFirestore */; };
 		481B3C162A4325F400837FBF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C152A4325F400837FBF /* FirebaseFirestoreSwift */; };
@@ -52,6 +53,7 @@
 		480BCF3E2A762E03000638D1 /* EvaluationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationPopup.swift; sourceTree = "<group>"; };
 		480BCF402A763F8F000638D1 /* SeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeModel.swift; sourceTree = "<group>"; };
 		480BCF432A78036C000638D1 /* DateMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMaker.swift; sourceTree = "<group>"; };
+		480BCF452A7BD023000638D1 /* PlanDoSeeiOSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDoSeeiOSView.swift; sourceTree = "<group>"; };
 		481B3C1E2A432A0100837FBF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		481B3C202A432B2F00837FBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		481B3C222A44788E00837FBF /* EntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				481FE31A2A3E89B000B4FC9A /* View */,
 				48D47B6B2A3D8BA700C95F61 /* Extension */,
 				4804900F2A3D871C00C10DC9 /* PlanDoSeeApp.swift */,
+				480BCF452A7BD023000638D1 /* PlanDoSeeiOSView.swift */,
 				480490112A3D871C00C10DC9 /* PlanDoSeeView.swift */,
 				480490152A3D871F00C10DC9 /* PlanDoSee.entitlements */,
 				480490162A3D871F00C10DC9 /* Preview Content */,
@@ -362,6 +365,7 @@
 				481B3C2D2A45D35200837FBF /* FireStoreRepository.swift in Sources */,
 				480BCF412A763F8F000638D1 /* SeeModel.swift in Sources */,
 				481B3C292A44863B00837FBF /* SignUpView.swift in Sources */,
+				480BCF462A7BD023000638D1 /* PlanDoSeeiOSView.swift in Sources */,
 				48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */,
 				480BCF3F2A762E03000638D1 /* EvaluationPopup.swift in Sources */,
 				481B3C232A44788E00837FBF /* EntranceView.swift in Sources */,

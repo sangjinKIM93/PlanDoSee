@@ -56,7 +56,7 @@ struct TaskRow: View {
         }
         .onChange(of: task.isCompleted) { isCompleted in
             if isCompleted {
-                NSApp.keyWindow?.makeFirstResponder(nil)
+//                NSApp.keyWindow?.makeFirstResponder(nil)
             }
         }
     }

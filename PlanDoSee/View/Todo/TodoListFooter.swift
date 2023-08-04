@@ -20,5 +20,6 @@ struct TodoListFooter: View {
             }
         }
         .frame(height: 50)
+        .listRowSeparator(.hidden)
     }
 }

@@ -34,7 +34,7 @@ struct LoginView: View {
                     .cornerRadius(8)
                     .foregroundColor(.white)
                     .autocorrectionDisabled()
-                    .autocapitalization(.none)
+//                    .autocapitalization(.none)
                 
                 Spacer()
                     .frame(height: 20)
