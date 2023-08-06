@@ -19,12 +19,26 @@ struct SeeView: View {
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                TextEditor(text: $seeText.text)
-                    .frame(height: 150)
-                    .font(.system(size: 16))
-                    .onChange(of: seeText.debouncedText, perform: { newValue in
-                        saveSee?(newValue)
-                    })
+                ZStack(alignment: .topLeading) {
+                    TextEditor(text: $seeText.text)
+                        #if os(macOS)
+                        .frame(height: 150)
+                        #endif
+                        .font(.system(size: 16))
+                        .onChange(of: seeText.debouncedText, perform: { newValue in
+                            saveSee?(newValue)
+                        })
+                    #if os(macOS)
+                    if seeText.text.isEmpty {
+                        Text("오늘 하루 어땠나요?")
+                            .font(.system(size: 16))
+                            .padding(.top, 7)
+                            .padding(.leading, 4)
+                            .foregroundColor(.primary.opacity(0.25))
+                            .allowsHitTesting(false)
+                    }
+                    #endif
+                }
             }
         }
     }

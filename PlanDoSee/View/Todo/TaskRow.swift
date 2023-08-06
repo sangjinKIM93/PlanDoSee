@@ -32,21 +32,22 @@ struct TaskRow: View {
                 saveData?(task)
             })
             
-            Spacer(minLength: 0)
+            Spacer(minLength: 10)
             
             TextField("todo list", text: $debounceObject.text)
-            .font(.system(size: 16))
-            .frame(height: 40)
-            .foregroundColor(task.isCompleted ? .gray : .primary)
-            .onChange(of: debounceObject.debouncedText, perform: { newValue in
-                task.title = newValue
-                saveData?(task)
-            })
-            .onSubmit {
-                didTapEnter?()
-            }
+                .font(.system(size: 16))
+                .frame(height: 40)
+                .foregroundColor(task.isCompleted ? .gray : .primary)
+                .onChange(of: debounceObject.debouncedText, perform: { newValue in
+                    task.title = newValue
+                    saveData?(task)
+                })
+                .onSubmit {
+                    didTapEnter?()
+                }
             
             Image(systemName: "x.square")
+                .foregroundColor(.gray.opacity(0.5))
                 .onTapGesture {
                     deleteData?(task)
                 }

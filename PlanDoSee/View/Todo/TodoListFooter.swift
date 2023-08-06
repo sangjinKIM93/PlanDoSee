@@ -15,10 +15,15 @@ struct TodoListFooter: View {
             todoList.append(task)
         } label: {
             HStack {
-                Image(systemName: "plus")
-                Text("목표 추가")
+                Image(systemName: "plus.app.fill")
+                    .font(.headline)
+                    .foregroundColor(.blue.opacity(0.8))
+                Text("Add Todo")
+                    .foregroundColor(.blue.opacity(0.8))
+                    .font(.headline)
             }
         }
+        .buttonStyle(.plain)
         .frame(height: 50)
         .listRowSeparator(.hidden)
     }

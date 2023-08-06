@@ -15,6 +15,7 @@ struct WeekRow: View {
     var body: some View {
         HStack(spacing: 0) {
             Image(systemName: "chevron.left")
+                .foregroundColor(.gray)
                 .onTapGesture {
                     goToBeforeWeek()
                 }
@@ -41,12 +42,17 @@ struct WeekRow: View {
                 })
             }
             Image(systemName: "chevron.right")
+                .foregroundColor(.gray)
                 .onTapGesture {
                     goToNextWeek()
                 }
         }
         .padding(.vertical, 10)
+        #if os(iOS)
+        .padding(.horizontal, 0)
+        #elseif os(macOS)
         .padding(.horizontal, 15)
+        #endif
     }
     
     func goToBeforeWeek() {
