@@ -10,15 +10,31 @@ import SwiftUI
 struct SeeView: View {
     
     @ObservedObject var seeText: DebounceObject
+    @Binding var showingEvaluationAlert: Bool
     var saveSee: ((String) -> Void)?
     
     var body: some View {
         ZStack {
             VStack(spacing: 10) {
-                Text("See")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    
+                HStack {
+                    Text("See")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer()
+                    Button {
+                        showingEvaluationAlert = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "checklist")
+                                .font(.headline)
+                                .foregroundColor(.blue.opacity(0.8))
+                            Text("Today Score")
+                                .foregroundColor(.blue.opacity(0.8))
+                                .font(.headline)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $seeText.text)
                         #if os(macOS)
@@ -28,7 +44,7 @@ struct SeeView: View {
                         .onChange(of: seeText.debouncedText, perform: { newValue in
                             saveSee?(newValue)
                         })
-                    #if os(macOS)
+                    #if os(iOS)
                     if seeText.text.isEmpty {
                         Text("오늘 하루 어땠나요?")
                             .font(.system(size: 16))

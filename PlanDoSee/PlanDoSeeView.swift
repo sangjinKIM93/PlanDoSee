@@ -34,9 +34,6 @@ struct PlanDoSeeView: View {
                         .hAlign(.leading)
                         .padding(.top, 15)
                     
-                    Button("오늘 하루 평가하기") {
-                        showingEvaluationAlert = true
-                    }
                     Button {
                         status = false
                         userId = ""
@@ -98,7 +95,7 @@ struct PlanDoSeeView: View {
                 }
                 Spacer().frame(height: 20)
                 
-                SeeView(seeText: seeText) { content in
+                SeeView(seeText: seeText, showingEvaluationAlert: $showingEvaluationAlert) { content in
                     saveSee(see: content)
                 }
             }

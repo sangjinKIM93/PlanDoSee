@@ -108,7 +108,7 @@ struct PlanDoSeeiOSView: View {
                     }
                     
                     VStack {
-                        SeeView(seeText: seeText) { content in
+                        SeeView(seeText: seeText, showingEvaluationAlert: $showingEvaluationAlert) { content in
                             saveSee(see: content)
                         }
                         Spacer()
