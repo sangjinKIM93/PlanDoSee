@@ -27,7 +27,9 @@ struct TimeLineViewRow: View {
                 .frame(width: 25, alignment: .leading)
             VStack() {
                 TextEditor(text: $debounceObject.text)
+                    #if os(macOS)
                     .scrollDisabled(true)
+                    #endif
                     .font(.system(size: 14))
                     .frame(minHeight: 15)
                     .fixedSize(horizontal: false, vertical: true)
