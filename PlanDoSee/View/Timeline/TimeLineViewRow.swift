@@ -25,7 +25,10 @@ struct TimeLineViewRow: View {
         HStack(alignment: .top) {
             Text(timeLine.hour)
                 .frame(width: 25, alignment: .leading)
-            VStack() {
+                #if os(iOS)
+                .padding(.top, 5)
+                #endif
+            VStack(spacing: 0) {
                 TextEditor(text: $debounceObject.text)
                     #if os(macOS)
                     .scrollDisabled(true)

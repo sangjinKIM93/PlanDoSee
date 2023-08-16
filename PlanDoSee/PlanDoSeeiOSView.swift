@@ -93,6 +93,7 @@ struct PlanDoSeeiOSView: View {
                                         saveTimeline(timeLine: timeline)
                                     }
                                     .id(timeline)
+                                    .listRowSeparator(.hidden)
                                 }
                             }
                             .listStyle(.plain)
