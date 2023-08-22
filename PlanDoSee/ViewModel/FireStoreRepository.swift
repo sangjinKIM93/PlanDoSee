@@ -179,7 +179,8 @@ class FireStoreRepository {
         startDayOfWeek: String,
         date: String,
         evaluation: String,
-        userId: String
+        userId: String,
+        success: @escaping (() -> Void)
     ) {
         db.collection(userId).document("evaluation")
             .collection(startDayOfWeek).document(date)
@@ -188,7 +189,7 @@ class FireStoreRepository {
                 if let err = err {
                     print("Error writing document: \(err)")
                 } else {
-                    print("Document successfully written!")
+                    success()
                 }
             }
     }

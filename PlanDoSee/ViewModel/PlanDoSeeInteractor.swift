@@ -99,13 +99,15 @@ class PlanDoSeeInteractor {
         startDayOfWeek: String,
         date: String,
         evaluation: String,
-        userId: String
+        userId: String,
+        success: @escaping (() -> Void)
     ) {
         FireStoreRepository.shared.saveEvaluation(
             startDayOfWeek: startDayOfWeek,
             date: date,
             evaluation: evaluation,
-            userId: userId
+            userId: userId,
+            success: success
         )
     }
     

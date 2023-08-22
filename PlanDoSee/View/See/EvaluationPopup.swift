@@ -86,7 +86,7 @@ struct EvaluationPopup: View {
                 .multilineTextAlignment(.center)
                 .padding()
         }
-        .frame(height: 30)
+        .frame(height: 50)
         .frame(maxWidth: .infinity)
     }
 }

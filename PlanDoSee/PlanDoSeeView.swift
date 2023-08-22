@@ -255,7 +255,13 @@ extension PlanDoSeeView {
             startDayOfWeek: Calendar.current.startDayOfWeek(date: currentDay).toString("yyMMdd"),
             date: currentDay.toString(DateStyle.storeId.rawValue),
             evaluation: evaluation.rawValue,
-            userId: userId
+            userId: userId,
+            success: {
+                getEvluation { dict in
+                    let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
+                    self.currentWeek = currentWeek
+                }
+            }
         )
     }
     
