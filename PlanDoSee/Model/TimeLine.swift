@@ -10,5 +10,5 @@ import Foundation
 struct TimeLine: Codable, Hashable {
     let id: UUID = .init()
     let hour: String
-    let content: String
+    var content: String
 }

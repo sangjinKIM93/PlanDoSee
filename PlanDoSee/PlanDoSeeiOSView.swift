@@ -116,7 +116,7 @@ struct PlanDoSeeiOSView: View {
                     }
                     .tabItem {
                         Image(systemName: "note")
-                                  Text("See")
+                        Text("See")
                     }
                 }
             }
