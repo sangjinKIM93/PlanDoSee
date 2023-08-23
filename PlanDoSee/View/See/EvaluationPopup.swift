@@ -36,7 +36,6 @@ struct EvaluationPopup: View {
                     // alert title
                     Text("오늘 하루 수고했어요👍")
                         .font(.system(size: 16, weight: .bold))
-                        .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                         .frame(height: 25)
                         .padding(.top, 16)
@@ -47,7 +46,6 @@ struct EvaluationPopup: View {
                     Text("오늘 하루 목표 달성률은 몇 %인가요?")
                         .frame(height: 25)
                         .font(.system(size: 16))
-                        .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 16)
@@ -66,8 +64,9 @@ struct EvaluationPopup: View {
                 }
                 .frame(width: 270)
                 .frame(minHeight: 150)
+                .foregroundColor(.titleColor)
                 .background(
-                    Color.white
+                    Color.tertiaryBackground
                 )
                 .cornerRadius(4)
             }
@@ -76,17 +75,17 @@ struct EvaluationPopup: View {
     }
     
     func PercentButton(title: String, action: (() -> Void)?) -> some View {
-        Button {
-            action?()
-            presentAlert = false
-        } label: {
-            Text(title)
-                .font(.system(size: 14, weight: .bold))
-                .foregroundColor(.black)
-                .multilineTextAlignment(.center)
-                .padding()
-        }
-        .frame(height: 50)
-        .frame(maxWidth: .infinity)
+        Text(title)
+            .font(.system(size: 14, weight: .bold))
+            .foregroundColor(.titleColor)
+            .multilineTextAlignment(.center)
+            .frame(height: 30)
+            .frame(maxWidth: .infinity)
+            .containerShape(Rectangle())
+            .padding()
+            .onTapGesture {
+                action?()
+                presentAlert = false
+            }
     }
 }
