@@ -41,6 +41,7 @@ struct SeeView: View {
                         .frame(height: 150)
                         #endif
                         .font(.system(size: 16))
+                        .scrollIndicators(.never)
                         .onChange(of: seeText.debouncedText, perform: { newValue in
                             saveSee?(newValue)
                         })
