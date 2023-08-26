@@ -12,7 +12,6 @@ struct PlanDoSeeiOSView: View {
     @State private var currentDay: Date = .init()
     
     @State private var evaluation: EvaluationType = .none
-    @StateObject private var seeText = DebounceObject(skipFirst: true)
     @State private var showingEvaluationAlert: Bool = false
     
     @AppStorage("login_status") var status = false
@@ -40,9 +39,7 @@ struct PlanDoSeeiOSView: View {
                     }
                     
                     VStack {
-                        SeeView(seeText: seeText, showingEvaluationAlert: $showingEvaluationAlert) { content in
-                            saveSee(see: content)
-                        }
+                        SeeView(showingEvaluationAlert: $showingEvaluationAlert, currentDay: $currentDay)
                         Spacer()
                     }
                     .tabItem {
@@ -59,24 +56,12 @@ struct PlanDoSeeiOSView: View {
             }
             .padding()
             .onAppear {
-                getSee { see in
-                    seeText.text = see
-                } failure: {
-                    seeText.text = ""
-                }
-                
                 getEvluation{ dict in
                     let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
                     self.currentWeek = currentWeek
                 }
             }
             .onChange(of: currentDay, perform: { newValue in
-                getSee { see in
-                    seeText.text = see
-                } failure: {
-                    seeText.text = ""
-                }
-                
                 getEvluation{ dict in
                     let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
                     self.currentWeek = currentWeek
@@ -96,26 +81,6 @@ struct PlanDoSeeiOSView: View {
 
 // MARK: side effects
 extension PlanDoSeeiOSView {
-    func saveSee(see: String) {
-        interactor.saveSee(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
-            see: see,
-            userId: userId
-        )
-    }
-    
-    func getSee(
-        success: @escaping (String) -> Void,
-        failure: @escaping () -> Void
-    ) {
-        interactor.getSee(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
-            userId: userId,
-            success: success,
-            failure: failure
-        )
-    }
-    
     func saveEvaluation(
         evaluation: EvaluationType
     ) {

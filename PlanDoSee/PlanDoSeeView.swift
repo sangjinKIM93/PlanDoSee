@@ -12,7 +12,7 @@ struct PlanDoSeeView: View {
     @State private var currentWeek: [WeekDay] = Calendar.current.currentWeek
     @State private var currentDay: Date = .init()
     @State private var evaluation: EvaluationType = .none
-    @StateObject private var seeText = DebounceObject(skipFirst: true)
+    
     @State private var showingEvaluationAlert: Bool = false
     
     @AppStorage("login_status") var status = false
@@ -36,7 +36,6 @@ struct PlanDoSeeView: View {
                     }
                 }
                 
-                // 이번주 정보를 다 가져와서 넣어줘야한다.
                 WeekRow(currentWeek: $currentWeek,
                         currentDay: $currentDay)
                 
@@ -46,30 +45,16 @@ struct PlanDoSeeView: View {
                 }
                 Spacer().frame(height: 20)
                 
-                SeeView(seeText: seeText, showingEvaluationAlert: $showingEvaluationAlert) { content in
-                    saveSee(see: content)
-                }
+                SeeView(showingEvaluationAlert: $showingEvaluationAlert, currentDay: $currentDay)
             }
             .padding()
             .onAppear {
-                getSee { see in
-                    seeText.text = see
-                } failure: {
-                    seeText.text = ""
-                }
-                
                 getEvluation{ dict in
                     let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
                     self.currentWeek = currentWeek
                 }
             }
             .onChange(of: currentDay, perform: { newValue in
-                getSee { see in
-                    seeText.text = see
-                } failure: {
-                    seeText.text = ""
-                }
-                
                 getEvluation{ dict in
                     let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
                     self.currentWeek = currentWeek
@@ -89,26 +74,6 @@ struct PlanDoSeeView: View {
 
 // MARK: side effects
 extension PlanDoSeeView {
-    func saveSee(see: String) {
-        interactor.saveSee(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
-            see: see,
-            userId: userId
-        )
-    }
-    
-    func getSee(
-        success: @escaping (String) -> Void,
-        failure: @escaping () -> Void
-    ) {
-        interactor.getSee(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
-            userId: userId,
-            success: success,
-            failure: failure
-        )
-    }
-    
     func saveEvaluation(
         evaluation: EvaluationType
     ) {

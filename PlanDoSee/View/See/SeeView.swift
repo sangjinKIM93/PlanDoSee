@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct SeeView: View {
-    
-    @ObservedObject var seeText: DebounceObject
+    @StateObject private var seeText = DebounceObject(skipFirst: true)
     @Binding var showingEvaluationAlert: Bool
-    var saveSee: ((String) -> Void)?
+    
+    @Binding var currentDay: Date
+    @AppStorage("user_id") var userId = ""
     
     var body: some View {
         ZStack {
@@ -44,7 +45,7 @@ struct SeeView: View {
                         .scrollIndicators(.never)
                         .lineSpacing(5)
                         .onChange(of: seeText.debouncedText, perform: { newValue in
-                            saveSee?(newValue)
+                            saveSee(see: newValue)
                         })
                     #if os(iOS)
                     if seeText.text.isEmpty {
@@ -59,5 +60,41 @@ struct SeeView: View {
                 }
             }
         }
+        .onAppear {
+            getSee { see in
+                seeText.text = see
+            } failure: {
+                seeText.text = ""
+            }
+        }
+        .onChange(of: currentDay, perform: { newValue in
+            getSee { see in
+                seeText.text = see
+            } failure: {
+                seeText.text = ""
+            }
+        })
+    }
+}
+
+extension SeeView {
+    func saveSee(see: String) {
+        FireStoreRepository.shared.saveSee(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            see: see,
+            userId: userId
+        )
+    }
+    
+    func getSee(
+        success: @escaping (String) -> Void,
+        failure: @escaping () -> Void
+    ) {
+        FireStoreRepository.shared.getSee(
+            date: currentDay.toString(DateStyle.storeId.rawValue),
+            userId: userId,
+            success: success,
+            failure: failure
+        )
     }
 }
