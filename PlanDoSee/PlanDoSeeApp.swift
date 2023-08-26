@@ -7,6 +7,7 @@
 
 import FirebaseCore
 import SwiftUI
+import UIKit
 
 @main
 struct PlanDoSeeApp: App {
@@ -15,6 +16,7 @@ struct PlanDoSeeApp: App {
     
     init() {
         FirebaseApp.configure()
+        setTabbarAppearance()
     }
     var body: some Scene {
         WindowGroup {
@@ -31,5 +33,14 @@ struct PlanDoSeeApp: App {
                 EntranceView()
             }
         }
+    }
+    
+    func setTabbarAppearance() {
+        let appearance = UITabBar.appearance()
+        appearance.shadowImage = UIImage()
+        appearance.backgroundImage = UIImage()
+        appearance.isTranslucent = false
+        appearance.backgroundColor = UIColor.systemBackground
+//        appearance.scrollEdgeAppearance = UITabBarAppearance()
     }
 }
