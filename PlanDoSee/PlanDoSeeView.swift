@@ -47,32 +47,7 @@ struct PlanDoSeeView: View {
                         currentDay: $currentDay)
                 
                 HStack {
-                    VStack(spacing: 10) {
-                        Text("Plan")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        List {
-                            Section(footer: TodoListFooter(todoList: $todoList)) {
-                                ForEach(todoList, id: \.self) { task in
-                                    TaskRow(
-                                        task: task,
-                                        deleteData: { task in
-                                            deleteTodo(task: task)
-                                            todoList = todoList.filter { $0.id != task.id }
-                                        },
-                                        saveData: { task in
-                                            saveTodo(task: task)
-                                        },
-                                        didTapEnter: {
-                                            todoList.append(Task())
-                                        }
-                                    )
-                                }
-                                
-                            }
-                            
-                        }
-                    }
+                    TodoList(currentDay: $currentDay)
                     VStack(spacing: 10) {
                         Text("Do")
                             .font(.headline)
@@ -101,9 +76,6 @@ struct PlanDoSeeView: View {
             }
             .padding()
             .onAppear {
-                getTodo { tasks in
-                    todoList = tasks
-                }
                 getTimeLines { list in
                     if list.isEmpty {
                         timeLines = dummyTimeLines()
@@ -123,9 +95,6 @@ struct PlanDoSeeView: View {
                 }
             }
             .onChange(of: currentDay, perform: { newValue in
-                getTodo { tasks in
-                    todoList = tasks
-                }
                 getTimeLines { list in
                     if list.isEmpty {
                         timeLines = dummyTimeLines()
@@ -188,30 +157,6 @@ struct PlanDoSeeView: View {
 
 // MARK: side effects
 extension PlanDoSeeView {
-    func saveTodo(task: Task) {
-        interactor.saveTodo(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
-            task: task,
-            userId: userId
-        )
-    }
-    
-    func deleteTodo(task: Task) {
-        interactor.deleteTodo(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
-            task: task,
-            userId: userId
-        )
-    }
-    
-    func getTodo(success: @escaping ([Task]) -> Void) {
-        interactor.getTodo(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
-            userId: userId,
-            success: success
-        )
-    }
-    
     func saveTimeline(timeLine: TimeLine) {
         interactor.saveTimeline(
             date: currentDay.toString(DateStyle.storeId.rawValue),

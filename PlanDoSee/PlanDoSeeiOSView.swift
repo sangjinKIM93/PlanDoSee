@@ -10,7 +10,7 @@ import SwiftUI
 struct PlanDoSeeiOSView: View {
     @State private var currentWeek: [WeekDay] = Calendar.current.currentWeek
     @State private var currentDay: Date = .init()
-    @State private var todoList: [Task] = [Task()]
+    
     @State private var timeLines: [TimeLine] = []
     @State private var evaluation: EvaluationType = .none
     @StateObject private var seeText = DebounceObject(skipFirst: true)
@@ -28,55 +28,11 @@ struct PlanDoSeeiOSView: View {
     var body: some View {
         ZStack {
             VStack {
-//                HStack {
-//                    Text(currentDay.toString("MMM YYYY"))
-//                        .hAlign(.leading)
-//                        .padding(.top, 15)
-//
-//                    Button("오늘 하루 평가하기") {
-//                        showingEvaluationAlert = true
-//                    }
-//                    Button {
-//                        status = false
-//                        userId = ""
-//                    } label: {
-//                        Text("logOut")
-//                    }
-//                }
-//
-//                // 이번주 정보를 다 가져와서 넣어줘야한다.
                 WeekRow(currentWeek: $currentWeek,
                         currentDay: $currentDay)
                 
                 TabView {
-                    VStack(spacing: 10) {
-                        Text("Plan")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        List {
-                            Section(footer: TodoListFooter(todoList: $todoList)) {
-                                ForEach(todoList, id: \.self) { task in
-                                    TaskRow(
-                                        task: task,
-                                        deleteData: { task in
-                                            deleteTodo(task: task)
-                                            todoList = todoList.filter { $0.id != task.id }
-                                        },
-                                        saveData: { task in
-                                            saveTodo(task: task)
-                                        },
-                                        didTapEnter: {
-                                            todoList.append(Task())
-                                        }
-                                    )
-                                    .listRowSeparator(.hidden)
-                                }
-                                
-                            }
-                            
-                        }
-                        .listStyle(.plain)
-                    }
+                    TodoList(currentDay: $currentDay)
                     .tabItem {
                         Image(systemName: "list.bullet")
                                   Text("Plan")
@@ -128,9 +84,6 @@ struct PlanDoSeeiOSView: View {
             }
             .padding()
             .onAppear {
-                getTodo { tasks in
-                    todoList = tasks
-                }
                 getTimeLines { list in
                     if list.isEmpty {
                         timeLines = dummyTimeLines()
@@ -150,9 +103,6 @@ struct PlanDoSeeiOSView: View {
                 }
             }
             .onChange(of: currentDay, perform: { newValue in
-                getTodo { tasks in
-                    todoList = tasks
-                }
                 getTimeLines { list in
                     if list.isEmpty {
                         timeLines = dummyTimeLines()
@@ -180,13 +130,6 @@ struct PlanDoSeeiOSView: View {
                 saveEvaluation(evaluation: .bad)
             })
         }
-    }
-    
-    private func binding(for task: Task) -> Binding<Task> {
-        guard let taskIndex = todoList.firstIndex(where: {$0.id == task.id}) else {
-            fatalError("Can't find scrum in array")
-        }
-        return $todoList[taskIndex]
     }
     
     private func dummyTimeLines() -> [TimeLine] {
@@ -228,14 +171,6 @@ extension PlanDoSeeiOSView {
             date: currentDay.toString(DateStyle.storeId.rawValue),
             task: task,
             userId: userId
-        )
-    }
-    
-    func getTodo(success: @escaping ([Task]) -> Void) {
-        interactor.getTodo(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
-            userId: userId,
-            success: success
         )
     }
     
