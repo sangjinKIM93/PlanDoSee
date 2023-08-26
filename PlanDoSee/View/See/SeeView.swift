@@ -42,6 +42,7 @@ struct SeeView: View {
                         #endif
                         .font(.system(size: 16))
                         .scrollIndicators(.never)
+                        .lineSpacing(5)
                         .onChange(of: seeText.debouncedText, perform: { newValue in
                             saveSee?(newValue)
                         })

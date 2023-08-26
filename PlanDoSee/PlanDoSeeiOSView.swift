@@ -118,6 +118,12 @@ struct PlanDoSeeiOSView: View {
                         Image(systemName: "note")
                         Text("See")
                     }
+                    
+                    SettingView()
+                    .tabItem {
+                        Image(systemName: "gearshape")
+                        Text("Setting")
+                    }
                 }
             }
             .padding()

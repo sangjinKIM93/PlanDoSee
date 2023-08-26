@@ -23,7 +23,7 @@ struct TimeLineViewRow: View {
                 #if os(iOS)
                 .padding(.top, 5)
                 #endif
-            VStack(spacing: 0) {
+            VStack(spacing: 5) {
                 TextEditor(text: $debounceObject.text)
                     #if os(macOS)
                     .scrollDisabled(true)
@@ -32,6 +32,7 @@ struct TimeLineViewRow: View {
                     .frame(minHeight: 15)
                     .fixedSize(horizontal: false, vertical: true)
                     .scrollIndicators(.never)
+                    .lineSpacing(3)
                     .onChange(of: debounceObject.debouncedText, perform: { value in
                         timeLine.content = value
                         endEditing?(TimeLine(hour: timeLine.hour, content: value))
@@ -45,7 +46,11 @@ struct TimeLineViewRow: View {
             
         }
         .hAlign(.leading)
-        .padding(.vertical, 15)
+        #if os(iOS)
+        .padding(.horizontal, 4)
+        #elseif os(macOS)
+        .padding(.horizontal, 15)
+        #endif
         .onAppear {
             debounceObject.text = timeLine.content
         }
