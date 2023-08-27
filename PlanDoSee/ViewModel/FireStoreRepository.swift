@@ -22,6 +22,9 @@ class FireStoreRepository {
         task: Task,
         userId: String
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         do {
            try db.collection(userId).document("plan")
                 .collection(date).document(task.timeStamp)
@@ -43,6 +46,9 @@ class FireStoreRepository {
         task: Task,
         userId: String
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         db.collection(userId).document("plan")
             .collection(date).document(task.id.uuidString)
             .delete() { err in
@@ -59,6 +65,9 @@ class FireStoreRepository {
         userId: String,
         success: @escaping (([Task]) -> Void)
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         let docRef = db.collection(userId).document("plan")
             .collection(date)
         var tasks: [Task] = []
@@ -88,6 +97,9 @@ class FireStoreRepository {
         timeLine: TimeLine,
         userId: String
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         do {
             try db.collection(userId).document("do")
                 .collection(date).document(timeLine.hour)
@@ -108,6 +120,9 @@ class FireStoreRepository {
         userId: String,
         success: @escaping (([TimeLine]) -> Void)
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         let docRef = db.collection(userId).document("do")
             .collection(date)
         var timelines: [TimeLine] = []
@@ -137,6 +152,9 @@ class FireStoreRepository {
         see: String,
         userId: String
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         db.collection(userId).document("see")
             .collection(date).document(date)
             .setData(["data": see])
@@ -156,6 +174,9 @@ class FireStoreRepository {
         success: @escaping ((String) -> Void),
         failure: @escaping (() -> Void)
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         let docRef = db.collection(userId).document("see")
             .collection(date)
         
@@ -183,6 +204,9 @@ class FireStoreRepository {
         userId: String,
         success: @escaping (() -> Void)
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         db.collection(userId).document("evaluation")
             .collection(startDayOfWeek).document(date)
             .setData(["data" : evaluation]) // 업데이트 되는 개념인지 살펴봐야해.
@@ -200,6 +224,9 @@ class FireStoreRepository {
         userId: String,
         success: @escaping (([String: String]) -> Void)
     ) {
+        guard !userId.isEmpty else {
+            return
+        }
         let docRef = db.collection(userId).document("evaluation")
             .collection(startDayOfWeek)
         

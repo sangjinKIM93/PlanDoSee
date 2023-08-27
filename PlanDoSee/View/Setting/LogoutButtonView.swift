@@ -30,7 +30,7 @@ struct LogoutButtonView: View {
         .buttonStyle(.plain)
         .alert(isPresented: $showingLogoutAlert) {
             Alert(
-                title: Text("로그아웃 하시겠습니까?"),
+                title: Text("\(userId)님 로그아웃 하시겠습니까?"),
                 primaryButton: .destructive(Text("로그아웃")) {
                     loginStatus = false
                     userId = ""
