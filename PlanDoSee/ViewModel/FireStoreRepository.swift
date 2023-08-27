@@ -24,7 +24,7 @@ class FireStoreRepository {
     ) {
         do {
            try db.collection(userId).document("plan")
-                .collection(date).document(task.id.uuidString)
+                .collection(date).document(task.timeStamp)
                 .setData(from: task) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
