@@ -16,7 +16,6 @@ struct PlanDoSeeView: View {
     @State private var showingEvaluationAlert: Bool = false
     @State private var showDateChangeProgressView: Bool = false
     
-    @AppStorage("login_status") var status = false
     @AppStorage("user_id") var userId = ""
         
     var body: some View {
@@ -27,12 +26,7 @@ struct PlanDoSeeView: View {
                         .hAlign(.leading)
                         .padding(.top, 15)
                     
-                    Button {
-                        status = false
-                        userId = ""
-                    } label: {
-                        Text("logOut")
-                    }
+                    LogoutButtonView()
                 }
                 
                 WeekRow(currentWeek: $currentWeek,
