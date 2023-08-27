@@ -61,7 +61,7 @@ struct LoginView: View {
             } label: {
                 Text("Login")
                     .frame(height: 15)
-                    .frame(maxWidth: 400)
+                    .frame(maxWidth: .infinity)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
             }
@@ -80,7 +80,7 @@ struct LoginView: View {
             } label: {
                 Text("Sign up")
                     .frame(height: 15)
-                    .frame(maxWidth: 400)
+                    .frame(maxWidth: .infinity)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
             }

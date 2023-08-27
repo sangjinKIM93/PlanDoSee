@@ -98,9 +98,9 @@ struct SignUpView: View {
                 Text("Sign up")
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
+                    .frame(height: 15)
+                    .frame(maxWidth: .infinity)
             }
-            .frame(height: 15)
-            .frame(maxWidth: 400)
             .padding()
             .contentShape(Rectangle())
             .background(Color.blue)

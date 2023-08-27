@@ -34,7 +34,7 @@ struct EntranceView: View {
             #if os(iOS)
             .frame(minWidth: 400, minHeight: 600)
             #elseif os(macOS)
-            .frame(width: screen!.width / 1.8, height: screen!.height - 100)
+            .frame(width: screen!.width / 1.8, height: screen!.height)
             #endif
             .frame(width: proxy.size.width)
             .overlay {
