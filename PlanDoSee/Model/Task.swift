@@ -23,4 +23,8 @@ struct Task: Codable, Hashable {
         case title
         case isCompleted
     }
+    
+    func dummyTasks() -> [Task] {
+        return [Task()]
+    }
 }

@@ -44,12 +44,20 @@ struct TodoList: View {
         }
         .onAppear {
             getTodo { tasks in
-                todoList = tasks
+                if tasks.isEmpty {
+                    todoList = Task().dummyTasks()
+                } else {
+                    todoList = tasks
+                }
             }
         }
         .onChange(of: currentDay) { newValue in
             getTodo { tasks in
-                todoList = tasks
+                if tasks.isEmpty {
+                    todoList = Task().dummyTasks()
+                } else {
+                    todoList = tasks
+                }
             }
         }
     }
