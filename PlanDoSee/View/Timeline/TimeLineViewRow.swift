@@ -50,6 +50,7 @@ struct TimeLineViewRow: View {
         .padding(.horizontal, 4)
         #elseif os(macOS)
         .padding(.horizontal, 15)
+        .padding(.vertical, 15)
         #endif
         .onAppear {
             debounceObject.text = timeLine.content
