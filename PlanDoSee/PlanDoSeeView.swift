@@ -18,9 +18,7 @@ struct PlanDoSeeView: View {
     
     @AppStorage("login_status") var status = false
     @AppStorage("user_id") var userId = ""
-    
-    let interactor = PlanDoSeeInteractor()
-    
+        
     var body: some View {
         ZStack {
             VStack {
@@ -84,7 +82,7 @@ extension PlanDoSeeView {
     func saveEvaluation(
         evaluation: EvaluationType
     ) {
-        interactor.saveEvaluation(
+        FireStoreRepository.shared.saveEvaluation(
             startDayOfWeek: Calendar.current.startDayOfWeek(date: currentDay).toString("yyMMdd"),
             date: currentDay.toString(DateStyle.storeId.rawValue),
             evaluation: evaluation.rawValue,
@@ -101,7 +99,7 @@ extension PlanDoSeeView {
     func getEvluation(
         success: @escaping (([String: String]) -> Void)
     ) {
-        interactor.getEvaluations(
+        FireStoreRepository.shared.getEvaluation(
             startDayOfWeek: Calendar.current.startDayOfWeek(date: currentDay).toString("yyMMdd"),
             userId: userId,
             success: success
