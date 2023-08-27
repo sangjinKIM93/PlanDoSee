@@ -11,6 +11,7 @@ struct WeekRow: View {
     
     @Binding var currentWeek: [WeekDay]
     @Binding var currentDay: Date
+    @Binding var showProgressView: Bool
     
     var body: some View {
         HStack(spacing: 0) {
@@ -32,7 +33,11 @@ struct WeekRow: View {
                 .hAlign(.center)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    currentDay = weekDay.date
+                    showProgressView = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        showProgressView = false
+                        currentDay = weekDay.date
+                    }
                 }
                 .overlay(content: {
                     EvaluationImage(type: weekDay.evaluation)

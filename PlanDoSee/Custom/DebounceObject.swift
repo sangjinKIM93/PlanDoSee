@@ -14,17 +14,21 @@ public final class DebounceObject: ObservableObject {
     @Published var isInitialText = true
     private var bag = Set<AnyCancellable>()
 
-    public init(dueTime: TimeInterval = 1, skipFirst: Bool = false) {
+    public init(dueTime: TimeInterval = 0.8) {
         $text
             .removeDuplicates()
+            .filter { [weak self] _ in
+                guard let self = self else { return false }
+                if self.isInitialText {
+                    self.isInitialText = false
+                    return false
+                } else {
+                    return true
+                }
+            }
             .debounce(for: .seconds(dueTime), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] value in
-                guard let self = self else { return }
-                if skipFirst && self.isInitialText {
-                    self.isInitialText = false
-                    return
-                }
-                self.debouncedText = value
+                self?.debouncedText = value
             })
             .store(in: &bag)
     }

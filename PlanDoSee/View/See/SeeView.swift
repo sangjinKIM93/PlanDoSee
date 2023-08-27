@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SeeView: View {
-    @StateObject private var seeText = DebounceObject(skipFirst: true)
+    @StateObject private var seeText = DebounceObject()
     @Binding var showingEvaluationAlert: Bool
     
     @Binding var currentDay: Date
@@ -62,15 +62,19 @@ struct SeeView: View {
         }
         .onAppear {
             getSee { see in
+                seeText.isInitialText = true
                 seeText.text = see
             } failure: {
+                seeText.isInitialText = true
                 seeText.text = ""
             }
         }
         .onChange(of: currentDay, perform: { newValue in
             getSee { see in
+                seeText.isInitialText = true
                 seeText.text = see
             } failure: {
+                seeText.isInitialText = true
                 seeText.text = ""
             }
         })

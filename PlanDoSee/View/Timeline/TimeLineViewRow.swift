@@ -14,7 +14,7 @@ struct TimeLineViewRow: View {
     @State var text = ""
     @State var isEditing = false
     @State var dynamicHeight: CGFloat = 15
-    @StateObject private var debounceObject = DebounceObject(skipFirst: true)
+    @StateObject private var debounceObject = DebounceObject()
     
     var body: some View {
         HStack(alignment: .top) {
@@ -53,6 +53,7 @@ struct TimeLineViewRow: View {
         .padding(.vertical, 15)
         #endif
         .onAppear {
+            debounceObject.isInitialText = true
             debounceObject.text = timeLine.content
         }
     }

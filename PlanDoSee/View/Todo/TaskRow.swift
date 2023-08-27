@@ -10,7 +10,7 @@ import SwiftUI
 struct TaskRow: View {
     
     @State var task: Task
-    @StateObject private var debounceObject = DebounceObject(skipFirst: true)
+    @StateObject private var debounceObject = DebounceObject()
     
     var deleteData: ((Task) -> Void)?
     var saveData: ((Task) -> Void)?
@@ -53,6 +53,7 @@ struct TaskRow: View {
                 }
         }
         .onAppear {
+            debounceObject.isInitialText = true
             debounceObject.text = task.title
         }
         .onChange(of: task.isCompleted) { isCompleted in

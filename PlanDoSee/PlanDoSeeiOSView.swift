@@ -13,6 +13,7 @@ struct PlanDoSeeiOSView: View {
     
     @State private var evaluation: EvaluationType = .none
     @State private var showingEvaluationAlert: Bool = false
+    @State private var showDateChangeProgressView: Bool = false
     
     @AppStorage("login_status") var status = false
     @AppStorage("user_id") var userId = ""
@@ -23,7 +24,8 @@ struct PlanDoSeeiOSView: View {
         ZStack {
             VStack {
                 WeekRow(currentWeek: $currentWeek,
-                        currentDay: $currentDay)
+                        currentDay: $currentDay,
+                        showProgressView: $showDateChangeProgressView)
                 
                 TabView {
                     TodoList(currentDay: $currentDay)
@@ -75,6 +77,11 @@ struct PlanDoSeeiOSView: View {
             }, failAction: {
                 saveEvaluation(evaluation: .bad)
             })
+            
+            if showDateChangeProgressView {
+                ProgressView("Loading...")
+                    .progressViewStyle(CircularProgressViewStyle())
+            }
         }
     }
 }
