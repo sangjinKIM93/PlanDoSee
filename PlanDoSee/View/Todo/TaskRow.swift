@@ -11,6 +11,7 @@ struct TaskRow: View {
     
     @State var task: Task
     @StateObject private var debounceObject = DebounceObject()
+    @FocusState private var taskRowFocused: Bool
     
     var deleteData: ((Task) -> Void)?
     var saveData: ((Task) -> Void)?
@@ -37,6 +38,7 @@ struct TaskRow: View {
             TextField("todo list", text: $debounceObject.text)
                 .font(.system(size: 16))
                 .frame(height: 40)
+                .focused($taskRowFocused)
                 .foregroundColor(task.isCompleted ? .gray : .primary)
                 .onChange(of: debounceObject.debouncedText, perform: { newValue in
                     task.title = newValue
@@ -55,6 +57,9 @@ struct TaskRow: View {
         .onAppear {
             debounceObject.isInitialText = true
             debounceObject.text = task.title
+            if task.title.isEmpty {
+                taskRowFocused = true
+            }
         }
         .onChange(of: task.isCompleted) { isCompleted in
             if isCompleted {
