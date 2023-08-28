@@ -50,7 +50,7 @@ class FireStoreRepository {
             return
         }
         db.collection(userId).document("plan")
-            .collection(date).document(task.id.uuidString)
+            .collection(date).document(task.timeStamp)
             .delete() { err in
                 if let err = err {
                     print("Error writing document: \(err)")
