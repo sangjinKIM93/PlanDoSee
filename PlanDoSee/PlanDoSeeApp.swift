@@ -24,7 +24,11 @@ struct PlanDoSeeApp: App {
         WindowGroup {
             if status {
                 #if os(iOS)
-                PlanDoSeeiOSView()
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    PlanDoSeeView()
+                } else {
+                    PlanDoSeeiOSView()
+                }
                 #elseif os(macOS)
                 PlanDoSeeView()
                 #else

@@ -57,7 +57,7 @@ struct EvaluationPopup: View {
                     
                     VStack(spacing: 0) {
                         PercentButton(title: "80% 이상", action: successAction)
-                        PercentButton(title: "60~80%", action: middleAction)
+                        PercentButton(title: "70~80%", action: middleAction)
                         PercentButton(title: "60% 이하", action: failAction)
                     }
                     .padding([.horizontal, .bottom], 0)

@@ -20,7 +20,7 @@ struct PlanDoSeeView: View {
         
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
                     Text(currentDay.toString("MMM YYYY"))
                         .hAlign(.leading)
@@ -35,8 +35,15 @@ struct PlanDoSeeView: View {
                 
                 HStack {
                     TodoList(currentDay: $currentDay)
+                    #if os(iOS)
+                    horizontalLineView()
+                    #endif
                     TimeLineList(currentDay: $currentDay)
                 }
+                #if os(iOS)
+                verticalLineView()
+                #endif
+                
                 Spacer().frame(height: 20)
                 
                 SeeView(showingEvaluationAlert: $showingEvaluationAlert, currentDay: $currentDay)
@@ -68,6 +75,20 @@ struct PlanDoSeeView: View {
                     .progressViewStyle(CircularProgressViewStyle())
             }
         }
+    }
+}
+
+extension PlanDoSeeView {
+    func verticalLineView() -> some View {
+        Rectangle()
+            .stroke(.gray.opacity(0.5))
+            .frame(height: 0.5)
+    }
+    
+    func horizontalLineView() -> some View {
+        Rectangle()
+            .stroke(.gray.opacity(0.5))
+            .frame(width: 0.5)
     }
 }
 
