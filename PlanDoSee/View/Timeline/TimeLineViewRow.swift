@@ -28,11 +28,11 @@ struct TimeLineViewRow: View {
                     #if os(macOS)
                     .scrollDisabled(true)
                     #endif
-                    .font(.system(size: 14))
+                    .font(.system(size: 16))
                     .frame(minHeight: 15)
                     .fixedSize(horizontal: false, vertical: true)
                     .scrollIndicators(.never)
-                    .lineSpacing(3)
+                    .lineSpacing(5)
                     .onChange(of: debounceObject.debouncedText, perform: { value in
                         timeLine.content = value
                         endEditing?(TimeLine(hour: timeLine.hour, content: value))
