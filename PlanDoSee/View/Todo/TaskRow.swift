@@ -40,10 +40,10 @@ struct TaskRow: View {
                 .frame(height: 40)
                 .focused($taskRowFocused)
                 .foregroundColor(task.isCompleted ? .gray : .primary)
-                .onChange(of: debounceObject.debouncedText, perform: { newValue in
-                    task.title = newValue
-                    saveData?(task)
-                })
+//                .onChange(of: debounceObject.debouncedText, perform: { newValue in
+//                    task.title = newValue
+//                    saveData?(task)
+//                })
                 .onSubmit {
                     didTapEnter?()
                 }
@@ -64,6 +64,12 @@ struct TaskRow: View {
         .onChange(of: task.isCompleted) { isCompleted in
             if isCompleted {
 //                NSApp.keyWindow?.makeFirstResponder(nil)
+            }
+        }
+        .onChange(of: taskRowFocused) { isFocused in
+            if isFocused == false {
+                task.title = debounceObject.text
+                saveData?(task)
             }
         }
     }

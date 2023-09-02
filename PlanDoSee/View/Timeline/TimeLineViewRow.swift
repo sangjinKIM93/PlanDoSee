@@ -15,6 +15,7 @@ struct TimeLineViewRow: View {
     @State var isEditing = false
     @State var dynamicHeight: CGFloat = 15
     @StateObject private var debounceObject = DebounceObject()
+    @FocusState private var timeLineRowFocused: Bool
     
     var body: some View {
         HStack(alignment: .top) {
@@ -25,6 +26,7 @@ struct TimeLineViewRow: View {
                 #endif
             VStack(spacing: 5) {
                 TextEditor(text: $debounceObject.text)
+                    .focused($timeLineRowFocused)
                     #if os(macOS)
                     .scrollDisabled(true)
                     #endif
@@ -33,10 +35,10 @@ struct TimeLineViewRow: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .scrollIndicators(.never)
                     .lineSpacing(5)
-                    .onChange(of: debounceObject.debouncedText, perform: { value in
-                        timeLine.content = value
-                        endEditing?(TimeLine(hour: timeLine.hour, content: value))
-                    })
+//                    .onChange(of: debounceObject.debouncedText, perform: { value in
+//                        timeLine.content = value
+//                        endEditing?(TimeLine(hour: timeLine.hour, content: value))
+//                    })
                     
                 Rectangle()
                     .stroke(.gray.opacity(0.5),
@@ -55,6 +57,12 @@ struct TimeLineViewRow: View {
         .onAppear {
             debounceObject.isInitialText = true
             debounceObject.text = timeLine.content
+        }
+        .onChange(of: timeLineRowFocused) { isFocused in
+            if isFocused == false {
+                timeLine.content = debounceObject.text
+                endEditing?(timeLine)
+            }
         }
     }
 }

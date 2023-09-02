@@ -14,6 +14,8 @@ struct SeeView: View {
     @Binding var currentDay: Date
     @AppStorage("user_id") var userId = ""
     
+    @FocusState private var seeViewFocused: Bool
+    
     var body: some View {
         ZStack {
             VStack(spacing: 10) {
@@ -38,15 +40,21 @@ struct SeeView: View {
                 }
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $seeText.text)
+                        .focused($seeViewFocused)
                         #if os(macOS)
                         .frame(height: 150)
                         #endif
                         .font(.system(size: 16))
                         .scrollIndicators(.never)
                         .lineSpacing(5)
-                        .onChange(of: seeText.debouncedText, perform: { newValue in
-                            saveSee(see: newValue)
-                        })
+//                        .onChange(of: seeText.debouncedText, perform: { newValue in
+//                            saveSee(see: newValue)
+//                        })
+                        .onChange(of: seeViewFocused) { isFocused in
+                            if isFocused == false {
+                                saveSee(see: seeText.text)
+                            }
+                        }
                     #if os(iOS)
                     if seeText.text.isEmpty {
                         Text("오늘 하루 어땠나요?")
