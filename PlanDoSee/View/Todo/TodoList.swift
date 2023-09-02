@@ -41,7 +41,6 @@ struct TodoList: View {
                 
             }
             .listStyle(.plain)
-            .padding(.top, 5)
         }
         .onAppear {
             getTodo { tasks in
