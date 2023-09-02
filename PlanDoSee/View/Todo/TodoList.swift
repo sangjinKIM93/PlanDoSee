@@ -23,12 +23,13 @@ struct TodoList: View {
                     ForEach(todoList, id: \.self) { task in
                         TaskRow(
                             task: task,
+                            currentDay: $currentDay,
                             deleteData: { task in
                                 deleteTodo(task: task)
                                 todoList = todoList.filter { $0.id != task.id }
                             },
-                            saveData: { task in
-                                saveTodo(task: task)
+                            saveData: { (task, date) in
+                                saveTodo(task: task, date: date)
                             },
                             didTapEnter: {
                                 todoList.append(Task())
@@ -64,9 +65,9 @@ struct TodoList: View {
 }
 
 extension TodoList {
-    func saveTodo(task: Task) {
+    func saveTodo(task: Task, date: Date) {
         FireStoreRepository.shared.saveTodo(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
+            date: date.toString(DateStyle.storeId.rawValue),
             task: task,
             userId: userId
         )

@@ -52,7 +52,7 @@ struct SeeView: View {
 //                        })
                         .onChange(of: seeViewFocused) { isFocused in
                             if isFocused == false {
-                                saveSee(see: seeText.text)
+                                saveSee(see: seeText.text, date: currentDay)
                             }
                         }
                     #if os(iOS)
@@ -77,7 +77,11 @@ struct SeeView: View {
                 seeText.text = ""
             }
         }
-        .onChange(of: currentDay, perform: { newValue in
+        .onChange(of: currentDay, perform: { [currentDay] newValue in
+            // focus 되어 있으면 저장 - [currentDay] 는 이전 날짜
+            if seeViewFocused {
+                saveSee(see: seeText.text, date: currentDay)
+            }
             getSee { see in
                 seeText.isInitialText = true
                 seeText.text = see
@@ -90,9 +94,9 @@ struct SeeView: View {
 }
 
 extension SeeView {
-    func saveSee(see: String) {
+    func saveSee(see: String, date: Date) {
         FireStoreRepository.shared.saveSee(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
+            date: date.toString(DateStyle.storeId.rawValue),
             see: see,
             userId: userId
         )

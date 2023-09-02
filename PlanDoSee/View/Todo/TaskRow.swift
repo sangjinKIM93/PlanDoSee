@@ -10,11 +10,12 @@ import SwiftUI
 struct TaskRow: View {
     
     @State var task: Task
+    @Binding var currentDay: Date
     @StateObject private var debounceObject = DebounceObject()
     @FocusState private var taskRowFocused: Bool
     
     var deleteData: ((Task) -> Void)?
-    var saveData: ((Task) -> Void)?
+    var saveData: ((Task, Date) -> Void)?
     var didTapEnter: (() -> Void)?
     
     var body: some View {
@@ -30,7 +31,7 @@ struct TaskRow: View {
             .frame(height: 40)
             .onChange(of: task.isCompleted, perform: { newValue in
                 task.isCompleted = newValue
-                saveData?(task)
+                saveData?(task, currentDay)
             })
             
             Spacer(minLength: 10)
@@ -69,14 +70,21 @@ struct TaskRow: View {
         .onChange(of: taskRowFocused) { isFocused in
             if isFocused == false {
                 task.title = debounceObject.text
-                saveData?(task)
+                saveData?(task, currentDay)
+            }
+        }
+        .onChange(of: currentDay) { [currentDay] newValue in
+            if taskRowFocused
+                && !debounceObject.text.isEmpty {
+                task.title = debounceObject.text
+                saveData?(task, currentDay)
             }
         }
     }
 }
 
-struct TaskRow_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskRow(task: Task(title: ""))
-    }
-}
+//struct TaskRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TaskRow(task: Task(title: ""))
+//    }
+//}
