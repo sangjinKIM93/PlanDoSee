@@ -32,4 +32,33 @@ public final class DebounceObject: ObservableObject {
             })
             .store(in: &bag)
     }
+    
+    // timer
+    @Published var prevText: String = ""
+    private var timer: Timer?
+    
+    func startTimer() {
+        stopTimer()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { _ in
+            self.checkData()
+        }
+        
+        RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func checkData() {
+        print("타이머 로직 실행")
+        print("\(prevText), \(text)")
+        if prevText != text {
+            prevText = text
+        } else {
+            return
+        }
+    }
 }

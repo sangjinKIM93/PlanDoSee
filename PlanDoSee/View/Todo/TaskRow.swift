@@ -68,17 +68,27 @@ struct TaskRow: View {
             }
         }
         .onChange(of: taskRowFocused) { isFocused in
-            if isFocused == false {
+            if isFocused && !debounceObject.text.isEmpty {
+                debounceObject.startTimer()
+            } else {
+                debounceObject.stopTimer()
                 task.title = debounceObject.text
                 saveData?(task, currentDay)
             }
         }
         .onChange(of: currentDay) { [currentDay] newValue in
+            debounceObject.stopTimer()
+            
             if taskRowFocused
                 && !debounceObject.text.isEmpty {
                 task.title = debounceObject.text
                 saveData?(task, currentDay)
             }
+        }
+        .onReceive(debounceObject.$prevText) { text in
+            guard !text.isEmpty else { return }
+            task.title = debounceObject.text
+            saveData?(task, currentDay)
         }
     }
 }

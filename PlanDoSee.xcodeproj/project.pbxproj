@@ -44,6 +44,7 @@
 		48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6E2A3D8C2900C95F61 /* View+extension.swift */; };
 		48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */; };
 		48D48A9A2A4FE7A300F2F55B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D48A992A4FE7A300F2F55B /* TextView.swift */; };
+		48E2D61F2AA301910048498B /* FocusTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D61E2AA301910048498B /* FocusTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		48D47B6E2A3D8C2900C95F61 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 		48D48A992A4FE7A300F2F55B /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		48E2D61D2AA2FC0B0048498B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		48E2D61E2AA301910048498B /* FocusTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 		4804900E2A3D871C00C10DC9 /* PlanDoSee */ = {
 			isa = PBXGroup;
 			children = (
+				48E2D61D2AA2FC0B0048498B /* Info.plist */,
 				480BCF422A78034D000638D1 /* Manager */,
 				4899A94E2A47F22B00EE9AC2 /* Custom */,
 				481B3C1D2A4329F700837FBF /* ViewModel */,
@@ -260,6 +264,7 @@
 			children = (
 				4899A94F2A47F23C00EE9AC2 /* DebounceObject.swift */,
 				48D48A992A4FE7A300F2F55B /* TextView.swift */,
+				48E2D61E2AA301910048498B /* FocusTimer.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 				480490102A3D871C00C10DC9 /* PlanDoSeeApp.swift in Sources */,
 				48357FF42A46B70F00BDD209 /* WeekRow.swift in Sources */,
 				4899A94B2A46F40700EE9AC2 /* TimeLine.swift in Sources */,
+				48E2D61F2AA301910048498B /* FocusTimer.swift in Sources */,
 				481B3C2B2A45B85800837FBF /* LoadingView.swift in Sources */,
 				48357FF12A46B6A400BDD209 /* TimeLineViewRow.swift in Sources */,
 				481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */,
@@ -523,6 +529,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlanDoSee/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PlanDoSee;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -561,6 +568,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlanDoSee/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PlanDoSee;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

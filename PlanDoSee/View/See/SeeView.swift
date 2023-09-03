@@ -78,6 +78,8 @@ struct SeeView: View {
             }
         }
         .onChange(of: currentDay, perform: { [currentDay] newValue in
+            seeText.stopTimer()
+            
             // focus 되어 있으면 저장 - [currentDay] 는 이전 날짜
             if seeViewFocused {
                 saveSee(see: seeText.text, date: currentDay)
@@ -90,6 +92,16 @@ struct SeeView: View {
                 seeText.text = ""
             }
         })
+        .onChange(of: seeViewFocused) { isFocused in
+            if isFocused {
+                seeText.startTimer()
+            } else {
+                seeText.stopTimer()
+            }
+        }
+        .onReceive(seeText.$prevText) { text in
+            saveSee(see: text, date: currentDay)
+        }
     }
 }
 

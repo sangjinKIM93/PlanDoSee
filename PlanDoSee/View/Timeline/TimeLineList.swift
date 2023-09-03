@@ -26,8 +26,8 @@ struct TimeLineList: View {
             ScrollViewReader { proxy in
                 List() {
                     ForEach(timeLines, id: \.self) { timeline in
-                        TimeLineViewRow(timeLine: timeline) {  timeline in
-                            saveTimeline(timeLine: timeline)
+                        TimeLineViewRow(timeLine: timeline, currentDay: $currentDay) {  timeline, currentDay in
+                            saveTimeline(timeLine: timeline, date: currentDay)
                         }
                         .id(timeline)
                         #if os(iOS)
@@ -66,9 +66,9 @@ struct TimeLineList: View {
 }
 
 extension TimeLineList {
-    func saveTimeline(timeLine: TimeLine) {
+    func saveTimeline(timeLine: TimeLine, date: Date) {
         FireStoreRepository.shared.saveTimeline(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
+            date: date.toString(DateStyle.storeId.rawValue),
             timeLine: timeLine,
             userId: userId
         )

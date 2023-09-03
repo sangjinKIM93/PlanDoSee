@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TimeLineViewRow: View {
     @State var timeLine: TimeLine
-    var endEditing: ((TimeLine) -> Void)?
+    @Binding var currentDay: Date
+    var endEditing: ((TimeLine, Date) -> Void)?
     
     @State var text = ""
     @State var isEditing = false
@@ -59,10 +60,27 @@ struct TimeLineViewRow: View {
             debounceObject.text = timeLine.content
         }
         .onChange(of: timeLineRowFocused) { isFocused in
-            if isFocused == false {
+            if isFocused {
+                debounceObject.startTimer()
+            } else {
+                debounceObject.stopTimer()
                 timeLine.content = debounceObject.text
-                endEditing?(timeLine)
+                endEditing?(timeLine, currentDay)
             }
+        }
+        .onChange(of: currentDay) { [currentDay] newValue in
+            debounceObject.stopTimer()
+            
+            if timeLineRowFocused
+                && !debounceObject.text.isEmpty {
+                timeLine.content = debounceObject.text
+                endEditing?(timeLine, currentDay)
+            }
+        }
+        .onReceive(debounceObject.$prevText) { text in
+            guard !text.isEmpty else { return }
+            timeLine.content = debounceObject.text
+            endEditing?(timeLine, currentDay)
         }
     }
 }
