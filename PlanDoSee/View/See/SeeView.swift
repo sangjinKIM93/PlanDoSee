@@ -100,6 +100,7 @@ struct SeeView: View {
             }
         }
         .onReceive(seeText.$prevText) { text in
+            guard !text.isEmpty else { return }
             saveSee(see: text, date: currentDay)
         }
     }

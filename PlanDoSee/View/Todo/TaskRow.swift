@@ -23,7 +23,7 @@ struct TaskRow: View {
             Button {
                 task.isCompleted.toggle()
             } label: {
-                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                Image(systemName: task.isCompleted ? "checkmark.square.fill" : "checkmark.square")
                     .font(.title)
                     .foregroundColor(.blue)
             }
@@ -68,7 +68,11 @@ struct TaskRow: View {
             }
         }
         .onChange(of: taskRowFocused) { isFocused in
-            if isFocused && !debounceObject.text.isEmpty {
+            guard !debounceObject.text.isEmpty else {
+                debounceObject.stopTimer()
+                return
+            }
+            if isFocused {
                 debounceObject.startTimer()
             } else {
                 debounceObject.stopTimer()
