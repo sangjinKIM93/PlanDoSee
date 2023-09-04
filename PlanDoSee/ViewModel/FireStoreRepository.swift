@@ -208,7 +208,7 @@ class FireStoreRepository {
         }
         db.collection(userId).document("evaluation")
             .collection(startDayOfWeek).document(date)
-            .setData(["data" : evaluation]) // 업데이트 되는 개념인지 살펴봐야해.
+            .setData(["data" : evaluation])
             { err in
                 if let err = err {
                     print("Error writing document: \(err)")

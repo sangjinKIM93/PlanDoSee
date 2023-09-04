@@ -74,6 +74,8 @@ struct PlanDoSeeiOSView: View {
                 saveEvaluation(evaluation: .soso)
             }, failAction: {
                 saveEvaluation(evaluation: .bad)
+            }, noAction: {
+                saveEvaluation(evaluation: .none)
             })
             
             if showDateChangeProgressView {

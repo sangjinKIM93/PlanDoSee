@@ -20,6 +20,7 @@ struct EvaluationPopup: View {
     var successAction: (() -> ())?
     var middleAction: (() -> ())?
     var failAction: (() -> ())?
+    var noAction: (() -> ())?
     
     let verticalButtonsHeight: CGFloat = 80
     
@@ -59,6 +60,7 @@ struct EvaluationPopup: View {
                         PercentButton(title: "80% 이상", action: successAction)
                         PercentButton(title: "70~80%", action: middleAction)
                         PercentButton(title: "60% 이하", action: failAction)
+                        PercentButton(title: "평가하지 않기", action: noAction)
                     }
                     .padding([.horizontal, .bottom], 0)
                 }
