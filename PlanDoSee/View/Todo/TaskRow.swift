@@ -34,7 +34,7 @@ struct TaskRow: View {
                 saveData?(task, currentDay)
             })
             
-            Spacer(minLength: 10)
+            Spacer(minLength: 5)
             
             TextField("todo list", text: $debounceObject.text)
                 .font(.system(size: 16))
