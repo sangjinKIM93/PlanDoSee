@@ -30,7 +30,7 @@ struct PlanDoSeeApp: App {
                     PlanDoSeeiOSView()
                 }
                 #elseif os(macOS)
-                PlanDoSeeView()
+                PlanDoSeeMacosView()
                 #else
                 println("OMG, it's that mythical new Apple product!!!")
                 #endif
