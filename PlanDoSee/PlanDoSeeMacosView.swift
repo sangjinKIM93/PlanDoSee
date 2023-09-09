@@ -17,13 +17,17 @@ struct PlanDoSeeMacosView: View {
     @State private var tab: MacTabType = .plandosee
     
     var body: some View {
-        HSplitView {
+        NavigationSplitView {
             List {
+                Spacer().frame(height: 10)
+                
                 Image(systemName: tab == .plandosee ? "checklist.checked"  : "checklist")
                     .font(.system(size: 30))
                     .onTapGesture {
                         tab = .plandosee
                     }
+                
+                Spacer().frame(height: 10)
                 
                 Image(systemName: tab == .weekSeeList ? "list.bullet.rectangle.fill" : "list.bullet.rectangle")
                     .font(.system(size: 30))
@@ -31,8 +35,8 @@ struct PlanDoSeeMacosView: View {
                         tab = .weekSeeList
                     }
             }
-            .frame(maxWidth: 100, maxHeight: .infinity)
-            
+//            .frame(maxWidth: 70, maxHeight: .infinity)
+        } detail: {
             switch tab {
             case .plandosee:
                 PlanDoSeeView()

@@ -15,7 +15,6 @@ struct WeekSeeList: View {
                 Text("이번주 회고 모1")
             }
         }
-        .frame(minHeight: 700)
     }
 }
 
