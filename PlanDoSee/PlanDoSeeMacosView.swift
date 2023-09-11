@@ -40,7 +40,6 @@ struct PlanDoSeeMacosView: View {
             switch tab {
             case .plandosee:
                 PlanDoSeeView()
-                    .padding()
             case .weekSeeList:
                 WeekSeeList()
             }

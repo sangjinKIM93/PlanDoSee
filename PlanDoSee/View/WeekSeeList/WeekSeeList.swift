@@ -8,12 +8,24 @@
 import SwiftUI
 
 struct WeekSeeList: View {
+    
+    @State private var sees: [SeeModel] = []
+    @AppStorage("user_id") var userId = ""
+    
     var body: some View {
         VStack {
-            Text("이번주 회고 모음")
+            Text("이번주 See")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .font(.headline)
             List {
-                Text("이번주 회고 모1")
+                ForEach(sees, id: \.self) { seeModel in
+                    WeekSeeItemView(date: seeModel.date, text: seeModel.content)
+                }
             }
+        }
+        .onAppear {
+            // data 갱신
         }
     }
 }

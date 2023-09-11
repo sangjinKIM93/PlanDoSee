@@ -47,6 +47,7 @@
 		48E2D61F2AA301910048498B /* FocusTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D61E2AA301910048498B /* FocusTimer.swift */; };
 		48E2D6212AAC4CC60048498B /* PlanDoSeeMacosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6202AAC4CC60048498B /* PlanDoSeeMacosView.swift */; };
 		48E2D6242AAC57A30048498B /* WeekSeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6232AAC57A30048498B /* WeekSeeList.swift */; };
+		48E2D6272AAF44400048498B /* WeekSeeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6262AAF44400048498B /* WeekSeeItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		48E2D61E2AA301910048498B /* FocusTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimer.swift; sourceTree = "<group>"; };
 		48E2D6202AAC4CC60048498B /* PlanDoSeeMacosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDoSeeMacosView.swift; sourceTree = "<group>"; };
 		48E2D6232AAC57A30048498B /* WeekSeeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSeeList.swift; sourceTree = "<group>"; };
+		48E2D6262AAF44400048498B /* WeekSeeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSeeItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				48E2D6232AAC57A30048498B /* WeekSeeList.swift */,
+				48E2D6262AAF44400048498B /* WeekSeeItemView.swift */,
 			);
 			path = WeekSeeList;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				481B3C292A44863B00837FBF /* SignUpView.swift in Sources */,
 				480BCF462A7BD023000638D1 /* PlanDoSeeiOSView.swift in Sources */,
 				48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */,
+				48E2D6272AAF44400048498B /* WeekSeeItemView.swift in Sources */,
 				480BCF3F2A762E03000638D1 /* EvaluationPopup.swift in Sources */,
 				481B3C232A44788E00837FBF /* EntranceView.swift in Sources */,
 				481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */,

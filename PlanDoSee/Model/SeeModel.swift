@@ -9,6 +9,7 @@ import Foundation
 
 struct SeeModel: Codable, Hashable {
     let id: UUID = .init()
+    let date: Date
     let content: String
     let Evaluation: String
 }

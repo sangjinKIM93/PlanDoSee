@@ -48,6 +48,7 @@ struct PlanDoSeeView: View {
                 
                 SeeView(showingEvaluationAlert: $showingEvaluationAlert, currentDay: $currentDay)
             }
+            .padding()
             .onAppear {
                 getEvluation{ dict in
                     let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
