@@ -108,9 +108,12 @@ struct SeeView: View {
 
 extension SeeView {
     func saveSee(see: String, date: Date) {
+        guard let firstWeekDay = Calendar.current.dateInterval(of: .weekOfMonth, for: currentDay)?.start else {
+            return
+        }
         FireStoreRepository.shared.saveSee(
-            date: date.toString(DateStyle.storeId.rawValue),
-            see: see,
+            week: firstWeekDay.toString(DateStyle.storeId.rawValue),
+            seeModel: SeeModel(date: date.toString(DateStyle.storeId.rawValue), content: see),
             userId: userId
         )
     }
@@ -119,10 +122,21 @@ extension SeeView {
         success: @escaping (String) -> Void,
         failure: @escaping () -> Void
     ) {
+        guard let firstWeekDay = Calendar.current.dateInterval(of: .weekOfMonth, for: currentDay)?.start else {
+            return
+        }
+        let currentDayString = currentDay.toString(DateStyle.storeId.rawValue)
         FireStoreRepository.shared.getSee(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
+            week: firstWeekDay.toString(DateStyle.storeId.rawValue),
+            date: currentDayString,
             userId: userId,
-            success: success,
+            success: { seeModels in
+                if let seeModel = seeModels.first(where: { $0.date == currentDayString }) {
+                    success(seeModel.content)
+                } else {
+                    failure()
+                }
+            },
             failure: failure
         )
     }

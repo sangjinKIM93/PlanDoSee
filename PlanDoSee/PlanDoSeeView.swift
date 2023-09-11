@@ -10,7 +10,7 @@ import SwiftUI
 struct PlanDoSeeView: View {
     
     @State private var currentWeek: [WeekDay] = Calendar.current.currentWeek
-    @State private var currentDay: Date = .init()
+    @Binding var currentDay: Date
     @State private var evaluation: EvaluationType = .none
     
     @State private var showingEvaluationAlert: Bool = false
@@ -126,6 +126,6 @@ extension PlanDoSeeView {
 
 struct PlanDoSeeView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanDoSeeView()
+        PlanDoSeeView(currentDay: .constant(Date()))
     }
 }

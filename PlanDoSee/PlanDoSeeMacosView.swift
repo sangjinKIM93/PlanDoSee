@@ -15,6 +15,7 @@ enum MacTabType {
 struct PlanDoSeeMacosView: View {
     
     @State private var tab: MacTabType = .plandosee
+    @State private var currentDay: Date = .init()
     
     var body: some View {
         NavigationSplitView {
@@ -39,9 +40,9 @@ struct PlanDoSeeMacosView: View {
         } detail: {
             switch tab {
             case .plandosee:
-                PlanDoSeeView()
+                PlanDoSeeView(currentDay: $currentDay)
             case .weekSeeList:
-                WeekSeeList()
+                WeekSeeList(currentDay: $currentDay)
             }
         }
     }

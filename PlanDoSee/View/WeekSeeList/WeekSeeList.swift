@@ -10,6 +10,7 @@ import SwiftUI
 struct WeekSeeList: View {
     
     @State private var sees: [SeeModel] = []
+    @Binding var currentDay: Date
     @AppStorage("user_id") var userId = ""
     
     var body: some View {
@@ -25,13 +26,34 @@ struct WeekSeeList: View {
             }
         }
         .onAppear {
-            // data 갱신
+            getSees { seeModels in
+                sees = seeModels
+            } failure: {
+                //
+            }
         }
+    }
+    
+    func getSees(
+        success: @escaping ([SeeModel]) -> Void,
+        failure: @escaping () -> Void
+    ) {
+        guard let firstWeekDay = Calendar.current.dateInterval(of: .weekOfMonth, for: currentDay)?.start else {
+            return
+        }
+        let currentDayString = currentDay.toString(DateStyle.storeId.rawValue)
+        FireStoreRepository.shared.getSee(
+            week: firstWeekDay.toString(DateStyle.storeId.rawValue),
+            date: currentDayString,
+            userId: userId,
+            success: success,
+            failure: failure
+        )
     }
 }
 
 struct WeekSeeList_Previews: PreviewProvider {
     static var previews: some View {
-        WeekSeeList()
+        WeekSeeList(currentDay: .constant(Date()))
     }
 }

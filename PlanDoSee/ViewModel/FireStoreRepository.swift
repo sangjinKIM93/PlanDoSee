@@ -148,16 +148,17 @@ class FireStoreRepository {
     
     // SEE
     func saveSee(
-        date: String,
-        see: String,
+        week: String,
+        seeModel: SeeModel,
         userId: String
     ) {
         guard !userId.isEmpty else {
             return
         }
-        db.collection(userId).document("see")
-            .collection(date).document(date)
-            .setData(["data": see])
+        do {
+            try db.collection(userId).document("see")
+                .collection(week).document(seeModel.date)
+                .setData(from: seeModel)
             { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -165,19 +166,24 @@ class FireStoreRepository {
                     print("Document successfully written!")
                 }
             }
+        } catch {
+            print("FireStore Save Error: \(error.localizedDescription)")
+        }
     }
     
     func getSee(
+        week: String,
         date: String,
         userId: String,
-        success: @escaping ((String) -> Void),
+        success: @escaping (([SeeModel]) -> Void),
         failure: @escaping (() -> Void)
     ) {
         guard !userId.isEmpty else {
             return
         }
         let docRef = db.collection(userId).document("see")
-            .collection(date)
+            .collection(week)
+        var seeModels: [SeeModel] = []
         
         docRef.getDocuments { querySnapshot, error in
             guard error == nil else {
@@ -185,13 +191,17 @@ class FireStoreRepository {
                 failure()
                 return
             }
-            if let document = querySnapshot?.documents.first,
-               let seeData = document["data"] as? String {
-                print("Get See")
-                success(seeData)
-            } else {
-                failure()
+            for document in querySnapshot!.documents {
+                do {
+                    let seeModel: SeeModel = try SeeModel.decode(dictionary: document.data())
+                    seeModels.append(seeModel)
+                    print("Get SeeModel")
+                } catch {
+                    print("FireStore get decode Error: \(error.localizedDescription)")
+                }
             }
+            
+            success(seeModels)
         }
     }
     

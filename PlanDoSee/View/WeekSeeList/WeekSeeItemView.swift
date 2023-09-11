@@ -9,12 +9,12 @@ import SwiftUI
 
 struct WeekSeeItemView: View {
     
-    var date: Date
+    var date: String
     var text: String
     
     var body: some View {
         VStack {
-            Text(date.toString("MM.dd"))
+            Text(date)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.system(size: 18))
             Spacer().frame(height: 10)
@@ -35,6 +35,6 @@ struct WeekSeeItemView: View {
 
 struct WeekSeeItemView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekSeeItemView(date: Date(), text: "testtetet")
+        WeekSeeItemView(date: Date().toString("yyyyMMdd"), text: "testtetet")
     }
 }
