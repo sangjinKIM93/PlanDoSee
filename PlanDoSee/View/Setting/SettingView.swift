@@ -8,15 +8,32 @@
 import SwiftUI
 
 struct SettingView: View {
+    
+    @Binding var currentDay: Date
+    
     var body: some View {
         List {
+            NavigationLink {
+                WeekSeeList(currentDay: $currentDay)
+            } label: {
+                HStack {
+                    Image(systemName: "list.bullet.rectangle")
+                    Text("한주 회고 리스트")
+                }
+                .foregroundColor(Color.accentColor)
+            }
+            .listRowSeparator(.hidden)
+            
             LogoutButtonView()
+                .listRowSeparator(.hidden)
         }
+        .listStyle(.plain)
+        
     }
 }
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView(currentDay: .constant(Date()))
     }
 }

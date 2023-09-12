@@ -21,6 +21,7 @@ struct WeekSeeItemView: View {
             Text(text)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.system(size: 16))
+                .listRowSeparator(.hidden)
                 .lineSpacing(5)
                 .padding()
                 .overlay(
@@ -28,8 +29,9 @@ struct WeekSeeItemView: View {
                         .stroke(.gray, lineWidth: 1)
                 )
         }
+        #if os(macOS)
         .padding()
-        
+        #endif
     }
 }
 

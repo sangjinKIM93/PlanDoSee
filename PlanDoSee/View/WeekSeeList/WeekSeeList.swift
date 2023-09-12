@@ -24,6 +24,7 @@ struct WeekSeeList: View {
                     WeekSeeItemView(date: seeModel.date, text: seeModel.content)
                 }
             }
+            .listStyle(.plain)
         }
         .onAppear {
             getSees { seeModels in

@@ -14,6 +14,7 @@ import UIKit
 @main
 struct PlanDoSeeApp: App {
     
+    @State private var currentDay: Date = .init()
     @AppStorage("login_status") var status = false
     
     init() {
@@ -25,7 +26,7 @@ struct PlanDoSeeApp: App {
             if status {
                 #if os(iOS)
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    PlanDoSeeView()
+                    PlanDoSeeView(currentDay: $currentDay)
                 } else {
                     PlanDoSeeiOSView()
                 }

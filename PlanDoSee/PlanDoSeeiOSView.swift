@@ -20,37 +20,39 @@ struct PlanDoSeeiOSView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                WeekRow(currentWeek: $currentWeek,
-                        currentDay: $currentDay,
-                        showProgressView: $showDateChangeProgressView)
-                
-                TabView {
-                    TodoList(currentDay: $currentDay)
-                    .tabItem {
-                        Image(systemName: "list.bullet")
-                                  Text("Plan")
-                    }
+            NavigationView {
+                VStack {
+                    WeekRow(currentWeek: $currentWeek,
+                            currentDay: $currentDay,
+                            showProgressView: $showDateChangeProgressView)
                     
-                    TimeLineList(currentDay: $currentDay)
-                    .tabItem {
-                        Image(systemName: "calendar.day.timeline.left")
-                                  Text("Do")
-                    }
-                    
-                    VStack {
-                        SeeView(showingEvaluationAlert: $showingEvaluationAlert, currentDay: $currentDay)
-                        Spacer()
-                    }
-                    .tabItem {
-                        Image(systemName: "note")
-                        Text("See")
-                    }
-                    
-                    SettingView()
-                    .tabItem {
-                        Image(systemName: "gearshape")
-                        Text("Setting")
+                    TabView {
+                        TodoList(currentDay: $currentDay)
+                            .tabItem {
+                                Image(systemName: "list.bullet")
+                                Text("Plan")
+                            }
+                        
+                        TimeLineList(currentDay: $currentDay)
+                            .tabItem {
+                                Image(systemName: "calendar.day.timeline.left")
+                                Text("Do")
+                            }
+                        
+                        VStack {
+                            SeeView(showingEvaluationAlert: $showingEvaluationAlert, currentDay: $currentDay)
+                            Spacer()
+                        }
+                        .tabItem {
+                            Image(systemName: "note")
+                            Text("See")
+                        }
+                        
+                        SettingView(currentDay: $currentDay)
+                            .tabItem {
+                                Image(systemName: "gearshape")
+                                Text("Setting")
+                            }
                     }
                 }
             }
