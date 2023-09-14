@@ -25,7 +25,7 @@ struct WeekSeeItemView: View {
                 .lineSpacing(5)
                 .padding()
                 .overlay(
-                    RoundedRectangle(cornerRadius: 6)
+                    RoundedRectangle(cornerRadius: 4)
                         .stroke(.gray, lineWidth: 1)
                 )
         }
