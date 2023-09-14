@@ -10,6 +10,8 @@ import SwiftUI
 struct WeekSeeList: View {
     
     @State private var sees: [SeeModel] = []
+    @State private var weekSeeText: String = ""
+    
     @Binding var currentDay: Date
     @AppStorage("user_id") var userId = ""
     
@@ -25,6 +27,25 @@ struct WeekSeeList: View {
                 }
             }
             .listStyle(.plain)
+            
+            // macos ios 디자인 다르게 가야할듯
+            ZStack(alignment: .topLeading) {
+                TextEditor(text: $weekSeeText)
+                    .frame(height: 150)
+                    .frame(maxWidth: .infinity)
+                    .scrollDisabled(true)
+                    .font(.system(size: 16))
+                    .padding()
+                
+                if weekSeeText.isEmpty {
+                    Text("한주에 대한 회고를 남겨보세요.")
+                        .font(.system(size: 16))
+                        .padding(.top, 17)
+                        .padding(.leading, 20)
+                        .foregroundColor(.primary.opacity(0.25))
+                        .allowsHitTesting(false)
+                }
+            }
         }
         .onAppear {
             getSees { seeModels in
