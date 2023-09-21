@@ -50,11 +50,11 @@ struct SeeView: View {
                         .onChange(of: seeText.debouncedText, perform: { newValue in
                             saveSee(see: newValue, date: currentDay)
                         })
-                        .onChange(of: seeViewFocused) { isFocused in
-                            if isFocused == false {
-                                saveSee(see: seeText.text, date: currentDay)
-                            }
-                        }
+//                        .onChange(of: seeViewFocused) { isFocused in
+//                            if isFocused == false {
+//                                saveSee(see: seeText.text, date: currentDay)
+//                            }
+//                        }
                     #if os(iOS)
                     if seeText.text.isEmpty {
                         Text("오늘 하루 어땠나요?")

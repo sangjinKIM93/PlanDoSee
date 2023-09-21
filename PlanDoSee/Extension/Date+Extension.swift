@@ -17,4 +17,5 @@ extension Date {
 
 enum DateStyle: String {
     case storeId = "yyyyMMdd"
+    case month = "yyyyMM"
 }
