@@ -41,10 +41,10 @@ struct TaskRow: View {
                 .frame(height: 40)
                 .focused($taskRowFocused)
                 .foregroundColor(task.isCompleted ? .gray : .primary)
-//                .onChange(of: debounceObject.debouncedText, perform: { newValue in
-//                    task.title = newValue
-//                    saveData?(task)
-//                })
+                .onChange(of: debounceObject.debouncedText, perform: { newValue in
+                    task.title = newValue
+                    saveData?(task, currentDay)
+                })
                 .onSubmit {
                     didTapEnter?()
                 }
@@ -67,19 +67,25 @@ struct TaskRow: View {
 //                NSApp.keyWindow?.makeFirstResponder(nil)
             }
         }
-        .onChange(of: taskRowFocused) { isFocused in
-            guard !debounceObject.text.isEmpty else {
-                debounceObject.stopTimer()
-                return
-            }
-            if isFocused {
-                debounceObject.startTimer()
-            } else {
-                debounceObject.stopTimer()
-                task.title = debounceObject.text
-                saveData?(task, currentDay)
-            }
-        }
+        // timer로 저장하는 기능
+//        .onChange(of: taskRowFocused) { isFocused in
+//            guard !debounceObject.text.isEmpty else {
+//                debounceObject.stopTimer()
+//                return
+//            }
+//            if isFocused {
+//                debounceObject.startTimer()
+//            } else {
+//                debounceObject.stopTimer()
+//                task.title = debounceObject.text
+//                saveData?(task, currentDay)
+//            }
+//        }
+//        .onReceive(debounceObject.$prevText) { text in
+//            guard !text.isEmpty else { return }
+//            task.title = debounceObject.text
+//            saveData?(task, currentDay)
+//        }
         .onChange(of: currentDay) { [currentDay] newValue in
             debounceObject.stopTimer()
             
@@ -88,11 +94,6 @@ struct TaskRow: View {
                 task.title = debounceObject.text
                 saveData?(task, currentDay)
             }
-        }
-        .onReceive(debounceObject.$prevText) { text in
-            guard !text.isEmpty else { return }
-            task.title = debounceObject.text
-            saveData?(task, currentDay)
         }
     }
 }

@@ -47,9 +47,9 @@ struct SeeView: View {
                         .font(.system(size: 16))
                         .scrollIndicators(.never)
                         .lineSpacing(5)
-//                        .onChange(of: seeText.debouncedText, perform: { newValue in
-//                            saveSee(see: newValue)
-//                        })
+                        .onChange(of: seeText.debouncedText, perform: { newValue in
+                            saveSee(see: newValue, date: currentDay)
+                        })
                         .onChange(of: seeViewFocused) { isFocused in
                             if isFocused == false {
                                 saveSee(see: seeText.text, date: currentDay)
@@ -92,17 +92,18 @@ struct SeeView: View {
                 seeText.text = ""
             }
         })
-        .onChange(of: seeViewFocused) { isFocused in
-            if isFocused {
-                seeText.startTimer()
-            } else {
-                seeText.stopTimer()
-            }
-        }
-        .onReceive(seeText.$prevText) { text in
-            guard !text.isEmpty else { return }
-            saveSee(see: text, date: currentDay)
-        }
+        // timer로 서버에 저장하는 기능
+//        .onChange(of: seeViewFocused) { isFocused in
+//            if isFocused {
+//                seeText.startTimer()
+//            } else {
+//                seeText.stopTimer()
+//            }
+//        }
+//        .onReceive(seeText.$prevText) { text in
+//            guard !text.isEmpty else { return }
+//            saveSee(see: text, date: currentDay)
+//        }
     }
 }
 

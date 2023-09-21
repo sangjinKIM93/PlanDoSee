@@ -36,10 +36,10 @@ struct TimeLineViewRow: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .scrollIndicators(.never)
                     .lineSpacing(5)
-//                    .onChange(of: debounceObject.debouncedText, perform: { value in
-//                        timeLine.content = value
-//                        endEditing?(TimeLine(hour: timeLine.hour, content: value))
-//                    })
+                    .onChange(of: debounceObject.debouncedText, perform: { value in
+                        timeLine.content = value
+                        endEditing?(TimeLine(hour: timeLine.hour, content: value), currentDay)
+                    })
                     
                 Rectangle()
                     .stroke(.gray.opacity(0.5),
@@ -68,20 +68,21 @@ struct TimeLineViewRow: View {
                 endEditing?(timeLine, currentDay)
             }
         }
-        .onChange(of: currentDay) { [currentDay] newValue in
-            debounceObject.stopTimer()
-            
-            if timeLineRowFocused
-                && !debounceObject.text.isEmpty {
-                timeLine.content = debounceObject.text
-                endEditing?(timeLine, currentDay)
-            }
-        }
-        .onReceive(debounceObject.$prevText) { text in
-            guard !text.isEmpty else { return }
-            timeLine.content = debounceObject.text
-            endEditing?(timeLine, currentDay)
-        }
+        // 타이머로 서버에 저장하는 기능
+//        .onChange(of: currentDay) { [currentDay] newValue in
+//            debounceObject.stopTimer()
+//
+//            if timeLineRowFocused
+//                && !debounceObject.text.isEmpty {
+//                timeLine.content = debounceObject.text
+//                endEditing?(timeLine, currentDay)
+//            }
+//        }
+//        .onReceive(debounceObject.$prevText) { text in
+//            guard !text.isEmpty else { return }
+//            timeLine.content = debounceObject.text
+//            endEditing?(timeLine, currentDay)
+//        }
     }
 }
 
