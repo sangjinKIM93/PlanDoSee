@@ -258,7 +258,6 @@ class FireStoreRepository {
     }
     
     // WeekSee
-    // 추후 MonthSee를 고려해서 작업
     func saveWeekSee(
         month: String,
         week: String,
@@ -309,13 +308,70 @@ class FireStoreRepository {
                 do {
                     let seeModel: SeeModel = try SeeModel.decode(dictionary: document.data())
                     seeModels.append(seeModel)
-                    print("Get SeeModel")
+                    print("Get WeekSeeModel")
                 } catch {
                     print("FireStore get decode Error: \(error.localizedDescription)")
                 }
             }
             
             success(seeModels)
+        }
+    }
+    
+    // OneThing
+    func saveOneThing(
+        oneThing: OneThing,
+        userId: String
+    ) {
+        guard !userId.isEmpty else {
+            return
+        }
+        do {
+            try db.collection(userId).document("onething")
+                .setData(from: oneThing)
+            { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
+        } catch {
+            print("FireStore Save Error: \(error.localizedDescription)")
+        }
+    }
+    
+    func getOneThing(
+        userId: String,
+        success: @escaping ((OneThing) -> Void),
+        failure: @escaping (() -> Void)
+    ) {
+        guard !userId.isEmpty else {
+            return
+        }
+        let docRef = db.collection(userId).document("onething")
+        
+        docRef.getDocument { querySnapshot, error in
+            guard error == nil else {
+                print("Error getting documents: \(error?.localizedDescription)")
+                failure()
+                return
+            }
+            guard let data = querySnapshot?.data() else {
+                failure()
+                return
+            }
+            
+            do {
+                let oneThing: OneThing = try OneThing.decode(dictionary: data)
+                success(oneThing)
+                print("Get OneThing")
+            } catch {
+                print("FireStore get decode Error: \(error.localizedDescription)")
+                failure()
+            }
+            
+            
         }
     }
 }

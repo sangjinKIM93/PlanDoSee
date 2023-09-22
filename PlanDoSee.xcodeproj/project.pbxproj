@@ -34,6 +34,10 @@
 		48357FF12A46B6A400BDD209 /* TimeLineViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48357FF02A46B6A400BDD209 /* TimeLineViewRow.swift */; };
 		48357FF42A46B70F00BDD209 /* WeekRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48357FF32A46B70F00BDD209 /* WeekRow.swift */; };
 		486E90732ABC1A9100F1AAE8 /* WeekSeeReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E90722ABC1A9100F1AAE8 /* WeekSeeReview.swift */; };
+		486E90762ABC27D000F1AAE8 /* OneThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E90752ABC27D000F1AAE8 /* OneThingView.swift */; };
+		486E90782ABC2D1800F1AAE8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E90772ABC2D1800F1AAE8 /* NotificationManager.swift */; };
+		486E907A2ABC386300F1AAE8 /* OneThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E90792ABC386300F1AAE8 /* OneThing.swift */; };
+		486E907C2ABC5ECD00F1AAE8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E907B2ABC5ECD00F1AAE8 /* String+Extension.swift */; };
 		4899A94B2A46F40700EE9AC2 /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899A94A2A46F40700EE9AC2 /* TimeLine.swift */; };
 		4899A9502A47F23C00EE9AC2 /* DebounceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899A94F2A47F23C00EE9AC2 /* DebounceObject.swift */; };
 		48D1A5052A963CC800EF9347 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1A5042A963CC800EF9347 /* Color+Extension.swift */; };
@@ -78,6 +82,10 @@
 		48357FF02A46B6A400BDD209 /* TimeLineViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewRow.swift; sourceTree = "<group>"; };
 		48357FF32A46B70F00BDD209 /* WeekRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRow.swift; sourceTree = "<group>"; };
 		486E90722ABC1A9100F1AAE8 /* WeekSeeReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSeeReview.swift; sourceTree = "<group>"; };
+		486E90752ABC27D000F1AAE8 /* OneThingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneThingView.swift; sourceTree = "<group>"; };
+		486E90772ABC2D1800F1AAE8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		486E90792ABC386300F1AAE8 /* OneThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneThing.swift; sourceTree = "<group>"; };
+		486E907B2ABC5ECD00F1AAE8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		4899A94A2A46F40700EE9AC2 /* TimeLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLine.swift; sourceTree = "<group>"; };
 		4899A94F2A47F23C00EE9AC2 /* DebounceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceObject.swift; sourceTree = "<group>"; };
 		48D1A5042A963CC800EF9347 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -170,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				480BCF432A78036C000638D1 /* DateMaker.swift */,
+				486E90772ABC2D1800F1AAE8 /* NotificationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -202,6 +211,7 @@
 		481FE31A2A3E89B000B4FC9A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				486E90742ABC27A000F1AAE8 /* OneThing */,
 				48E2D6222AAC57970048498B /* WeekSeeList */,
 				48D1A5062A98F04500EF9347 /* Setting */,
 				480BCF392A762024000638D1 /* See */,
@@ -226,6 +236,7 @@
 				481FE3262A3F2DDB00B4FC9A /* Task.swift */,
 				4899A94A2A46F40700EE9AC2 /* TimeLine.swift */,
 				480BCF402A763F8F000638D1 /* SeeModel.swift */,
+				486E90792ABC386300F1AAE8 /* OneThing.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +280,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		486E90742ABC27A000F1AAE8 /* OneThing */ = {
+			isa = PBXGroup;
+			children = (
+				486E90752ABC27D000F1AAE8 /* OneThingView.swift */,
+			);
+			path = OneThing;
+			sourceTree = "<group>";
+		};
 		4899A94E2A47F22B00EE9AC2 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +315,7 @@
 				48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */,
 				48357FE92A46994800BDD209 /* Codable+Extension.swift */,
 				48D1A5042A963CC800EF9347 /* Color+Extension.swift */,
+				486E907B2ABC5ECD00F1AAE8 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -397,6 +417,7 @@
 				481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */,
 				48D1A50E2A999C4300EF9347 /* TimeLineList.swift in Sources */,
 				481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */,
+				486E907C2ABC5ECD00F1AAE8 /* String+Extension.swift in Sources */,
 				480490122A3D871C00C10DC9 /* PlanDoSeeView.swift in Sources */,
 				480490102A3D871C00C10DC9 /* PlanDoSeeApp.swift in Sources */,
 				48357FF42A46B70F00BDD209 /* WeekRow.swift in Sources */,
@@ -423,6 +444,9 @@
 				481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */,
 				48D1A50A2A98F06300EF9347 /* SettingView.swift in Sources */,
 				48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */,
+				486E90782ABC2D1800F1AAE8 /* NotificationManager.swift in Sources */,
+				486E90762ABC27D000F1AAE8 /* OneThingView.swift in Sources */,
+				486E907A2ABC386300F1AAE8 /* OneThing.swift in Sources */,
 				48E2D6212AAC4CC60048498B /* PlanDoSeeMacosView.swift in Sources */,
 				48E2D6242AAC57A30048498B /* WeekSeeList.swift in Sources */,
 			);
