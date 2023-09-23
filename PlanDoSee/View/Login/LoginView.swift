@@ -34,7 +34,9 @@ struct LoginView: View {
                     .cornerRadius(8)
                     .foregroundColor(.white)
                     .autocorrectionDisabled()
-//                    .autocapitalization(.none)
+                    #if os(iOS)
+                    .autocapitalization(.none)
+                    #endif
                 
                 Spacer()
                     .frame(height: 20)
@@ -95,6 +97,11 @@ struct LoginView: View {
         .padding(.horizontal)
         .frame(maxHeight: .infinity)
         .background(Color.black)
+        .onTapGesture {
+            #if os(iOS)
+            self.endTextEditing()
+            #endif
+        }
 //        .ignoresSafeArea()
     }
 }
