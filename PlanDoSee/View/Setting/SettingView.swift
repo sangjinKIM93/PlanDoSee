@@ -29,7 +29,7 @@ struct SettingView: View {
             } label: {
                 HStack {
                     Image(systemName: "1.circle")
-                    Text("목표 쓰기")
+                    Text("목표 쓰기 ")
                 }
                 .foregroundColor(Color.accentColor)
             }

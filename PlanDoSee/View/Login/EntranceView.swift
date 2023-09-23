@@ -21,22 +21,23 @@ struct EntranceView: View {
                 if loginData.isNewUser {
                     SignUpView()
                         .environmentObject(loginData)
+                        #if os(macOS)
+                        .frame(width: screen!.width / 4, height: screen!.height)
+                        #endif
                 } else {
                     LoginView()
                         .environmentObject(loginData)
+                        #if os(macOS)
+                        .frame(width: screen!.width / 4, height: screen!.height)
+                        #endif
                 }
                 #if os(macOS)
                 Image("forest")
                     .resizable()
-                    .frame(width: (screen!.width / 1.8) / 2)
+                    .frame(height: screen!.height)
+                    .frame(minWidth: screen!.width / 3.5, maxWidth: .infinity)
                 #endif
             }
-            #if os(iOS)
-            .frame(minWidth: 400, minHeight: 600)
-            #elseif os(macOS)
-            .frame(width: screen!.width / 1.8, height: screen!.height)
-            #endif
-            .frame(width: proxy.size.width)
             .overlay {
                 ZStack {
                     if loginData.isLoading {
