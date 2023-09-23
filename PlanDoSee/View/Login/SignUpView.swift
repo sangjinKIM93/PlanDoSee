@@ -15,7 +15,7 @@ struct SignUpView: View {
             Text("Welcome to PlanDoSee Diary.")
                 .font(.largeTitle)
                 .fontWeight(.heavy)
-                .foregroundColor(.white)
+                .foregroundColor(.titleColor)
             
             Spacer()
                 .frame(height: 20)
@@ -41,54 +41,63 @@ struct SignUpView: View {
                 .frame(height: 20)
             
             VStack(alignment: .leading, spacing: 6) {
-                Text("Email")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                
-                TextField("switchCase@gmail.com", text: $loginData.registerUserName)
-                    .frame(height: 15)
-                    .frame(maxWidth: 400)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal)
-                    .background(Color.white.opacity(0.13))
-                    .cornerRadius(8)
-                    .foregroundColor(.white)
-                    .autocorrectionDisabled()
-                    #if os(iOS)
-                    .autocapitalization(.none)
-                    #endif
-                
-                Spacer()
-                    .frame(height: 20)
-                
-                Text("Password")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                
-                SecureField("*******", text: $loginData.registerPassword)
-                    .frame(height: 15)
-                    .frame(maxWidth: 400)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal)
-                    .background(Color.white.opacity(0.13))
-                    .cornerRadius(8)
-                    .foregroundColor(.white)
+                Group {
+                    Text("Email")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    
+                    TextField("switchCase@gmail.com", text: $loginData.registerUserName)
+                        .frame(height: 15)
+                        .frame(maxWidth: 400)
+                        .padding(.vertical, 10)
+                        .foregroundColor(.titleColor)
+                        .autocorrectionDisabled()
+#if os(iOS)
+                        .autocapitalization(.none)
+#endif
+                    Divider()
+                        .frame(height: 1)
+                        .padding(.horizontal, 50)
+                        .background(.gray.opacity(0.5))
+                }
                 
                 Spacer()
                     .frame(height: 20)
                 
-                Text("Re-Enter Password")
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                Group {
+                    Text("Password")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    
+                    SecureField("*******", text: $loginData.registerPassword)
+                        .frame(height: 15)
+                        .frame(maxWidth: 400)
+                        .padding(.vertical, 10)
+                        .foregroundColor(.titleColor)
+                    Divider()
+                        .frame(height: 1)
+                        .padding(.horizontal, 50)
+                        .background(.gray.opacity(0.5))
+                }
                 
-                SecureField("*******", text: $loginData.reEnterPassword)
-                    .frame(height: 15)
-                    .frame(maxWidth: 400)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal)
-                    .background(Color.white.opacity(0.13))
-                    .cornerRadius(8)
-                    .foregroundColor(.white)
+                Spacer()
+                    .frame(height: 20)
+                
+                Group {
+                    Text("Re-Enter Password")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    
+                    SecureField("*******", text: $loginData.reEnterPassword)
+                        .frame(height: 15)
+                        .frame(maxWidth: 400)
+                        .padding(.vertical, 10)
+                        .foregroundColor(.titleColor)
+                    Divider()
+                        .frame(height: 1)
+                        .padding(.horizontal, 30)
+                        .background(.gray.opacity(0.5))
+                }
             }
             
             Spacer()
@@ -115,7 +124,7 @@ struct SignUpView: View {
         .padding()
         .padding(.horizontal)
         .frame(maxHeight: .infinity)
-        .background(Color.black)
+        .background(.background)
         .onTapGesture {
             #if os(iOS)
             self.endTextEditing()

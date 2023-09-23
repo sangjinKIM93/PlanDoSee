@@ -15,7 +15,7 @@ struct LoginView: View {
             Text("Welcome to PlanDoSee Diary.")
                 .font(.largeTitle)
                 .fontWeight(.heavy)
-                .foregroundColor(.white)
+                .foregroundColor(.titleColor)
             
             Spacer()
                 .frame(height: 20)
@@ -29,14 +29,15 @@ struct LoginView: View {
                     .frame(height: 15)
                     .frame(maxWidth: 400)
                     .padding(.vertical, 10)
-                    .padding(.horizontal)
-                    .background(Color.white.opacity(0.13))
-                    .cornerRadius(8)
-                    .foregroundColor(.white)
+                    .foregroundColor(.titleColor)
                     .autocorrectionDisabled()
                     #if os(iOS)
                     .autocapitalization(.none)
                     #endif
+                Divider()
+                 .frame(height: 1)
+                 .padding(.horizontal, 50)
+                 .background(.gray.opacity(0.5))
                 
                 Spacer()
                     .frame(height: 20)
@@ -49,10 +50,11 @@ struct LoginView: View {
                     .frame(height: 15)
                     .frame(maxWidth: 400)
                     .padding(.vertical, 10)
-                    .padding(.horizontal)
-                    .background(Color.white.opacity(0.13))
-                    .cornerRadius(8)
-                    .foregroundColor(.white)
+                    .foregroundColor(.titleColor)
+                Divider()
+                 .frame(height: 1)
+                 .padding(.horizontal, 30)
+                 .background(.gray.opacity(0.5))
             }
             
             Spacer()
@@ -96,7 +98,7 @@ struct LoginView: View {
         .padding()
         .padding(.horizontal)
         .frame(maxHeight: .infinity)
-        .background(Color.black)
+        .background(.background)
         .onTapGesture {
             #if os(iOS)
             self.endTextEditing()
