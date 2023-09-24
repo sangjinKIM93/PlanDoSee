@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EntranceView: View {
     @StateObject private var loginData = LoginViewModel()
+    @Environment(\.colorScheme) var colorScheme
     
     #if os(macOS)
     var screen = NSScreen.main?.visibleFrame
@@ -16,27 +17,37 @@ struct EntranceView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            HStack(spacing: 0) {
-                
-                if loginData.isNewUser {
-                    SignUpView()
-                        .environmentObject(loginData)
-                        #if os(macOS)
-                        .frame(width: screen!.width / 4, height: screen!.height)
-                        #endif
-                } else {
-                    LoginView()
-                        .environmentObject(loginData)
-                        #if os(macOS)
-                        .frame(width: screen!.width / 4, height: screen!.height)
-                        #endif
-                }
+            ZStack {
                 #if os(macOS)
-                Image("forest")
-                    .resizable()
+                Color(colorScheme == .dark ? .black : .white)
                     .frame(height: screen!.height)
                     .frame(minWidth: screen!.width / 3.5, maxWidth: .infinity)
                 #endif
+                
+                HStack(spacing: 0) {
+                    
+                    if loginData.isNewUser {
+                        SignUpView()
+                            .environmentObject(loginData)
+                            #if os(macOS)
+                            .frame(width: screen!.width / 4, height: screen!.height)
+                            #endif
+                    } else {
+                        LoginView()
+                            .environmentObject(loginData)
+                            #if os(macOS)
+                            .frame(width: screen!.width / 4, height: screen!.height)
+                            #endif
+                    }
+                    // 사이드 이미지
+                    //                #if os(macOS)
+                    //                Image("forest")
+                    //                    .resizable()
+                    //                    .frame(height: screen!.height)
+                    //                    .frame(minWidth: screen!.width / 3.5, maxWidth: .infinity)
+                    //                #endif
+                }
+                .frame(maxWidth: .infinity)
             }
             .overlay {
                 ZStack {

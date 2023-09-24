@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var loginData: LoginViewModel
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -98,7 +99,7 @@ struct LoginView: View {
         .padding()
         .padding(.horizontal)
         .frame(maxHeight: .infinity)
-        .background(.background)
+        .background(colorScheme == .dark ? .black : .white)
         .onTapGesture {
             #if os(iOS)
             self.endTextEditing()
