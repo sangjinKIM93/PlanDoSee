@@ -18,6 +18,9 @@ struct TodoList: View {
             Text("Plan")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                #if os(iOS)
+                .padding(.horizontal, 16)
+                #endif
             List {
                 Section(footer: TodoListFooter(todoList: $todoList)) {
                     ForEach(todoList, id: \.self) { task in

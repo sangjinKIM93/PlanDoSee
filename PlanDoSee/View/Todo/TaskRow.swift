@@ -23,8 +23,8 @@ struct TaskRow: View {
             Button {
                 task.isCompleted.toggle()
             } label: {
-                Image(systemName: task.isCompleted ? "checkmark.square.fill" : "checkmark.square")
-                    .font(.title)
+                Image(systemName: task.isCompleted ? "checkmark.square.fill" : "square")
+                    .font(.system(size: 20))
                     .foregroundColor(.blue)
             }
             .buttonStyle(.plain)

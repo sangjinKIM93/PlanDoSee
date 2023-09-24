@@ -23,6 +23,9 @@ struct TimeLineList: View {
             Text("Do")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                #if os(iOS)
+                .padding(.horizontal, 16)
+                #endif
             ScrollViewReader { proxy in
                 List() {
                     ForEach(timeLines, id: \.self) { timeline in

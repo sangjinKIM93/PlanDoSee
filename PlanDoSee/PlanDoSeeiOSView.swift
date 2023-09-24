@@ -25,6 +25,7 @@ struct PlanDoSeeiOSView: View {
                     WeekRow(currentWeek: $currentWeek,
                             currentDay: $currentDay,
                             showProgressView: $showDateChangeProgressView)
+                    .padding(.horizontal, 16)
                     
                     TabView {
                         TodoList(currentDay: $currentDay)
@@ -43,12 +44,14 @@ struct PlanDoSeeiOSView: View {
                             SeeView(showingEvaluationAlert: $showingEvaluationAlert, currentDay: $currentDay)
                             Spacer()
                         }
+                        .padding(.horizontal, 16)
                         .tabItem {
                             Image(systemName: "note")
                             Text("See")
                         }
                         
                         SettingView(currentDay: $currentDay)
+                            .padding()
                             .tabItem {
                                 Image(systemName: "gearshape")
                                 Text("Setting")
@@ -56,7 +59,6 @@ struct PlanDoSeeiOSView: View {
                     }
                 }
             }
-            .padding()
             .onAppear {
                 getEvluation{ dict in
                     let currentWeek = DateMaker().makeCurrentWeek(evaluations: dict, currentDay: currentDay)
