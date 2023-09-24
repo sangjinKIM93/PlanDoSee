@@ -28,7 +28,11 @@ struct TaskRow: View {
                     .foregroundColor(.blue)
             }
             .buttonStyle(.plain)
+            #if os(iOS)
+            .frame(height: 30)
+            #elseif os(macOS)
             .frame(height: 40)
+            #endif
             .onChange(of: task.isCompleted, perform: { newValue in
                 task.isCompleted = newValue
                 saveData?(task, currentDay)
@@ -38,7 +42,11 @@ struct TaskRow: View {
             
             TextField("todo list", text: $debounceObject.text)
                 .font(.system(size: 16))
+                #if os(iOS)
+                .frame(height: 30)
+                #elseif os(macOS)
                 .frame(height: 40)
+                #endif
                 .focused($taskRowFocused)
                 .foregroundColor(task.isCompleted ? .gray : .primary)
                 .onChange(of: debounceObject.debouncedText, perform: { newValue in
