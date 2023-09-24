@@ -30,7 +30,7 @@ struct SignUpView: View {
                         .fontWeight(.semibold)
                 } icon: {
                     Image(systemName: "chevron.left")
-                        .font(.caption)
+                        .font(.body)
                         .foregroundColor(.gray)
                 }
 
@@ -43,7 +43,7 @@ struct SignUpView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Group {
                     Text("Email")
-                        .font(.caption)
+                        .font(.body)
                         .foregroundColor(.gray)
                     
                     TextField("switchCase@gmail.com", text: $loginData.registerUserName)
@@ -66,7 +66,7 @@ struct SignUpView: View {
                 
                 Group {
                     Text("Password")
-                        .font(.caption)
+                        .font(.body)
                         .foregroundColor(.gray)
                     
                     SecureField("*******", text: $loginData.registerPassword)
@@ -85,7 +85,7 @@ struct SignUpView: View {
                 
                 Group {
                     Text("Re-Enter Password")
-                        .font(.caption)
+                        .font(.body)
                         .foregroundColor(.gray)
                     
                     SecureField("*******", text: $loginData.reEnterPassword)

@@ -22,7 +22,7 @@ struct LoginView: View {
             
             VStack(alignment: .leading, spacing: 6) {
                 Text("Email")
-                    .font(.caption)
+                    .font(.body)
                     .foregroundColor(.gray)
                 
                 TextField("switchCase@gmail.com", text: $loginData.userName)
@@ -43,7 +43,7 @@ struct LoginView: View {
                     .frame(height: 20)
                 
                 Text("Password")
-                    .font(.caption)
+                    .font(.body)
                     .foregroundColor(.gray)
                 
                 SecureField("*******", text: $loginData.password)
@@ -90,7 +90,7 @@ struct LoginView: View {
             }
             .padding()
             .contentShape(Rectangle())
-            .background(Color.gray.opacity(0.2))
+            .background(Color.gray)
             .cornerRadius(8)
             .buttonStyle(.borderless)
         }
