@@ -16,18 +16,21 @@ struct WeekSeeList: View {
     
     var body: some View {
         VStack {
-            Text("Sees in week")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-                .font(.headline)
             List {
-                ForEach(sees, id: \.self) { seeModel in
-                    WeekSeeItemView(date: seeModel.date, text: seeModel.content)
-                        .listRowSeparator(.hidden)
+                Text("Sees in week")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                    .font(.headline)
+                if sees.isEmpty {
+                    Text("(There is no retrospective list for this week.)")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 16)
+                } else {
+                    ForEach(sees, id: \.self) { seeModel in
+                        WeekSeeItemView(date: seeModel.date, text: seeModel.content)
+                            .listRowSeparator(.hidden)
+                    }
                 }
-//
-//                Spacer().frame(height: 10)
-//                    .listRowSeparator(.hidden)
                 
                 WeekSeeReview(currentDay: $currentDay)
             }
