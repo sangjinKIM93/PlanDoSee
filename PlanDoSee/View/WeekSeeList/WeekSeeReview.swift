@@ -14,7 +14,7 @@ struct WeekSeeReview: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("이번주 회고")
+            Text("This week's see")
                 .foregroundColor(.blue)
                 .font(.system(size: 18))
                 .padding(.bottom, 10)
@@ -32,7 +32,7 @@ struct WeekSeeReview: View {
                     })
                 
                 if weekSeeText.text.isEmpty {
-                    Text("한주에 대한 회고를 남겨보세요.")
+                    Text("Write your retrospect in week.")
                         .font(.system(size: 16))
                         .padding(.top, 6)
                         .padding(.leading, 4)

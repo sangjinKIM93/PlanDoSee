@@ -20,9 +20,11 @@ struct OneThingView: View {
         VStack(alignment: .leading, spacing: 0) {
             Spacer().frame(height: 20)
             Group {
-                Text("집중할 단 한가지 목표는 무엇인가요?")
+                Text("What's the goal you're going to focus on?")
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
                 Spacer().frame(height: 10)
-                TextField("목표를 적어주세요.", text: $goalText.text)
+                TextField("Write your goal.", text: $goalText.text)
                     .font(.system(size: 16))
                     .padding()
                     .overlay(
@@ -38,8 +40,9 @@ struct OneThingView: View {
             
             // 2. 목표 쓰기
             Group {
-                Text("목표 쓰기")
-                    .font(.system(size: 14))
+                Text("Writing goal")
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
                     .padding(.bottom, 10)
                 
                 ZStack(alignment: .topLeading) {
@@ -53,7 +56,7 @@ struct OneThingView: View {
                                 .stroke(.gray, lineWidth: 1)
                         )
                     if goalRepeatText.isEmpty {
-                        Text("목표를 반복해서 적어봐요.")
+                        Text("Write down your goals repeatedly.")
                             .font(.system(size: 12))
                             .padding()
                             .foregroundColor(.gray.opacity(0.5))
@@ -66,11 +69,12 @@ struct OneThingView: View {
             
             // 3. 알림 설정
             Group {
-                Text("알림 설정")
-                    .font(.system(size: 14))
+                Text("Notification settings")
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
                     .padding(.bottom, 10)
                 HStack(alignment: .center, spacing: 0) {
-                    Text("매일")
+                    Text("Send a daily reminder at")
                     DatePicker("", selection: $alarmDate, displayedComponents: .hourAndMinute)
                         .labelsHidden()
                         .scaleEffect(CGSize(width: 0.8, height: 0.8))
@@ -83,7 +87,6 @@ struct OneThingView: View {
                             }
                             saveOneThing()
                         }
-                    Text("에 리마인드 알림 보내기")
                     Spacer()
                     Toggle("", isOn: $isOnAlarm)
                         .frame(maxWidth: 50)
@@ -95,6 +98,7 @@ struct OneThingView: View {
 
             Spacer()
         }
+        .padding(.horizontal, 16)
         .onChange(of: isOnAlarm) { isOn in
             if isOn {
                 NotificationManager.shared.requestNotification(

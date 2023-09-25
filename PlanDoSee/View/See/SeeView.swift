@@ -57,7 +57,7 @@ struct SeeView: View {
 //                        }
                     #if os(iOS)
                     if seeText.text.isEmpty {
-                        Text("오늘 하루 어땠나요?")
+                        Text("How was your day?")
                             .font(.system(size: 16))
                             .padding(.top, 7)
                             .padding(.leading, 4)

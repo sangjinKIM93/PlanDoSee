@@ -22,7 +22,7 @@ struct LogoutButtonView: View {
             #elseif os(iOS)
             HStack {
                 Image(systemName: "rectangle.portrait.and.arrow.forward")
-                Text("로그아웃")
+                Text("Sign out")
             }
             .foregroundColor(Color.accentColor)
             #endif
@@ -30,12 +30,12 @@ struct LogoutButtonView: View {
         .buttonStyle(.plain)
         .alert(isPresented: $showingLogoutAlert) {
             Alert(
-                title: Text("\(userId)님 로그아웃 하시겠습니까?"),
-                primaryButton: .destructive(Text("로그아웃")) {
+                title: Text("Are you sure you want to sign out, \(userId)?"),
+                primaryButton: .destructive(Text("sign out")) {
                     loginStatus = false
                     userId = ""
                 },
-                secondaryButton: .cancel(Text("취소"))
+                secondaryButton: .cancel(Text("cancel"))
             )
         }
     }

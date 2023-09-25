@@ -16,7 +16,7 @@ struct WeekSeeList: View {
     
     var body: some View {
         VStack {
-            Text("이번주 See")
+            Text("Sees in week")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
                 .font(.headline)

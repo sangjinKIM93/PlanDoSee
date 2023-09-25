@@ -35,7 +35,7 @@ struct EvaluationPopup: View {
                     }
                 VStack(spacing: 0) {
                     // alert title
-                    Text("오늘 하루 수고했어요👍")
+                    Text("Good work today 👍")
                         .font(.system(size: 16, weight: .bold))
                         .multilineTextAlignment(.center)
                         .frame(height: 25)
@@ -44,7 +44,7 @@ struct EvaluationPopup: View {
                         .padding(.horizontal, 16)
                     
                     // alert message
-                    Text("오늘 하루 목표 달성률은 몇 %인가요?")
+                    Text("What's your goal percentage for the day?")
                         .frame(height: 25)
                         .font(.system(size: 16))
                         .multilineTextAlignment(.center)
@@ -57,10 +57,10 @@ struct EvaluationPopup: View {
                         .padding(.all, 0)
                     
                     VStack(spacing: 0) {
-                        PercentButton(title: "80% 이상", action: successAction)
+                        PercentButton(title: "80% or more", action: successAction)
                         PercentButton(title: "70~80%", action: middleAction)
-                        PercentButton(title: "60% 이하", action: failAction)
-                        PercentButton(title: "평가하지 않기", action: noAction)
+                        PercentButton(title: "60% or less", action: failAction)
+                        PercentButton(title: "Don't rate", action: noAction)
                     }
                     .padding([.horizontal, .bottom], 0)
                 }

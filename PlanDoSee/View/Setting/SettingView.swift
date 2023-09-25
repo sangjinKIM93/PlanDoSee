@@ -18,7 +18,7 @@ struct SettingView: View {
             } label: {
                 HStack {
                     Image(systemName: "list.bullet.rectangle")
-                    Text("한주 회고 리스트")
+                    Text("Sees in week")
                 }
                 .foregroundColor(Color.accentColor)
             }
@@ -29,7 +29,7 @@ struct SettingView: View {
             } label: {
                 HStack {
                     Image(systemName: "1.circle")
-                    Text("목표 쓰기 ")
+                    Text("Write Goal")
                 }
                 .foregroundColor(Color.accentColor)
             }
