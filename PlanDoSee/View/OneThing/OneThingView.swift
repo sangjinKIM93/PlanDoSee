@@ -77,6 +77,7 @@ struct OneThingView: View {
                     Text("Send a daily reminder at")
                     DatePicker("", selection: $alarmDate, displayedComponents: .hourAndMinute)
                         .labelsHidden()
+                        .environment(\.locale, Locale.init(identifier: "en"))
                         .scaleEffect(CGSize(width: 0.8, height: 0.8))
                         .onChange(of: alarmDate) { date in
                             if isOnAlarm {
