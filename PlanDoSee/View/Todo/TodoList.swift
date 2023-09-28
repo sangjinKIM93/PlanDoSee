@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodoList: View {
-    @State private var todoList: [Task] = [Task()]
+    @State private var todoList: [Task] = []
     
     @Binding var currentDay: Date
     @AppStorage("user_id") var userId = ""
