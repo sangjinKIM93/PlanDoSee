@@ -31,12 +31,16 @@ struct EntranceView: View {
                             .environmentObject(loginData)
                             #if os(macOS)
                             .frame(width: screen!.width / 4, height: screen!.height)
+                            #elseif os(iOS)
+                            .keypadDoneDismiss()
                             #endif
                     } else {
                         LoginView()
                             .environmentObject(loginData)
                             #if os(macOS)
                             .frame(width: screen!.width / 4, height: screen!.height)
+                            #elseif os(iOS)
+                            .keypadDoneDismiss()
                             #endif
                     }
                     // 사이드 이미지
