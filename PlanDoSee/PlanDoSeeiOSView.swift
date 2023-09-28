@@ -33,12 +33,14 @@ struct PlanDoSeeiOSView: View {
                                 Image(systemName: "list.bullet")
                                 Text("Plan")
                             }
+                            .keypadDoneDismiss()
                         
                         TimeLineList(currentDay: $currentDay)
                             .tabItem {
                                 Image(systemName: "calendar.day.timeline.left")
                                 Text("Do")
                             }
+                            .keypadDoneDismiss()
                         
                         VStack {
                             SeeView(showingEvaluationAlert: $showingEvaluationAlert, currentDay: $currentDay)
@@ -49,6 +51,7 @@ struct PlanDoSeeiOSView: View {
                             Image(systemName: "note")
                             Text("See")
                         }
+                        .keypadDoneDismiss()
                         
                         SettingView(currentDay: $currentDay)
                             .padding()
@@ -89,6 +92,13 @@ struct PlanDoSeeiOSView: View {
         }
     }
 }
+
+// MARK: Util
+//extension View {
+//    func keyboardTapDismiss() {
+//
+//    }
+//}
 
 // MARK: side effects
 extension PlanDoSeeiOSView {
