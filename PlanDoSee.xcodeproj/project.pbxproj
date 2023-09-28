@@ -43,6 +43,8 @@
 		4899A94B2A46F40700EE9AC2 /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899A94A2A46F40700EE9AC2 /* TimeLine.swift */; };
 		4899A9502A47F23C00EE9AC2 /* DebounceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899A94F2A47F23C00EE9AC2 /* DebounceObject.swift */; };
 		48B3AEEE2AC522D30025678B /* KeypadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B3AEED2AC522D30025678B /* KeypadModifier.swift */; };
+		48B3AEF12AC56BBA0025678B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 48B3AEF02AC56BBA0025678B /* Realm */; };
+		48B3AEF32AC56BBA0025678B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48B3AEF22AC56BBA0025678B /* RealmSwift */; };
 		48D1A5052A963CC800EF9347 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1A5042A963CC800EF9347 /* Color+Extension.swift */; };
 		48D1A50A2A98F06300EF9347 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1A5092A98F06300EF9347 /* SettingView.swift */; };
 		48D1A50C2A99986D00EF9347 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1A50B2A99986D00EF9347 /* TodoList.swift */; };
@@ -52,6 +54,9 @@
 		48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6E2A3D8C2900C95F61 /* View+extension.swift */; };
 		48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */; };
 		48D48A9A2A4FE7A300F2F55B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D48A992A4FE7A300F2F55B /* TextView.swift */; };
+		48D96C902AC573B3008C85A1 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D96C8F2AC573B3008C85A1 /* RealmRepository.swift */; };
+		48D96C922AC574D2008C85A1 /* OneThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D96C912AC574D2008C85A1 /* OneThingViewModel.swift */; };
+		48D96C942AC5BBF1008C85A1 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D96C932AC5BBF1008C85A1 /* TodoListViewModel.swift */; };
 		48E2D61F2AA301910048498B /* FocusTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D61E2AA301910048498B /* FocusTimer.swift */; };
 		48E2D6212AAC4CC60048498B /* PlanDoSeeMacosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6202AAC4CC60048498B /* PlanDoSeeMacosView.swift */; };
 		48E2D6242AAC57A30048498B /* WeekSeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6232AAC57A30048498B /* WeekSeeList.swift */; };
@@ -101,6 +106,9 @@
 		48D47B6E2A3D8C2900C95F61 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 		48D48A992A4FE7A300F2F55B /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		48D96C8F2AC573B3008C85A1 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		48D96C912AC574D2008C85A1 /* OneThingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneThingViewModel.swift; sourceTree = "<group>"; };
+		48D96C932AC5BBF1008C85A1 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		48E2D61D2AA2FC0B0048498B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		48E2D61E2AA301910048498B /* FocusTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimer.swift; sourceTree = "<group>"; };
 		48E2D6202AAC4CC60048498B /* PlanDoSeeMacosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDoSeeMacosView.swift; sourceTree = "<group>"; };
@@ -113,7 +121,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48B3AEF12AC56BBA0025678B /* Realm in Frameworks */,
 				481B3C122A4325F400837FBF /* FirebaseAuth in Frameworks */,
+				48B3AEF32AC56BBA0025678B /* RealmSwift in Frameworks */,
 				481B3C142A4325F400837FBF /* FirebaseFirestore in Frameworks */,
 				480F6AAE2AC3E0790024CEAD /* FirebaseCrashlytics in Frameworks */,
 				480F6AAC2AC3E0720024CEAD /* FirebaseAnalytics in Frameworks */,
@@ -144,6 +154,7 @@
 		4804900E2A3D871C00C10DC9 /* PlanDoSee */ = {
 			isa = PBXGroup;
 			children = (
+				48D96C8E2AC573A4008C85A1 /* Repository */,
 				48B3AEEC2AC522BD0025678B /* Modifier */,
 				48E2D61D2AA2FC0B0048498B /* Info.plist */,
 				480BCF422A78034D000638D1 /* Manager */,
@@ -211,6 +222,8 @@
 			children = (
 				481B3C1E2A432A0100837FBF /* LoginViewModel.swift */,
 				481B3C2C2A45D35200837FBF /* FireStoreRepository.swift */,
+				48D96C912AC574D2008C85A1 /* OneThingViewModel.swift */,
+				48D96C932AC5BBF1008C85A1 /* TodoListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -335,6 +348,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		48D96C8E2AC573A4008C85A1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				48D96C8F2AC573B3008C85A1 /* RealmRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		48E2D6222AAC57970048498B /* WeekSeeList */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +389,8 @@
 				481B3C152A4325F400837FBF /* FirebaseFirestoreSwift */,
 				480F6AAB2AC3E0720024CEAD /* FirebaseAnalytics */,
 				480F6AAD2AC3E0790024CEAD /* FirebaseCrashlytics */,
+				48B3AEF02AC56BBA0025678B /* Realm */,
+				48B3AEF22AC56BBA0025678B /* RealmSwift */,
 			);
 			productName = PlanDoSee;
 			productReference = 4804900C2A3D871C00C10DC9 /* PlanDoSee.app */;
@@ -399,6 +422,7 @@
 			mainGroup = 480490032A3D871C00C10DC9;
 			packageReferences = (
 				481B3C102A4325F400837FBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				48B3AEEF2AC56BB90025678B /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 4804900D2A3D871C00C10DC9 /* Products */;
 			projectDirPath = "";
@@ -447,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D96C942AC5BBF1008C85A1 /* TodoListViewModel.swift in Sources */,
 				48D1A5102A9B50C400EF9347 /* LogoutButtonView.swift in Sources */,
 				480BCF442A78036C000638D1 /* DateMaker.swift in Sources */,
 				481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */,
@@ -458,8 +483,10 @@
 				486E907C2ABC5ECD00F1AAE8 /* String+Extension.swift in Sources */,
 				480490122A3D871C00C10DC9 /* PlanDoSeeView.swift in Sources */,
 				480490102A3D871C00C10DC9 /* PlanDoSeeApp.swift in Sources */,
+				48D96C902AC573B3008C85A1 /* RealmRepository.swift in Sources */,
 				48357FF42A46B70F00BDD209 /* WeekRow.swift in Sources */,
 				4899A94B2A46F40700EE9AC2 /* TimeLine.swift in Sources */,
+				48D96C922AC574D2008C85A1 /* OneThingViewModel.swift in Sources */,
 				48E2D61F2AA301910048498B /* FocusTimer.swift in Sources */,
 				481B3C2B2A45B85800837FBF /* LoadingView.swift in Sources */,
 				48357FF12A46B6A400BDD209 /* TimeLineViewRow.swift in Sources */,
@@ -719,6 +746,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		48B3AEEF2AC56BB90025678B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.42.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -746,6 +781,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 481B3C102A4325F400837FBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		48B3AEF02AC56BBA0025678B /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48B3AEEF2AC56BB90025678B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		48B3AEF22AC56BBA0025678B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48B3AEEF2AC56BB90025678B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

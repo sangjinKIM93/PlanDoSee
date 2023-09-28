@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct OneThingView: View {
+    @StateObject private var viewModel = OneThingViewModel()
     @StateObject private var goalText = DebounceObject()
     @State private var showDatePicker: Bool = false
     @State private var alarmDate: Date = Date()
     @State private var isOnAlarm: Bool = false
     @State private var goalRepeatText: String = ""
-    @AppStorage("user_id") var userId = ""
     
     var body: some View {
         // 1. 목표 설정 화면
@@ -111,37 +111,27 @@ struct OneThingView: View {
             saveOneThing()
         }
         .onAppear {
-            getOneThing { oneThing in
-                goalText.text = oneThing.goal
-                isOnAlarm = oneThing.isOnAlarm
-                alarmDate = oneThing.alarmDate.toDate() ?? Date()
-            } failure: {
-                //
+            viewModel.getOneThing { oneThing in
+                guard let oneThing = oneThing else {
+                    return
+                }
+                reloadData(oneThing)
             }
         }
     }
     
     func saveOneThing() {
-        let oneThingModel = OneThing(
+        viewModel.saveOneThing(
             goal: goalText.text,
             isOnAlarm: isOnAlarm,
             alarmDate: alarmDate.toString(DateStyle.storeId.rawValue)
         )
-        FireStoreRepository.shared.saveOneThing(oneThing: oneThingModel, userId: userId)
     }
     
-    func getOneThing(
-        success: @escaping (OneThing) -> Void,
-        failure: @escaping () -> Void
-    ) {
-        FireStoreRepository.shared.getOneThing(
-            userId: userId,
-            success: { oneThing in
-                success(oneThing)
-            }, failure: {
-                failure()
-            }
-        )
+    func reloadData(_ oneThing: OneThing) {
+        goalText.text = oneThing.goal
+        alarmDate = oneThing.alarmDate.toDate() ?? Date()
+        isOnAlarm = oneThing.isOnAlarm
     }
 }
 
