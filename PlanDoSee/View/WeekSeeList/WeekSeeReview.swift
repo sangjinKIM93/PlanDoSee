@@ -49,6 +49,9 @@ struct WeekSeeReview: View {
         #if os(macOS)
         .padding()
         #endif
+        #if os(iOS)
+        .keypadDoneDismiss()
+        #endif
         .onAppear {
             getWeekSee { see in
                 weekSeeText.isInitialText = true

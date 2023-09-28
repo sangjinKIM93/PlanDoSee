@@ -17,89 +17,88 @@ struct OneThingView: View {
     
     var body: some View {
         // 1. 목표 설정 화면
-        VStack(alignment: .leading, spacing: 0) {
-            Spacer().frame(height: 20)
-            Group {
-                Text("What's the goal you're going to focus on?")
-                    .font(.system(size: 16))
-                    .fontWeight(.bold)
-                Spacer().frame(height: 10)
-                TextField("Write your goal.", text: $goalText.text)
-                    .font(.system(size: 16))
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(.gray, lineWidth: 1)
-                    )
-                    .onChange(of: goalText.debouncedText, perform: { newValue in
-                        saveOneThing()
-                    })
-            }
-            
-            Spacer().frame(height: 30)
-            
-            // 2. 목표 쓰기
-            Group {
-                Text("Writing goal")
-                    .font(.system(size: 16))
-                    .fontWeight(.bold)
-                    .padding(.bottom, 10)
-                
-                ZStack(alignment: .topLeading) {
-                    TextEditor(text: $goalRepeatText)
-                        .font(.system(size: 12))
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                Spacer().frame(height: 20)
+                Group {
+                    Text("What's the goal you're going to focus on?")
+                        .font(.system(size: 16))
+                        .fontWeight(.bold)
+                    Spacer().frame(height: 10)
+                    TextField("Write your goal.", text: $goalText.text)
+                        .font(.system(size: 16))
                         .padding()
-                        .frame(height: 300)
-                        .frame(maxWidth: .infinity)
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
                                 .stroke(.gray, lineWidth: 1)
                         )
-                    if goalRepeatText.isEmpty {
-                        Text("Write down your goals repeatedly.")
+                        .onChange(of: goalText.debouncedText, perform: { newValue in
+                            saveOneThing()
+                        })
+                }
+                
+                Spacer().frame(height: 30)
+                
+                // 2. 목표 쓰기
+                Group {
+                    Text("Write down your goals repeatedly.")
+                        .font(.system(size: 16))
+                        .fontWeight(.bold)
+                        .padding(.bottom, 10)
+                    
+                    ZStack(alignment: .topLeading) {
+                        TextEditor(text: $goalRepeatText)
                             .font(.system(size: 12))
                             .padding()
-                            .foregroundColor(.gray.opacity(0.5))
-                            .allowsHitTesting(false)
+                            .frame(height: 300)
+                            .frame(maxWidth: .infinity)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(.gray, lineWidth: 1)
+                            )
                     }
+#if os(iOS)
+                    .keypadDoneDismiss()
+#endif
                 }
-            }
-            
-            Spacer().frame(height: 30)
-            
-            // 3. 알림 설정
-            Group {
-                Text("Notification settings")
-                    .font(.system(size: 16))
-                    .fontWeight(.bold)
-                    .padding(.bottom, 10)
-                HStack(alignment: .center, spacing: 0) {
-                    Text("Send a daily reminder at")
-                    DatePicker("", selection: $alarmDate, displayedComponents: .hourAndMinute)
-                        .labelsHidden()
-                        .environment(\.locale, Locale.init(identifier: "en"))
-                        .scaleEffect(CGSize(width: 0.8, height: 0.8))
-                        .onChange(of: alarmDate) { date in
-                            if isOnAlarm {
-                                NotificationManager.shared.requestNotification(
-                                    date: date,
-                                    goalText: goalText.text
-                                )
+                
+                Spacer().frame(height: 30)
+                
+                // 3. 알림 설정
+                Group {
+                    Text("Notification settings")
+                        .font(.system(size: 16))
+                        .fontWeight(.bold)
+                        .padding(.bottom, 10)
+                    HStack(alignment: .center, spacing: 0) {
+                        Text("Send a daily reminder at")
+                        DatePicker("", selection: $alarmDate, displayedComponents: .hourAndMinute)
+                            .labelsHidden()
+                            .environment(\.locale, Locale.init(identifier: "en"))
+                            .scaleEffect(CGSize(width: 0.8, height: 0.8))
+                            .onChange(of: alarmDate) { date in
+                                if isOnAlarm {
+                                    NotificationManager.shared.requestNotification(
+                                        date: date,
+                                        goalText: goalText.text
+                                    )
+                                }
+                                saveOneThing()
                             }
-                            saveOneThing()
-                        }
-                    Spacer()
-                    Toggle("", isOn: $isOnAlarm)
-                        .frame(maxWidth: 50)
-                        .scaleEffect(CGSize(width: 0.8, height: 0.8))
-                    Spacer().frame(width: 10)
+                        Spacer()
+                        Toggle("", isOn: $isOnAlarm)
+                            .frame(maxWidth: 50)
+                            .scaleEffect(CGSize(width: 0.8, height: 0.8))
+                        Spacer().frame(width: 10)
+                    }
+                    .font(.system(size: 14))
                 }
-                .font(.system(size: 14))
+                .listRowSeparator(.hidden)
+                
+                Spacer()
             }
-
-            Spacer()
+            .padding(.horizontal, 16)
         }
-        .padding(.horizontal, 16)
         .onChange(of: isOnAlarm) { isOn in
             if isOn {
                 NotificationManager.shared.requestNotification(
@@ -120,10 +119,6 @@ struct OneThingView: View {
                 //
             }
         }
-        // OneThingModel 하나 만들어서 파베에 저장하기
-        
-        
-        // 3. 목표 쓰기 화면
     }
     
     func saveOneThing() {
