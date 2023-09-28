@@ -59,16 +59,16 @@ struct TimeLineViewRow: View {
             debounceObject.isInitialText = true
             debounceObject.text = timeLine.content
         }
-        .onChange(of: timeLineRowFocused) { isFocused in
-            if isFocused {
-                debounceObject.startTimer()
-            } else {
-                debounceObject.stopTimer()
-                timeLine.content = debounceObject.text
-                endEditing?(timeLine, currentDay)
-            }
-        }
         // 타이머로 서버에 저장하는 기능
+//        .onChange(of: timeLineRowFocused) { isFocused in
+//            if isFocused {
+//                debounceObject.startTimer()
+//            } else {
+//                debounceObject.stopTimer()
+//                timeLine.content = debounceObject.text
+//                endEditing?(timeLine, currentDay)
+//            }
+//        }
 //        .onChange(of: currentDay) { [currentDay] newValue in
 //            debounceObject.stopTimer()
 //
