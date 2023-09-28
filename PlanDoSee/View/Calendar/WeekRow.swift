@@ -42,7 +42,7 @@ struct WeekRow: View {
                 .overlay(content: {
                     EvaluationImage(type: weekDay.evaluation)
                         .opacity(0.3)
-                        .font(.system(size: 60))
+                        .font(.system(size: 45))
                         .allowsHitTesting(false)
                 })
             }
