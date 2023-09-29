@@ -18,11 +18,11 @@ class OneThingViewModel: ObservableObject {
         let oneThing = OneThing(goal: goal,
                                 isOnAlarm: isOnAlarm,
                                 alarmDate: alarmDate)
-        
-        if let prevOneThing = getOneThingRealm() {
-            realmRepository.delete(item: prevOneThing)
-        }
-        realmRepository.add(item: oneThing)
+//
+//        if let prevOneThing = getOneThingRealm() {
+//            realmRepository.delete(item: prevOneThing)
+//        }
+//        realmRepository.add(item: oneThing)
         
         // 네트워크 저장
         firebaseRepository.saveOneThing(oneThing: oneThing, userId: userId)
@@ -32,12 +32,13 @@ class OneThingViewModel: ObservableObject {
         self.getOneThingAPI { oneThing in
             completion(oneThing)
         } failure: { [weak self] in
-            guard let self = self,
-                  let oneThing = self.getOneThingRealm() else {
-                completion(nil)
-                return
-            }
-            completion(oneThing)
+//            guard let self = self,
+//                  let oneThing = self.getOneThingRealm() else {
+//                completion(nil)
+//                return
+//            }
+//            completion(oneThing)
+            completion(nil)
         }
     }
     

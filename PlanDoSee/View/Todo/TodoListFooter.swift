@@ -12,7 +12,7 @@ struct TodoListFooter: View {
     @Binding var currentDay: Date
     var body: some View {
         Button {
-            let task = Task(timeStamp: currentDay.toString(DateStyle.storeId.rawValue))
+            let task = Task(date: currentDay.toString(DateStyle.storeId.rawValue))
             todoList.append(task)
         } label: {
             HStack {

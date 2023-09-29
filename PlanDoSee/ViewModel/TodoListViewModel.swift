@@ -21,7 +21,7 @@ class TodoListViewModel: ObservableObject {
     }
     
     func saveTodo(task: Task, date: String) {
-        realmRepository.add(item: task.toTaskRealm())
+//        realmRepository.add(item: task.toTaskRealm())
         
         // 네트워크
         firebaseRepository.saveTodo(
@@ -32,7 +32,7 @@ class TodoListViewModel: ObservableObject {
     }
     
     func deleteTodo(task: Task, date: String) {
-        realmRepository.delete(item: task.toTaskRealm())
+//        realmRepository.delete(item: task.toTaskRealm())
         
         firebaseRepository.deleteTodo(
             date: date,
@@ -45,12 +45,13 @@ class TodoListViewModel: ObservableObject {
         self.getTaskAPI(date: date) { tasks in
             completion(tasks)
         } failure: { [weak self] in
-            guard let self = self else {
-                completion([])
-                return
-            }
-            let tasks = self.getTaskRealm(date: date)
-            completion(tasks)
+//            guard let self = self else {
+//                completion([])
+//                return
+//            }
+//            let tasks = self.getTaskRealm(date: date)
+//            completion(tasks)
+            completion([])
         }
     }
     

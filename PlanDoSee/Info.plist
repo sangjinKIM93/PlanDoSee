@@ -4,10 +4,5 @@
 <dict>
 	<key>NSSupportsSuddenTermination</key>
 	<false/>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIImageName</key>
-		<string>PlanDoSee</string>
-	</dict>
 </dict>
 </plist>

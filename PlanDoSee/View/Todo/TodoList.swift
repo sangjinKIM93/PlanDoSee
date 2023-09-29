@@ -36,7 +36,7 @@ struct TodoList: View {
                                 saveTodo(task: task, date: date)
                             },
                             didTapEnter: {
-                                todoList.append(Task(timeStamp: currentDay.toString(DateStyle.storeId.rawValue)))
+                                todoList.append(Task(date: currentDay.toString(DateStyle.storeId.rawValue)))
                             }
                         )
                         .listRowSeparator(.hidden)
