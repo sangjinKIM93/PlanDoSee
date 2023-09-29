@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TodoList: View {
+    @StateObject private var viewModel = TodoListViewModel()
     @State private var todoList: [Task] = []
     
     @Binding var currentDay: Date
@@ -22,7 +23,7 @@ struct TodoList: View {
                 .padding(.horizontal, 16)
                 #endif
             List {
-                Section(footer: TodoListFooter(todoList: $todoList)) {
+                Section(footer: TodoListFooter(todoList: $todoList, currentDay: $currentDay)) {
                     ForEach(todoList, id: \.self) { task in
                         TaskRow(
                             task: task,
@@ -35,7 +36,7 @@ struct TodoList: View {
                                 saveTodo(task: task, date: date)
                             },
                             didTapEnter: {
-                                todoList.append(Task())
+                                todoList.append(Task(timeStamp: currentDay.toString(DateStyle.storeId.rawValue)))
                             }
                         )
                         .listRowSeparator(.hidden)
@@ -49,7 +50,7 @@ struct TodoList: View {
         .onAppear {
             getTodo { tasks in
                 if tasks.isEmpty {
-                    todoList = Task().dummyTasks()
+                    todoList = Task.dummyTasks(date: currentDay.toString(DateStyle.storeId.rawValue))
                 } else {
                     todoList = tasks
                 }
@@ -58,7 +59,7 @@ struct TodoList: View {
         .onChange(of: currentDay) { newValue in
             getTodo { tasks in
                 if tasks.isEmpty {
-                    todoList = Task().dummyTasks()
+                    todoList = Task.dummyTasks(date: currentDay.toString(DateStyle.storeId.rawValue))
                 } else {
                     todoList = tasks
                 }
@@ -69,26 +70,23 @@ struct TodoList: View {
 
 extension TodoList {
     func saveTodo(task: Task, date: Date) {
-        FireStoreRepository.shared.saveTodo(
-            date: date.toString(DateStyle.storeId.rawValue),
+        viewModel.saveTodo(
             task: task,
-            userId: userId
+            date: date.toString(DateStyle.storeId.rawValue)
         )
     }
     
     func deleteTodo(task: Task) {
-        FireStoreRepository.shared.deleteTodo(
-            date: currentDay.toString(DateStyle.storeId.rawValue),
+        viewModel.deleteTodo(
             task: task,
-            userId: userId
+            date: currentDay.toString(DateStyle.storeId.rawValue)
         )
     }
     
     func getTodo(success: @escaping ([Task]) -> Void) {
-        FireStoreRepository.shared.getTodo(
+        viewModel.getTask(
             date: currentDay.toString(DateStyle.storeId.rawValue),
-            userId: userId,
-            success: success
+            completion: success
         )
     }
 }

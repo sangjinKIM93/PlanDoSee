@@ -15,6 +15,7 @@ class RealmRepository<T: Object> {
     }
     
     func getItem(filterBy: String) -> [T] {
+        
         return realm.objects(T.self).filter(filterBy).map { $0 }
     }
 

@@ -63,7 +63,8 @@ class FireStoreRepository {
     func getTodo(
         date: String,
         userId: String,
-        success: @escaping (([Task]) -> Void)
+        success: @escaping (([Task]) -> Void),
+        failure: @escaping (() -> Void)
     ) {
         guard !userId.isEmpty else {
             return
@@ -74,6 +75,7 @@ class FireStoreRepository {
         
         docRef.getDocuments { querySnapshot, error in
             guard error == nil else {
+                failure()
                 print("Error getting documents: \(error?.localizedDescription)")
                 return 
             }
