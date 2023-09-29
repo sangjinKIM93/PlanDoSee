@@ -16,10 +16,6 @@ class TodoListViewModel: ObservableObject {
     @AppStorage("user_id") var userId = ""
     var currentDay: String? = nil
     
-    init() {
-        realmRepository.deleteAll()
-    }
-    
     func saveTodo(task: Task, date: String) {
 //        realmRepository.add(item: task.toTaskRealm())
         
