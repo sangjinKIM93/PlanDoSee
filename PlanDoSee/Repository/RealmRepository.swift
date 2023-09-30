@@ -8,7 +8,7 @@
 import RealmSwift
 
 class RealmRepository<T: Object> {
-    private let realm: Realm = try! Realm()
+    private lazy var realm: Realm = try! Realm()
 
     func getItem() -> [T] {
         return realm.objects(T.self).map { $0 }
