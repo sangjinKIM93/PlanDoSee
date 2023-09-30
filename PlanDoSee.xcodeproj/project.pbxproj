@@ -16,6 +16,8 @@
 		480BCF412A763F8F000638D1 /* SeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCF402A763F8F000638D1 /* SeeModel.swift */; };
 		480BCF442A78036C000638D1 /* DateMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCF432A78036C000638D1 /* DateMaker.swift */; };
 		480BCF462A7BD023000638D1 /* PlanDoSeeiOSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCF452A7BD023000638D1 /* PlanDoSeeiOSView.swift */; };
+		480CAFE42AC7ACEF007136EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480CAFE32AC7ACEF007136EF /* NetworkManager.swift */; };
+		480CAFE72AC7B393007136EF /* iOSNetworkToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480CAFE62AC7B393007136EF /* iOSNetworkToastView.swift */; };
 		480F6AAC2AC3E0720024CEAD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 480F6AAB2AC3E0720024CEAD /* FirebaseAnalytics */; };
 		480F6AAE2AC3E0790024CEAD /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 480F6AAD2AC3E0790024CEAD /* FirebaseCrashlytics */; };
 		481B3C122A4325F400837FBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 481B3C112A4325F400837FBF /* FirebaseAuth */; };
@@ -76,6 +78,8 @@
 		480BCF402A763F8F000638D1 /* SeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeModel.swift; sourceTree = "<group>"; };
 		480BCF432A78036C000638D1 /* DateMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMaker.swift; sourceTree = "<group>"; };
 		480BCF452A7BD023000638D1 /* PlanDoSeeiOSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDoSeeiOSView.swift; sourceTree = "<group>"; };
+		480CAFE32AC7ACEF007136EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		480CAFE62AC7B393007136EF /* iOSNetworkToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNetworkToastView.swift; sourceTree = "<group>"; };
 		481B3C1E2A432A0100837FBF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		481B3C202A432B2F00837FBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		481B3C222A44788E00837FBF /* EntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceView.swift; sourceTree = "<group>"; };
@@ -199,8 +203,17 @@
 			children = (
 				480BCF432A78036C000638D1 /* DateMaker.swift */,
 				486E90772ABC2D1800F1AAE8 /* NotificationManager.swift */,
+				480CAFE32AC7ACEF007136EF /* NetworkManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		480CAFE52AC7B30C007136EF /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				480CAFE62AC7B393007136EF /* iOSNetworkToastView.swift */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 		481B3C192A4327E200837FBF /* Auth */ = {
@@ -234,6 +247,7 @@
 		481FE31A2A3E89B000B4FC9A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				480CAFE52AC7B30C007136EF /* Popup */,
 				486E90742ABC27A000F1AAE8 /* OneThing */,
 				48E2D6222AAC57970048498B /* WeekSeeList */,
 				48D1A5062A98F04500EF9347 /* Setting */,
@@ -502,6 +516,7 @@
 				481B3C272A44863200837FBF /* LoginView.swift in Sources */,
 				48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */,
 				48357FEA2A46994800BDD209 /* Codable+Extension.swift in Sources */,
+				480CAFE42AC7ACEF007136EF /* NetworkManager.swift in Sources */,
 				481B3C2D2A45D35200837FBF /* FireStoreRepository.swift in Sources */,
 				480BCF412A763F8F000638D1 /* SeeModel.swift in Sources */,
 				481B3C292A44863B00837FBF /* SignUpView.swift in Sources */,
@@ -511,6 +526,7 @@
 				48E2D6272AAF44400048498B /* WeekSeeItemView.swift in Sources */,
 				480BCF3F2A762E03000638D1 /* EvaluationPopup.swift in Sources */,
 				481B3C232A44788E00837FBF /* EntranceView.swift in Sources */,
+				480CAFE72AC7B393007136EF /* iOSNetworkToastView.swift in Sources */,
 				481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */,
 				48D1A50A2A98F06300EF9347 /* SettingView.swift in Sources */,
 				48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */,

@@ -16,6 +16,8 @@ struct PlanDoSeeApp: App {
     
     @State private var currentDay: Date = .init()
     @AppStorage("login_status") var status = false
+    @ObservedObject var networkManager = NetworkManager()
+    @Environment(\.scenePhase) var scenePhase
     
     init() {
         FirebaseApp.configure()
@@ -24,20 +26,41 @@ struct PlanDoSeeApp: App {
     var body: some Scene {
         WindowGroup {
             if status {
-                #if os(iOS)
+#if os(iOS)
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     PlanDoSeeView(currentDay: $currentDay)
                 } else {
                     PlanDoSeeiOSView()
+                        .overlay(alignment: .top) {
+                            if !networkManager.isConnected {
+                                iOSNetworkToastView()
+                            }
+                        }
                 }
-                #elseif os(macOS)
+#elseif os(macOS)
                 PlanDoSeeMacosView()
-                #else
+                    .overlay(alignment: .top) {
+                        if !networkManager.isConnected {
+                            iOSNetworkToastView()
+                        }
+                    }
+#else
                 println("OMG, it's that mythical new Apple product!!!")
-                #endif
+#endif
                 
             } else {
                 EntranceView()
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .inactive {
+                print("inactive")
+            } else if newPhase == .active {
+                networkManager.startMonitoring()
+                print("active")
+            } else if newPhase == .background {
+                networkManager.stopMonitoring()
+                print("background")
             }
         }
     }
