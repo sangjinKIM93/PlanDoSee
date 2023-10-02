@@ -64,6 +64,7 @@
 		48E2D6212AAC4CC60048498B /* PlanDoSeeMacosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6202AAC4CC60048498B /* PlanDoSeeMacosView.swift */; };
 		48E2D6242AAC57A30048498B /* WeekSeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6232AAC57A30048498B /* WeekSeeList.swift */; };
 		48E2D6272AAF44400048498B /* WeekSeeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6262AAF44400048498B /* WeekSeeItemView.swift */; };
+		48F191AE2ACB734D009DF668 /* DeleteAccountButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F191AD2ACB734D009DF668 /* DeleteAccountButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		48E2D6202AAC4CC60048498B /* PlanDoSeeMacosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDoSeeMacosView.swift; sourceTree = "<group>"; };
 		48E2D6232AAC57A30048498B /* WeekSeeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSeeList.swift; sourceTree = "<group>"; };
 		48E2D6262AAF44400048498B /* WeekSeeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSeeItemView.swift; sourceTree = "<group>"; };
+		48F191AD2ACB734D009DF668 /* DeleteAccountButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +350,7 @@
 			children = (
 				48D1A5092A98F06300EF9347 /* SettingView.swift */,
 				48D1A50F2A9B50C400EF9347 /* LogoutButtonView.swift */,
+				48F191AD2ACB734D009DF668 /* DeleteAccountButtonView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				480490122A3D871C00C10DC9 /* PlanDoSeeView.swift in Sources */,
 				480490102A3D871C00C10DC9 /* PlanDoSeeApp.swift in Sources */,
 				48D96C902AC573B3008C85A1 /* RealmRepository.swift in Sources */,
+				48F191AE2ACB734D009DF668 /* DeleteAccountButtonView.swift in Sources */,
 				48357FF42A46B70F00BDD209 /* WeekRow.swift in Sources */,
 				4899A94B2A46F40700EE9AC2 /* TimeLine.swift in Sources */,
 				48D96C922AC574D2008C85A1 /* OneThingViewModel.swift in Sources */,

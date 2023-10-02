@@ -25,8 +25,6 @@ struct PlanDoSeeView: View {
                     Text(currentDay.toString("MMM YYYY"))
                         .hAlign(.leading)
                         .padding(.top, 15)
-                    
-                    LogoutButtonView()
                 }
                 
                 WeekRow(currentWeek: $currentWeek,

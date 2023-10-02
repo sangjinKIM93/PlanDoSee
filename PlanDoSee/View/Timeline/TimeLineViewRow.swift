@@ -10,6 +10,7 @@ import SwiftUI
 struct TimeLineViewRow: View {
     @State var timeLine: TimeLine
     @Binding var currentDay: Date
+    var startFocus: ((TimeLine) -> Void)?
     var endEditing: ((TimeLine, Date) -> Void)?
     
     @State var text = ""
@@ -58,6 +59,9 @@ struct TimeLineViewRow: View {
         .onAppear {
             debounceObject.isInitialText = true
             debounceObject.text = timeLine.content
+        }
+        .onChange(of: timeLineRowFocused) { isFocused in
+            startFocus?(timeLine)
         }
         // 타이머로 서버에 저장하는 기능
 //        .onChange(of: timeLineRowFocused) { isFocused in

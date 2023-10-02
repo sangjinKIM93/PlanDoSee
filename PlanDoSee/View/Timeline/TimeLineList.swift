@@ -29,14 +29,25 @@ struct TimeLineList: View {
             ScrollViewReader { proxy in
                 List() {
                     ForEach(timeLines, id: \.self) { timeline in
-                        TimeLineViewRow(timeLine: timeline, currentDay: $currentDay) {  timeline, currentDay in
-                            saveTimeline(timeLine: timeline, date: currentDay)
-                        }
+                        TimeLineViewRow(
+                            timeLine: timeline,
+                            currentDay: $currentDay,
+                            startFocus: { timeline in
+                                #if os(iOS)
+                                proxy.scrollTo(timeline, anchor: .center)
+                                #endif
+                            },
+                            endEditing: { timeline, currentDay in
+                                saveTimeline(timeLine: timeline, date: currentDay)
+                            }
+                        )
                         .id(timeline)
                         #if os(iOS)
                         .listRowSeparator(.hidden)
                         #endif
                     }
+                    Spacer().frame(height: 200)
+                        .listRowSeparator(.hidden)
                 }
                 #if os(iOS)
                 .listStyle(.plain)

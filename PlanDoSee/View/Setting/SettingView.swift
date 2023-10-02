@@ -13,6 +13,7 @@ struct SettingView: View {
     
     var body: some View {
         List {
+            #if os(iOS)
             NavigationLink {
                 WeekSeeList(currentDay: $currentDay)
             } label: {
@@ -34,12 +35,17 @@ struct SettingView: View {
                 .foregroundColor(Color.accentColor)
             }
             .listRowSeparator(.hidden)
+            #endif
             
             LogoutButtonView()
                 .listRowSeparator(.hidden)
+            
+            DeleteAccountButtonView()
+                .listRowSeparator(.hidden)            
         }
+        #if os(iOS)
         .listStyle(.plain)
-        
+        #endif
     }
 }
 

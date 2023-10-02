@@ -10,6 +10,7 @@ import SwiftUI
 enum MacTabType {
     case plandosee
     case weekSeeList
+    case settings
 }
 
 struct PlanDoSeeMacosView: View {
@@ -35,6 +36,14 @@ struct PlanDoSeeMacosView: View {
                     .onTapGesture {
                         tab = .weekSeeList
                     }
+                
+                Spacer().frame(height: 10)
+                
+                Image(systemName: tab == .settings ? "gearshape.fill" : "gearshape")
+                    .font(.system(size: 30))
+                    .onTapGesture {
+                        tab = .settings
+                    }
             }
 //            .frame(maxWidth: 70, maxHeight: .infinity)
         } detail: {
@@ -43,6 +52,8 @@ struct PlanDoSeeMacosView: View {
                 PlanDoSeeView(currentDay: $currentDay)
             case .weekSeeList:
                 WeekSeeList(currentDay: $currentDay)
+            case .settings:
+                SettingView(currentDay: $currentDay)
             }
         }
     }

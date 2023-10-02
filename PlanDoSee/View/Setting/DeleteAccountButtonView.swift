@@ -1,13 +1,14 @@
 //
-//  LogoutButtonView.swift
+//  DeleteAccountButtonView.swift
 //  PlanDoSee
 //
-//  Created by 김상진 on 2023/08/27.
+//  Created by 김상진 on 2023/10/03.
 //
 
 import SwiftUI
+import FirebaseAuth
 
-struct LogoutButtonView: View {
+struct DeleteAccountButtonView: View {
     @AppStorage("login_status") var loginStatus = true
     @AppStorage("user_id") var userId = ""
     
@@ -18,8 +19,8 @@ struct LogoutButtonView: View {
             showingLogoutAlert = true
         } label: {
             HStack {
-                Image(systemName: "rectangle.portrait.and.arrow.forward")
-                Text("Sign out")
+                Image(systemName: "minus.square")
+                Text("Delete Account")
             }
             .foregroundColor(Color.accentColor)
             #if os(macOS)
@@ -29,13 +30,24 @@ struct LogoutButtonView: View {
         .buttonStyle(.plain)
         .alert(isPresented: $showingLogoutAlert) {
             Alert(
-                title: Text("Are you sure you want to sign out, \(userId)?"),
-                primaryButton: .destructive(Text("Sign out")) {
+                title: Text("Are you sure you want to delete account, \(userId)?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    deleteUser()
                     loginStatus = false
                     userId = ""
                 },
                 secondaryButton: .cancel(Text("Cancel"))
             )
         }
+    }
+    
+    func deleteUser() {
+        Auth.auth().currentUser?.delete(completion: { err in
+            if let error = err {
+                print(error.localizedDescription)
+                return
+            }
+            
+        })
     }
 }
