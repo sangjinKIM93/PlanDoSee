@@ -12,6 +12,7 @@ struct TodoList: View {
     @State private var todoList: [Todo] = []
     
     @Binding var currentDay: Date
+    @Binding var loading: Bool
     @AppStorage("user_id") var userId = ""
     
     var body: some View {
@@ -95,12 +96,14 @@ extension TodoList {
     }
     
     func refreshData() {
+        loading = true
         getTodo { tasks in
             if tasks.isEmpty {
                 todoList = Todo.dummyTasks(date: currentDay.toString(DateStyle.storeId.rawValue))
             } else {
                 todoList = tasks
             }
+            loading = false
         }
     }
 }

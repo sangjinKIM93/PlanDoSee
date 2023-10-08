@@ -28,7 +28,7 @@ struct PlanDoSeeiOSView: View {
                     .padding(.horizontal, 16)
                     
                     TabView {
-                        TodoList(currentDay: $currentDay)
+                        TodoList(currentDay: $currentDay, loading: $showDateChangeProgressView)
                             .tabItem {
                                 Image(systemName: "list.bullet")
                                 Text("Plan")

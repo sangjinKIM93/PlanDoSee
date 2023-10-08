@@ -32,7 +32,7 @@ struct PlanDoSeeView: View {
                         showProgressView: $showDateChangeProgressView)
                 
                 HStack {
-                    TodoList(currentDay: $currentDay)
+                    TodoList(currentDay: $currentDay, loading: $showDateChangeProgressView)
                     #if os(iOS)
                     horizontalLineView()
                     #endif
