@@ -35,6 +35,9 @@ struct TodoList: View {
                             saveData: { (task, date) in
                                 saveTodo(task: task, date: date)
                             },
+                            putOffData: { (task, date) in
+                                putOffTodoUntillTommorow(task: task, date: date)
+                            },
                             didTapEnter: {
                                 todoList.append(Task(date: currentDay.toString(DateStyle.storeId.rawValue)))
                             }
@@ -48,22 +51,10 @@ struct TodoList: View {
             .listStyle(.plain)
         }
         .onAppear {
-            getTodo { tasks in
-                if tasks.isEmpty {
-                    todoList = Task.dummyTasks(date: currentDay.toString(DateStyle.storeId.rawValue))
-                } else {
-                    todoList = tasks
-                }
-            }
+            refreshData()
         }
         .onChange(of: currentDay) { newValue in
-            getTodo { tasks in
-                if tasks.isEmpty {
-                    todoList = Task.dummyTasks(date: currentDay.toString(DateStyle.storeId.rawValue))
-                } else {
-                    todoList = tasks
-                }
-            }
+            refreshData()
         }
     }
 }
@@ -88,5 +79,25 @@ extension TodoList {
             date: currentDay.toString(DateStyle.storeId.rawValue),
             completion: success
         )
+    }
+    
+    func putOffTodoUntillTommorow(task: Task, date: Date) {
+        deleteTodo(task: task)
+        saveTodo(task: task, date: date.addDays(add: 1))
+        
+        // TODO: async 활용해서 기다린 후 받도록 해보자
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            refreshData()
+        }
+    }
+    
+    func refreshData() {
+        getTodo { tasks in
+            if tasks.isEmpty {
+                todoList = Task.dummyTasks(date: currentDay.toString(DateStyle.storeId.rawValue))
+            } else {
+                todoList = tasks
+            }
+        }
     }
 }

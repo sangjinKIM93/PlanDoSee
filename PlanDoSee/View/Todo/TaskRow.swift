@@ -16,6 +16,7 @@ struct TaskRow: View {
     
     var deleteData: ((Task) -> Void)?
     var saveData: ((Task, Date) -> Void)?
+    var putOffData: ((Task, Date) -> Void)?
     var didTapEnter: (() -> Void)?
     
     var body: some View {
@@ -55,6 +56,12 @@ struct TaskRow: View {
                 })
                 .onSubmit {
                     didTapEnter?()
+                }
+            
+            Image(systemName: "arrowshape.turn.up.right")
+                .foregroundColor(.gray.opacity(0.5))
+                .onTapGesture {
+                    putOffData?(task, currentDay)
                 }
             
             Image(systemName: "x.square")

@@ -14,6 +14,13 @@ extension Date {
         formatter.locale = Locale(identifier: "en_US")
         return formatter.string(from: self)
     }
+    
+    func addDays(add: Int) -> Date {
+        guard let modifiedDate = Calendar.current.date(byAdding: .day, value: add, to: self) else {
+            return self
+        }
+        return modifiedDate
+    }
 }
 
 enum DateStyle: String {
