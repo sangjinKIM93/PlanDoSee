@@ -16,28 +16,44 @@ class TodoListViewModel: ObservableObject {
     @AppStorage("user_id") var userId = ""
     var currentDay: String? = nil
     
-    func saveTodo(task: Task, date: String) {
+    func saveTodo(
+        task: Todo,
+        date: String
+    ) async {
 //        realmRepository.add(item: task.toTaskRealm())
         
         // 네트워크
-        firebaseRepository.saveTodo(
-            date: date,
-            task: task,
-            userId: userId
-        )
+        return await withCheckedContinuation { continuation in
+            firebaseRepository.saveTodo(
+                date: date,
+                task: task,
+                userId: userId) {
+                    continuation.resume()
+                } failure: {
+                    continuation.resume()
+                }
+        }
     }
     
-    func deleteTodo(task: Task, date: String) {
+    func deleteTodo(
+        task: Todo,
+        date: String
+    ) async {
 //        realmRepository.delete(item: task.toTaskRealm())
         
-        firebaseRepository.deleteTodo(
-            date: date,
-            task: task,
-            userId: userId
-        )
+        return await withCheckedContinuation { continuation in
+            firebaseRepository.deleteTodo(
+                date: date,
+                task: task,
+                userId: userId) {
+                    continuation.resume()
+                } failure: {
+                    continuation.resume()
+                }
+        }
     }
     
-    func getTask(date: String, completion: @escaping ([Task]) -> Void) {
+    func getTask(date: String, completion: @escaping ([Todo]) -> Void) {
         self.getTaskAPI(date: date) { tasks in
             completion(tasks)
         } failure: { [weak self] in
@@ -51,14 +67,14 @@ class TodoListViewModel: ObservableObject {
         }
     }
     
-    func getTaskRealm(date: String) -> [Task] {
+    func getTaskRealm(date: String) -> [Todo] {
         let filter = String(format: "timeStamp == %@", date)
         return realmRepository.getItem(filterBy: filter).map { $0.toTask() }
     }
     
     func getTaskAPI(
         date: String,
-        success: @escaping ([Task]) -> Void,
+        success: @escaping ([Todo]) -> Void,
         failure: @escaping () -> Void
     ) {
         FireStoreRepository.shared.getTodo(

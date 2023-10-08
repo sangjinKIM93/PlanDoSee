@@ -19,8 +19,10 @@ class FireStoreRepository {
     // PLAN
     func saveTodo(
         date: String,
-        task: Task,
-        userId: String
+        task: Todo,
+        userId: String,
+        success: (() -> Void)? = nil,
+        failure: (() -> Void)? = nil
     ) {
         guard !userId.isEmpty else {
             return
@@ -31,11 +33,14 @@ class FireStoreRepository {
                 .setData(from: task) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
+                    failure?()
                 } else {
                     print("Document successfully written!")
+                    success?()
                 }
             }
         } catch {
+            failure?()
             print("FireStore Save Error: \(error.localizedDescription)")
         }
 
@@ -43,8 +48,10 @@ class FireStoreRepository {
     
     func deleteTodo(
         date: String,
-        task: Task,
-        userId: String
+        task: Todo,
+        userId: String,
+        success: (() -> Void)? = nil,
+        failure: (() -> Void)? = nil
     ) {
         guard !userId.isEmpty else {
             return
@@ -54,8 +61,10 @@ class FireStoreRepository {
             .delete() { err in
                 if let err = err {
                     print("Error writing document: \(err)")
+                    failure?()
                 } else {
                     print("Document successfully deleted!")
+                    success?()
                 }
             }
     }
@@ -63,7 +72,7 @@ class FireStoreRepository {
     func getTodo(
         date: String,
         userId: String,
-        success: @escaping (([Task]) -> Void),
+        success: @escaping (([Todo]) -> Void),
         failure: @escaping (() -> Void)
     ) {
         guard !userId.isEmpty else {
@@ -71,7 +80,7 @@ class FireStoreRepository {
         }
         let docRef = db.collection(userId).document("plan")
             .collection(date)
-        var tasks: [Task] = []
+        var tasks: [Todo] = []
         
         docRef.getDocuments { querySnapshot, error in
             guard error == nil else {
@@ -81,7 +90,7 @@ class FireStoreRepository {
             }
             for document in querySnapshot!.documents {
                 do {
-                    let task: Task = try Task.decode(dictionary: document.data())
+                    let task: Todo = try Todo.decode(dictionary: document.data())
                     tasks.append(task)
                     print("Get Todo")
                 } catch {

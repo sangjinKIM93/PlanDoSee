@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodoList: View {
     @StateObject private var viewModel = TodoListViewModel()
-    @State private var todoList: [Task] = []
+    @State private var todoList: [Todo] = []
     
     @Binding var currentDay: Date
     @AppStorage("user_id") var userId = ""
@@ -29,17 +29,21 @@ struct TodoList: View {
                             task: task,
                             currentDay: $currentDay,
                             deleteData: { task in
-                                deleteTodo(task: task)
-                                todoList = todoList.filter { $0.id != task.id }
+                                Task {
+                                    await deleteTodo(task: task)
+                                    todoList = todoList.filter { $0.id != task.id }
+                                }
                             },
                             saveData: { (task, date) in
-                                saveTodo(task: task, date: date)
+                                Task {
+                                    await saveTodo(task: task, date: date)
+                                }
                             },
                             putOffData: { (task, date) in
                                 putOffTodoUntillTommorow(task: task, date: date)
                             },
                             didTapEnter: {
-                                todoList.append(Task(date: currentDay.toString(DateStyle.storeId.rawValue)))
+                                todoList.append(Todo(date: currentDay.toString(DateStyle.storeId.rawValue)))
                             }
                         )
                         .listRowSeparator(.hidden)
@@ -60,33 +64,32 @@ struct TodoList: View {
 }
 
 extension TodoList {
-    func saveTodo(task: Task, date: Date) {
-        viewModel.saveTodo(
+    func saveTodo(task: Todo, date: Date) async {
+        await viewModel.saveTodo(
             task: task,
             date: date.toString(DateStyle.storeId.rawValue)
         )
     }
     
-    func deleteTodo(task: Task) {
-        viewModel.deleteTodo(
+    func deleteTodo(task: Todo) async {
+        await viewModel.deleteTodo(
             task: task,
             date: currentDay.toString(DateStyle.storeId.rawValue)
         )
     }
     
-    func getTodo(success: @escaping ([Task]) -> Void) {
+    func getTodo(success: @escaping ([Todo]) -> Void) {
         viewModel.getTask(
             date: currentDay.toString(DateStyle.storeId.rawValue),
             completion: success
         )
     }
     
-    func putOffTodoUntillTommorow(task: Task, date: Date) {
-        deleteTodo(task: task)
-        saveTodo(task: task, date: date.addDays(add: 1))
-        
-        // TODO: async 활용해서 기다린 후 받도록 해보자
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+    func putOffTodoUntillTommorow(task: Todo, date: Date) {
+        Task {
+            await deleteTodo(task: task)
+            await saveTodo(task: task, date: date.addDays(add: 1))
+            
             refreshData()
         }
     }
@@ -94,7 +97,7 @@ extension TodoList {
     func refreshData() {
         getTodo { tasks in
             if tasks.isEmpty {
-                todoList = Task.dummyTasks(date: currentDay.toString(DateStyle.storeId.rawValue))
+                todoList = Todo.dummyTasks(date: currentDay.toString(DateStyle.storeId.rawValue))
             } else {
                 todoList = tasks
             }

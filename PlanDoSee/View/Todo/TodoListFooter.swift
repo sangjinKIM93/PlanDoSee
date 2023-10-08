@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TodoListFooter: View {
-    @Binding var todoList: [Task]
+    @Binding var todoList: [Todo]
     @Binding var currentDay: Date
     var body: some View {
         Button {
-            let task = Task(date: currentDay.toString(DateStyle.storeId.rawValue))
+            let task = Todo(date: currentDay.toString(DateStyle.storeId.rawValue))
             todoList.append(task)
         } label: {
             HStack {

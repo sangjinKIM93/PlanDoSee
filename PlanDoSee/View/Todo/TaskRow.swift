@@ -9,14 +9,14 @@ import SwiftUI
 
 struct TaskRow: View {
     
-    @State var task: Task
+    @State var task: Todo
     @Binding var currentDay: Date
     @StateObject private var debounceObject = DebounceObject()
     @FocusState private var taskRowFocused: Bool
     
-    var deleteData: ((Task) -> Void)?
-    var saveData: ((Task, Date) -> Void)?
-    var putOffData: ((Task, Date) -> Void)?
+    var deleteData: ((Todo) -> Void)?
+    var saveData: ((Todo, Date) -> Void)?
+    var putOffData: ((Todo, Date) -> Void)?
     var didTapEnter: (() -> Void)?
     
     var body: some View {

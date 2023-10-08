@@ -32,7 +32,7 @@
 		481B3C2D2A45D35200837FBF /* FireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B3C2C2A45D35200837FBF /* FireStoreRepository.swift */; };
 		481FE31C2A3E89EC00B4FC9A /* SJTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */; };
 		481FE3242A3F2DC300B4FC9A /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3232A3F2DC300B4FC9A /* TaskRow.swift */; };
-		481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3262A3F2DDB00B4FC9A /* Task.swift */; };
+		481FE3272A3F2DDB00B4FC9A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3262A3F2DDB00B4FC9A /* Todo.swift */; };
 		481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */; };
 		48357FEA2A46994800BDD209 /* Codable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48357FE92A46994800BDD209 /* Codable+Extension.swift */; };
 		48357FF12A46B6A400BDD209 /* TimeLineViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48357FF02A46B6A400BDD209 /* TimeLineViewRow.swift */; };
@@ -90,7 +90,7 @@
 		481B3C2C2A45D35200837FBF /* FireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreRepository.swift; sourceTree = "<group>"; };
 		481FE31B2A3E89EC00B4FC9A /* SJTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SJTextEditor.swift; sourceTree = "<group>"; };
 		481FE3232A3F2DC300B4FC9A /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
-		481FE3262A3F2DDB00B4FC9A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		481FE3262A3F2DDB00B4FC9A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		481FE3282A3F347B00B4FC9A /* TodoListFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListFooter.swift; sourceTree = "<group>"; };
 		48357FE92A46994800BDD209 /* Codable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extension.swift"; sourceTree = "<group>"; };
 		48357FF02A46B6A400BDD209 /* TimeLineViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewRow.swift; sourceTree = "<group>"; };
@@ -272,7 +272,7 @@
 		481FE3252A3F2DCF00B4FC9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				481FE3262A3F2DDB00B4FC9A /* Task.swift */,
+				481FE3262A3F2DDB00B4FC9A /* Todo.swift */,
 				4899A94A2A46F40700EE9AC2 /* TimeLine.swift */,
 				480BCF402A763F8F000638D1 /* SeeModel.swift */,
 				486E90792ABC386300F1AAE8 /* OneThing.swift */,
@@ -498,7 +498,7 @@
 				481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */,
 				480BCF3D2A762056000638D1 /* SeeView.swift in Sources */,
 				48D48A9A2A4FE7A300F2F55B /* TextView.swift in Sources */,
-				481FE3272A3F2DDB00B4FC9A /* Task.swift in Sources */,
+				481FE3272A3F2DDB00B4FC9A /* Todo.swift in Sources */,
 				48D1A50E2A999C4300EF9347 /* TimeLineList.swift in Sources */,
 				481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */,
 				486E907C2ABC5ECD00F1AAE8 /* String+Extension.swift in Sources */,

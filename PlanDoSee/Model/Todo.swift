@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-struct Task: Codable, Hashable {
+struct Todo: Codable, Hashable {
     let id: UUID
     let timeStamp: String
     var date: String
@@ -35,8 +35,8 @@ struct Task: Codable, Hashable {
         case date
     }
     
-    static func dummyTasks(date: String) -> [Task] {
-        return [Task(date: date)]
+    static func dummyTasks(date: String) -> [Todo] {
+        return [Todo(date: date)]
     }
     
     func toTaskRealm() -> TaskRealm {
@@ -86,8 +86,8 @@ class TaskRealm: Object, Codable {
         try container.encode(isCompleted, forKey: .isCompleted)
     }
     
-    func toTask() -> Task {
-        return Task(id: self.id,
+    func toTask() -> Todo {
+        return Todo(id: self.id,
                     timeStamp: self.timeStamp,
                     date: self.date,
                     title: self.title,
