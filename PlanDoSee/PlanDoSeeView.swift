@@ -16,6 +16,7 @@ struct PlanDoSeeView: View {
     @State private var showingEvaluationAlert: Bool = false
     @State private var showDateChangeProgressView: Bool = false
     
+    
     @AppStorage("user_id") var userId = ""
         
     var body: some View {
