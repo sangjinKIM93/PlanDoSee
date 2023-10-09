@@ -14,6 +14,9 @@ struct TaskRow: View {
     @StateObject private var debounceObject = DebounceObject()
     @FocusState private var taskRowFocused: Bool
     
+    @State private var showDelayTodoPopup: PopupModel = PopupModel(isShow: false, completion: {})
+    @State private var showDeleteTodoPopup: PopupModel = PopupModel(isShow: false, completion: {})
+    
     var deleteData: ((Todo) -> Void)?
     var saveData: ((Todo, Date) -> Void)?
     var putOffData: ((Todo, Date) -> Void)?
@@ -58,16 +61,42 @@ struct TaskRow: View {
                     didTapEnter?()
                 }
             
+            #if os(macOS)
             Image(systemName: "arrowshape.turn.up.right")
                 .foregroundColor(.gray.opacity(0.5))
                 .onTapGesture {
-                    putOffData?(task, currentDay)
+                    showDelayTodoPopup.completion = {
+                        putOffData?(task, currentDay)
+                    }
+                    showDelayTodoPopup.isShow = true
                 }
-            
+                .alert(isPresented: $showDelayTodoPopup.isShow) {
+                    Alert(
+                        title: Text("Do you want to delay todo until tomorrow?"),
+                        primaryButton: .default(Text("Yes")) {
+                            showDelayTodoPopup.completion()
+                        },
+                        secondaryButton: .cancel(Text("No"))
+                    )
+                }
+
+            #endif
             Image(systemName: "x.square")
                 .foregroundColor(.gray.opacity(0.5))
                 .onTapGesture {
-                    deleteData?(task)
+                    showDeleteTodoPopup.completion = {
+                        deleteData?(task)
+                    }
+                    showDeleteTodoPopup.isShow = true
+                }
+                .alert(isPresented: $showDeleteTodoPopup.isShow) {
+                    Alert(
+                        title: Text("Do you want to delete todo?"),
+                        primaryButton: .default(Text("Yes")) {
+                            showDeleteTodoPopup.completion()
+                        },
+                        secondaryButton: .cancel(Text("No"))
+                    )
                 }
         }
         .onAppear {
@@ -110,6 +139,29 @@ struct TaskRow: View {
                 saveData?(task, currentDay)
             }
         }
+        #if os(iOS)
+        .swipeActions(edge: .leading, allowsFullSwipe: false) {
+            Button {
+                showDelayTodoPopup.completion = {
+                    putOffData?(task, currentDay)
+                }
+                showDelayTodoPopup.isShow = true
+            } label: {
+                Label("Delay", systemImage: "arrowshape.turn.up.right")
+            }
+            .tint(.indigo)
+        }
+        .confirmationDialog(
+            "Do you want to delay todo until tomorrow?",
+            isPresented: $showDelayTodoPopup.isShow,
+            titleVisibility: .visible,
+            actions: {
+                Button("Delay", role: .destructive) {
+                    showDelayTodoPopup.completion()
+                }
+            }
+        )
+        #endif
     }
 }
 

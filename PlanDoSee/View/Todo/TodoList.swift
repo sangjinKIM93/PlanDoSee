@@ -10,8 +10,6 @@ import SwiftUI
 struct TodoList: View {
     @StateObject private var viewModel = TodoListViewModel()
     @State private var todoList: [Todo] = []
-    @State private var showDelayTodoPopup: PopupModel = PopupModel(isShow: false, completion: {})
-    @State private var showDeleteTodoPopup: PopupModel = PopupModel(isShow: false, completion: {})
     
     @Binding var currentDay: Date
     @Binding var loading: Bool
@@ -32,13 +30,10 @@ struct TodoList: View {
                             task: task,
                             currentDay: $currentDay,
                             deleteData: { task in
-                                showDeleteTodoPopup.completion = {
-                                    Task {
-                                        await deleteTodo(task: task)
-                                        todoList = todoList.filter { $0.id != task.id }
-                                    }
+                                Task {
+                                    await deleteTodo(task: task)
+                                    todoList = todoList.filter { $0.id != task.id }
                                 }
-                                showDeleteTodoPopup.isShow = true
                             },
                             saveData: { (task, date) in
                                 Task {
@@ -46,8 +41,7 @@ struct TodoList: View {
                                 }
                             },
                             putOffData: { (task, date) in
-                                showDelayTodoPopup.completion = { putOffTodoUntillTommorow(task: task, date: date) }
-                                showDelayTodoPopup.isShow = true
+                                putOffTodoUntillTommorow(task: task, date: date) 
                             },
                             didTapEnter: {
                                 todoList.append(Todo(date: currentDay.toString(DateStyle.storeId.rawValue)))
@@ -60,24 +54,6 @@ struct TodoList: View {
                 
             }
             .listStyle(.plain)
-            .alert(isPresented: $showDelayTodoPopup.isShow) {
-                Alert(
-                    title: Text("Do you want to delay todo until tomorrow?"),
-                    primaryButton: .default(Text("Yes")) {
-                        showDelayTodoPopup.completion()
-                    },
-                    secondaryButton: .cancel(Text("No"))
-                )
-            }
-            .alert(isPresented: $showDeleteTodoPopup.isShow) {
-                Alert(
-                    title: Text("Do you want to delete todo?"),
-                    primaryButton: .default(Text("Yes")) {
-                        showDeleteTodoPopup.completion()
-                    },
-                    secondaryButton: .cancel(Text("No"))
-                )
-            }
         }
         .onAppear {
             refreshData()
