@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlanDoSeeiOSView: View {
+    @Environment(\.scenePhase) var scenePhase
+    
     @State private var currentWeek: [WeekDay] = Calendar.current.currentWeek
     @State private var currentDay: Date = .init()
     
@@ -74,6 +76,15 @@ struct PlanDoSeeiOSView: View {
                     self.currentWeek = currentWeek
                 }
             })
+            .onChange(of: scenePhase) { newPhase in
+                if newPhase == .active {
+                    let selected = currentDay.toString(DateStyle.storeId.rawValue)
+                    let today = Date().toString(DateStyle.storeId.rawValue)
+                    if selected != today {
+                        currentDay = Date()
+                    }
+                }
+            }
             
             EvaluationPopup(presentAlert: $showingEvaluationAlert, successAction: {
                 saveEvaluation(evaluation: .good)
