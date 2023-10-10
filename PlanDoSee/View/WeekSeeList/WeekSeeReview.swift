@@ -26,6 +26,7 @@ struct WeekSeeReview: View {
                     .font(.system(size: 16))
                     #if os(macOS)
                     .padding(.top, 7)
+                    .scrollContentBackground(.hidden)
                     #endif
                     .onChange(of: weekSeeText.debouncedText, perform: { newValue in
                         saveWeekSee(see: newValue, date: currentDay)

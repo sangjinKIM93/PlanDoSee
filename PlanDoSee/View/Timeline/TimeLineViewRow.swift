@@ -31,6 +31,7 @@ struct TimeLineViewRow: View {
                     .focused($timeLineRowFocused)
                     #if os(macOS)
                     .scrollDisabled(true)
+                    .scrollContentBackground(.hidden)
                     #endif
                     .font(.system(size: 16))
                     .frame(minHeight: 15)

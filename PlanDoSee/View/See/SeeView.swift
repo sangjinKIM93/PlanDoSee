@@ -43,6 +43,7 @@ struct SeeView: View {
                         .focused($seeViewFocused)
                         #if os(macOS)
                         .frame(height: 150)
+                        .scrollContentBackground(.hidden)
                         #endif
                         .font(.system(size: 16))
                         .scrollIndicators(.never)
