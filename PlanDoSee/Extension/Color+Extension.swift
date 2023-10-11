@@ -9,7 +9,7 @@ import SwiftUI
 
 public extension Color {
 
-    static let backgroundDark = Color
+    static let backgroundDark = Color.black
     static let contentBackgroundLight = Color.white
     
     #if os(macOS)
