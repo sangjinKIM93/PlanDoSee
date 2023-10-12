@@ -53,6 +53,10 @@ struct TodoList: View {
                 }
                 
             }
+            #if os(macOS)
+            .scrollContentBackground(.hidden)
+            .background(Color.tertiaryBackground)
+            #endif
             .listStyle(.plain)
         }
         .onAppear {

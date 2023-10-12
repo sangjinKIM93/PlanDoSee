@@ -35,6 +35,10 @@ struct WeekSeeList: View {
                 WeekSeeReview(currentDay: $currentDay)
             }
             .listStyle(.plain)
+            #if os(macOS)
+            .scrollContentBackground(.hidden)
+            .background(Color.background)
+            #endif
         }
         .onAppear {
             getSees { seeModels in

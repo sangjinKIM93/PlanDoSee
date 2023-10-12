@@ -49,6 +49,10 @@ struct TimeLineList: View {
                     Spacer().frame(height: 200)
                         .listRowSeparator(.hidden)
                 }
+                #if os(macOS)
+                .scrollContentBackground(.hidden)
+                .background(Color.tertiaryBackground)
+                #endif
                 #if os(iOS)
                 .listStyle(.plain)
                 #endif

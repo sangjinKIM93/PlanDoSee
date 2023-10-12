@@ -45,6 +45,9 @@ struct SettingView: View {
         }
         #if os(iOS)
         .listStyle(.plain)
+        #elseif os(macOS)
+        .scrollContentBackground(.hidden)
+        .background(Color.background)
         #endif
     }
 }

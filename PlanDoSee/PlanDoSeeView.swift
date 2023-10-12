@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlanDoSeeView: View {
+    @Environment(\.colorScheme) var colorScheme
     
     @State private var currentWeek: [WeekDay] = Calendar.current.currentWeek
     @Binding var currentDay: Date

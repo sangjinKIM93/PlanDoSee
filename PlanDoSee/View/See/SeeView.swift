@@ -44,6 +44,7 @@ struct SeeView: View {
                         #if os(macOS)
                         .frame(height: 150)
                         .scrollContentBackground(.hidden)
+                        .background(Color.tertiaryBackground)
                         #endif
                         .font(.system(size: 16))
                         .scrollIndicators(.never)
