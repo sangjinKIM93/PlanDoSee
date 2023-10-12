@@ -37,7 +37,7 @@ struct WeekSeeList: View {
             .listStyle(.plain)
             #if os(macOS)
             .scrollContentBackground(.hidden)
-            .background(Color.background)
+            .background(Color.tertiaryBackground)
             #endif
         }
         .onAppear {

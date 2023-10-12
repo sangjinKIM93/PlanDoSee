@@ -47,7 +47,7 @@ struct SettingView: View {
         .listStyle(.plain)
         #elseif os(macOS)
         .scrollContentBackground(.hidden)
-        .background(Color.background)
+        .background(Color.tertiaryBackground)
         #endif
     }
 }
