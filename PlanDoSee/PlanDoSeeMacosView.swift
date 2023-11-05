@@ -56,6 +56,7 @@ struct PlanDoSeeMacosView: View {
                 SettingView(currentDay: $currentDay)
             }
         }
+        .frame(minWidth: 1050, minHeight: 800)
     }
 }
 

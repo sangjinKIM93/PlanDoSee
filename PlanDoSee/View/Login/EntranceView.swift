@@ -20,8 +20,8 @@ struct EntranceView: View {
             ZStack {
                 #if os(macOS)
                 Color(colorScheme == .dark ? .black : .white)
-                    .frame(height: screen!.height)
-                    .frame(minWidth: screen!.width / 3.5, maxWidth: .infinity)
+//                    .frame(height: screen!.height)
+//                    .frame(minWidth: screen!.width / 3.5, maxWidth: .infinity)
                 #endif
                 
                 HStack(spacing: 0) {
@@ -30,7 +30,7 @@ struct EntranceView: View {
                         SignUpView()
                             .environmentObject(loginData)
                             #if os(macOS)
-                            .frame(width: screen!.width / 4, height: screen!.height)
+                            .frame(width: screen!.width / 4)
                             #elseif os(iOS)
                             .keypadDoneDismiss()
                             #endif
@@ -38,7 +38,7 @@ struct EntranceView: View {
                         LoginView()
                             .environmentObject(loginData)
                             #if os(macOS)
-                            .frame(width: screen!.width / 4, height: screen!.height)
+                            .frame(width: screen!.width / 4)
                             #elseif os(iOS)
                             .keypadDoneDismiss()
                             #endif
