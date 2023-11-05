@@ -51,7 +51,7 @@ struct PlanDoSeeApp: App {
             } else {
                 EntranceView()
                 #if os(macOS)
-                .frame(minWidth: 960, minHeight: 700)
+                .frame(minWidth: 860, minHeight: 700)
                 #endif
             }
         }
