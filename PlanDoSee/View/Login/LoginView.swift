@@ -26,11 +26,10 @@ struct LoginView: View {
                     .font(.body)
                     .foregroundColor(.gray)
                 
-                TextField("switchCase@gmail.com", text: $loginData.userName)
+                TextField("gildong@gmail.com", text: $loginData.userName)
                     .frame(height: 15)
                     .frame(maxWidth: 400)
                     .padding(.vertical, 10)
-                    .foregroundColor(.titleColor)
                     .autocorrectionDisabled()
                     #if os(iOS)
                     .autocapitalization(.none)
