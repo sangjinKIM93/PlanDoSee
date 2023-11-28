@@ -29,6 +29,7 @@ struct SignUpView: View {
                 Label {
                     Text("Back")
                         .fontWeight(.semibold)
+                        .foregroundColor(.gray)
                 } icon: {
                     Image(systemName: "chevron.left")
                         .font(.body)
@@ -47,14 +48,16 @@ struct SignUpView: View {
                         .font(.body)
                         .foregroundColor(.gray)
                     
-                    TextField("switchCase@gmail.com", text: $loginData.registerUserName)
-                        .frame(height: 15)
-                        .frame(maxWidth: 400)
-                        .padding(.vertical, 10)
-                        .foregroundColor(.titleColor)
-                        .autocorrectionDisabled()
+                    TextField(text: $loginData.registerUserName) {
+                        Text("switchCase@gmail.com").foregroundColor(.gray.opacity(0.5))
+                    }
+                    .frame(height: 15)
+                    .frame(maxWidth: 400)
+                    .padding(.vertical, 10)
+                    .foregroundColor(.titleColor)
+                    .autocorrectionDisabled()
 #if os(iOS)
-                        .autocapitalization(.none)
+                    .autocapitalization(.none)
 #endif
                     Divider()
                         .frame(height: 1)

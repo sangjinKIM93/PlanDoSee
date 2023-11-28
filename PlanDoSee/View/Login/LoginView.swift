@@ -26,14 +26,17 @@ struct LoginView: View {
                     .font(.body)
                     .foregroundColor(.gray)
                 
-                TextField("gildong@gmail.com", text: $loginData.userName)
-                    .frame(height: 15)
-                    .frame(maxWidth: 400)
-                    .padding(.vertical, 10)
-                    .autocorrectionDisabled()
-                    #if os(iOS)
-                    .autocapitalization(.none)
-                    #endif
+                TextField(text: $loginData.userName) {
+                    Text("gildong@gmail.com").foregroundColor(.gray.opacity(0.5))
+                }
+                .frame(height: 15)
+                .frame(maxWidth: 400)
+                .padding(.vertical, 10)
+                .foregroundColor(.titleColor)
+                .autocorrectionDisabled()
+#if os(iOS)
+                .autocapitalization(.none)
+#endif
                 Divider()
                  .frame(height: 1)
                  .padding(.horizontal, 50)
