@@ -49,7 +49,7 @@ struct SignUpView: View {
                         .foregroundColor(.gray)
                     
                     TextField(text: $loginData.registerUserName) {
-                        Text("switchCase@gmail.com").foregroundColor(.gray.opacity(0.5))
+                        Text(verbatim: "gildong@gmail.com").foregroundColor(.gray.opacity(0.5))
                     }
                     .frame(height: 15)
                     .frame(maxWidth: 400)

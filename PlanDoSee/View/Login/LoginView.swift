@@ -27,7 +27,7 @@ struct LoginView: View {
                     .foregroundColor(.gray)
                 
                 TextField(text: $loginData.userName) {
-                    Text("gildong@gmail.com").foregroundColor(.gray.opacity(0.5))
+                    Text(verbatim: "gildong@gmail.com").foregroundColor(.gray.opacity(0.5))
                 }
                 .frame(height: 15)
                 .frame(maxWidth: 400)
