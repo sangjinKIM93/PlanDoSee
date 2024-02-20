@@ -42,6 +42,12 @@ struct TimeLineViewRow: View {
                         timeLine.content = value
                         endEditing?(TimeLine(hour: timeLine.hour, content: value), currentDay)
                     })
+                
+                Rectangle()
+                    .stroke(.gray.opacity(0.5),
+                            style: StrokeStyle(lineWidth: 0.5, lineCap: .butt, lineJoin: .bevel, dash: [5], dashPhase: 5))
+                    .frame(height: 0.5)
+
             }
             
         }

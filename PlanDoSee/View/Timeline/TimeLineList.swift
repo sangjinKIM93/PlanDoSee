@@ -42,9 +42,7 @@ struct TimeLineList: View {
                             }
                         )
                         .id(timeline)
-                        #if os(iOS)
                         .listRowSeparator(.hidden)
-                        #endif
                     }
                     Spacer().frame(height: 200)
                         .listRowSeparator(.hidden)
