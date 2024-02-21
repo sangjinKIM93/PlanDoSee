@@ -53,6 +53,9 @@ struct TimeLineList: View {
                 #endif
                 #if os(iOS)
                 .listStyle(.plain)
+                .gesture(DragGesture().onChanged({ _ in
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }))
                 #endif
                 .onChange(of: timeLines, perform: { newValue in
                     let target = timeLines.first { $0.hour == String(Calendar.current.currentHour) }
