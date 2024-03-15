@@ -19,6 +19,7 @@ struct WeekSeeItemView: View {
                 .font(.system(size: 18))
             Spacer().frame(height: 10)
             Text(text)
+                .textSelection(.enabled)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.system(size: 16))
                 .listRowSeparator(.hidden)
