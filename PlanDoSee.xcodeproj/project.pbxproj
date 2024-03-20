@@ -179,7 +179,6 @@
 				4899A94E2A47F22B00EE9AC2 /* Custom */,
 				481B3C1D2A4329F700837FBF /* ViewModel */,
 				481B3C1A2A43282900837FBF /* Resources */,
-				481B3C192A4327E200837FBF /* Auth */,
 				481FE3252A3F2DCF00B4FC9A /* Model */,
 				481FE31A2A3E89B000B4FC9A /* View */,
 				48D47B6B2A3D8BA700C95F61 /* Extension */,
@@ -226,13 +225,6 @@
 				480CAFE62AC7B393007136EF /* iOSNetworkToastView.swift */,
 			);
 			path = Popup;
-			sourceTree = "<group>";
-		};
-		481B3C192A4327E200837FBF /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		481B3C1A2A43282900837FBF /* Resources */ = {
