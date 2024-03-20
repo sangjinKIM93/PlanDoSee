@@ -30,9 +30,9 @@ struct TimeLineViewRow: View {
                 TextEditor(text: $debounceObject.text)
                     .focused($timeLineRowFocused)
                     #if os(macOS)
-                    .scrollDisabled(true)
                     .scrollContentBackground(.hidden)
                     #endif
+                    .scrollDisabled(true)
                     .font(.system(size: 16))
                     .frame(minHeight: 15)
                     .fixedSize(horizontal: false, vertical: true)
