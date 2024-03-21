@@ -51,8 +51,8 @@ struct TodoList: View {
                     }
                     
                 }
-                
             }
+            .scrollDismissesKeyboard(.immediately)
             #if os(macOS)
             .scrollContentBackground(.hidden)
             .background(Color.tertiaryBackground)

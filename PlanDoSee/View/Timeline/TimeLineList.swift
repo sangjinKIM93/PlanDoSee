@@ -47,6 +47,7 @@ struct TimeLineList: View {
                     Spacer().frame(height: 200)
                         .listRowSeparator(.hidden)
                 }
+                .scrollDismissesKeyboard(.immediately)
                 #if os(macOS)
                 .scrollContentBackground(.hidden)
                 .background(Color.tertiaryBackground)

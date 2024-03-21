@@ -69,6 +69,7 @@ struct SeeView: View {
                     #endif
                 }
             }
+            .scrollDismissesKeyboard(.immediately)
         }
         .onAppear {
             getSee { see in
