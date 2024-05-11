@@ -80,7 +80,8 @@ struct OneThingView: View {
                                 if isOnAlarm {
                                     NotificationManager.shared.requestNotification(
                                         date: date,
-                                        goalText: goalText.text
+                                        type: .oneThing,
+                                        body: goalText.text
                                     )
                                 }
                                 saveOneThing()
@@ -103,10 +104,11 @@ struct OneThingView: View {
             if isOn {
                 NotificationManager.shared.requestNotification(
                     date: alarmDate,
-                    goalText: goalText.text
+                    type: .oneThing,
+                    body: goalText.text
                 )
             } else {
-                NotificationManager.shared.dismissNotification()
+                NotificationManager.shared.dismissNotification(type: .oneThing)
             }
             saveOneThing()
         }
