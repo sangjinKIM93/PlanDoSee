@@ -63,6 +63,7 @@ struct PlanDoSeeApp: App {
                 print("active")
             } else if newPhase == .background {
                 networkManager.stopMonitoring()
+                BackgroundManager().registerBackgroundTask()
                 print("background")
             }
         }
