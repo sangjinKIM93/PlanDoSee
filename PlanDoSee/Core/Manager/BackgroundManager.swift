@@ -5,6 +5,7 @@
 //  Created by 김상진 on 5/11/24.
 //
 
+#if os(iOS)
 import UIKit
 import UserNotifications
 import BackgroundTasks
@@ -57,3 +58,5 @@ class BackgroundManager {
             }
     }
 }
+
+#endif

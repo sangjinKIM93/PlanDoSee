@@ -62,7 +62,6 @@
 		48D47B6D2A3D8BBB00C95F61 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */; };
 		48D47B6F2A3D8C2900C95F61 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B6E2A3D8C2900C95F61 /* View+extension.swift */; };
 		48D47B712A3DED3500C95F61 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */; };
-		48D48A9A2A4FE7A300F2F55B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D48A992A4FE7A300F2F55B /* TextView.swift */; };
 		48D96C902AC573B3008C85A1 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D96C8F2AC573B3008C85A1 /* RealmRepository.swift */; };
 		48D96C922AC574D2008C85A1 /* OneThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D96C912AC574D2008C85A1 /* OneThingViewModel.swift */; };
 		48D96C942AC5BBF1008C85A1 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D96C932AC5BBF1008C85A1 /* TodoListViewModel.swift */; };
@@ -121,7 +120,6 @@
 		48D47B6C2A3D8BBB00C95F61 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		48D47B6E2A3D8C2900C95F61 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		48D47B702A3DED3500C95F61 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
-		48D48A992A4FE7A300F2F55B /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		48D96C8F2AC573B3008C85A1 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		48D96C912AC574D2008C85A1 /* OneThingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneThingViewModel.swift; sourceTree = "<group>"; };
 		48D96C932AC5BBF1008C85A1 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
@@ -176,16 +174,12 @@
 		4804900E2A3D871C00C10DC9 /* PlanDoSee */ = {
 			isa = PBXGroup;
 			children = (
-				48D96C8E2AC573A4008C85A1 /* Repository */,
-				48B3AEEC2AC522BD0025678B /* Modifier */,
+				48784EDE2BF2D14E00B6FA68 /* Core */,
+				48784ED92BF2D12800B6FA68 /* Feature */,
 				48E2D61D2AA2FC0B0048498B /* Info.plist */,
-				480BCF422A78034D000638D1 /* Manager */,
-				4899A94E2A47F22B00EE9AC2 /* Custom */,
 				481B3C1D2A4329F700837FBF /* ViewModel */,
-				481B3C1A2A43282900837FBF /* Resources */,
 				481FE3252A3F2DCF00B4FC9A /* Model */,
 				481FE31A2A3E89B000B4FC9A /* View */,
-				48D47B6B2A3D8BA700C95F61 /* Extension */,
 				4804900F2A3D871C00C10DC9 /* PlanDoSeeApp.swift */,
 				480BCF452A7BD023000638D1 /* PlanDoSeeiOSView.swift */,
 				480490112A3D871C00C10DC9 /* PlanDoSeeView.swift */,
@@ -216,6 +210,8 @@
 		480BCF422A78034D000638D1 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				48E2D61E2AA301910048498B /* FocusTimer.swift */,
+				4899A94F2A47F23C00EE9AC2 /* DebounceObject.swift */,
 				480BCF432A78036C000638D1 /* DateMaker.swift */,
 				486E90772ABC2D1800F1AAE8 /* NotificationManager.swift */,
 				480CAFE32AC7ACEF007136EF /* NetworkManager.swift */,
@@ -336,14 +332,55 @@
 			path = OneThing;
 			sourceTree = "<group>";
 		};
-		4899A94E2A47F22B00EE9AC2 /* Custom */ = {
+		48784ED92BF2D12800B6FA68 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				4899A94F2A47F23C00EE9AC2 /* DebounceObject.swift */,
-				48D48A992A4FE7A300F2F55B /* TextView.swift */,
-				48E2D61E2AA301910048498B /* FocusTimer.swift */,
+				48784EDD2BF2D14100B6FA68 /* Settings */,
+				48784EDC2BF2D13C00B6FA68 /* See */,
+				48784EDB2BF2D13500B6FA68 /* Do */,
+				48784EDA2BF2D12E00B6FA68 /* Plan */,
 			);
-			path = Custom;
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		48784EDA2BF2D12E00B6FA68 /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
+		48784EDB2BF2D13500B6FA68 /* Do */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Do;
+			sourceTree = "<group>";
+		};
+		48784EDC2BF2D13C00B6FA68 /* See */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = See;
+			sourceTree = "<group>";
+		};
+		48784EDD2BF2D14100B6FA68 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		48784EDE2BF2D14E00B6FA68 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				48D96C8E2AC573A4008C85A1 /* Repository */,
+				48B3AEEC2AC522BD0025678B /* Modifier */,
+				48D47B6B2A3D8BA700C95F61 /* Extension */,
+				481B3C1A2A43282900837FBF /* Resources */,
+				480BCF422A78034D000638D1 /* Manager */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		48B3AEEC2AC522BD0025678B /* Modifier */ = {
@@ -511,7 +548,6 @@
 				481FE3292A3F347B00B4FC9A /* TodoListFooter.swift in Sources */,
 				480BCF3D2A762056000638D1 /* SeeView.swift in Sources */,
 				48784ED82BEF033C00B6FA68 /* BackgroundManager.swift in Sources */,
-				48D48A9A2A4FE7A300F2F55B /* TextView.swift in Sources */,
 				481FE3272A3F2DDB00B4FC9A /* Todo.swift in Sources */,
 				48D1A50E2A999C4300EF9347 /* TimeLineList.swift in Sources */,
 				481B3C1F2A432A0100837FBF /* LoginViewModel.swift in Sources */,
