@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class OneThingViewModel: ObservableObject {
-    let realmRepository = RealmRepository<OneThing>()
+//    let realmRepository = RealmRepository<OneThing>()
     let firebaseRepository = FireStoreRepository.shared
     
     @AppStorage("user_id") var userId = ""
@@ -42,9 +42,9 @@ class OneThingViewModel: ObservableObject {
         }
     }
     
-    func getOneThingRealm() -> OneThing? {
-        return realmRepository.getItem().first
-    }
+//    func getOneThingRealm() -> OneThing? {
+//        return realmRepository.getItem().first
+//    }
     
     func getOneThingAPI(
         success: @escaping (OneThing) -> Void,

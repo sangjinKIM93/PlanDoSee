@@ -10,7 +10,7 @@ import SwiftUI
 import RealmSwift
 
 class TodoListViewModel: ObservableObject {
-    let realmRepository = RealmRepository<TaskRealm>()
+//    let realmRepository = RealmRepository<TaskRealm>()
     let firebaseRepository = FireStoreRepository.shared
     
     @AppStorage("user_id") var userId = ""
@@ -67,10 +67,10 @@ class TodoListViewModel: ObservableObject {
         }
     }
     
-    func getTaskRealm(date: String) -> [Todo] {
-        let filter = String(format: "timeStamp == %@", date)
-        return realmRepository.getItem(filterBy: filter).map { $0.toTask() }
-    }
+//    func getTaskRealm(date: String) -> [Todo] {
+//        let filter = String(format: "timeStamp == %@", date)
+//        return realmRepository.getItem(filterBy: filter).map { $0.toTask() }
+//    }
     
     func getTaskAPI(
         date: String,

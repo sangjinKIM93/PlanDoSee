@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:PlanDoSee.xcodeproj">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "Dependencies">
+      <FileRef
+         location = "group:.build/tuist-derived/Firebase/Firebase.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/GTMSessionFetcher/GTMSessionFetcher.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/GoogleAppMeasurement/GoogleAppMeasurement.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/GoogleDataTransport/GoogleDataTransport.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/GoogleUtilities/GoogleUtilities.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/InteropForGoogle/InteropForGoogle.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/Promises/Promises.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/Realm/Realm.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/RealmDatabase/RealmDatabase.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/abseil/abseil.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/gRPC/gRPC.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/leveldb/leveldb.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:.build/tuist-derived/nanopb/nanopb.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>

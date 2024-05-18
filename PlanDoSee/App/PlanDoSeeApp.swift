@@ -5,7 +5,7 @@
 //  Created by 김상진 on 2023/06/17.
 //
 
-import FirebaseCore
+import Firebase
 import SwiftUI
 #if os(iOS)
 import UIKit
