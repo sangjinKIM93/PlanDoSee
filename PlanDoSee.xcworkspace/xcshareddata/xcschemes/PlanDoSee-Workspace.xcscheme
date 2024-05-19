@@ -742,6 +742,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F0000F33612AF2782DDCD64C"
+               BuildableName = "PlanDoSee_macOS.app"
+               BlueprintName = "PlanDoSee_macOS"
+               ReferencedContainer = "container:PlanDoSee.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "0D72757D681B0299654010FC"
                BuildableName = "Promises.framework"
                BlueprintName = "Promises"

@@ -6,7 +6,8 @@ import ProjectDescription
 let projectName = "PlanDoSee"
 let organizationName = "ray"
 let bundleID = "com.PlanDoSee"
-let targetVersion = "16.0"
+let targetVersioniOS = "16.0"
+let targetVersionMacOS = "13.0"
 let version = "0.0.1"
 let bundleVersion = "1"
 
@@ -20,7 +21,7 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: bundleID,
-            deploymentTargets: .iOS(targetVersion),
+            deploymentTargets: .iOS(targetVersioniOS),
             infoPlist: .extendingDefault(with: [
                 "CFBundleShortVersionString": "\(version)",
                 "CFBundleVersion": "\(bundleVersion)",
@@ -31,7 +32,39 @@ let project = Project(
                 "\(projectName)/Core/**",
                 "\(projectName)/Feature/**",
             ],
-            resources: getResources(),
+            resources: [
+                "PlanDoSee/Core/Resources/GoogleService-Info.plist",
+                "PlanDoSee/Core/Resources/Assets.xcassets",
+                "PlanDoSee/Core/Resources/Launch Screen.storyboard",
+            ],
+            entitlements: "PlanDoSee/PlanDoSee.entitlements",
+            dependencies: defaultDependency(),
+            settings: .settings(
+                base: ["DEVELOPMENT_TEAM": "K4Z8YS9YYL"],
+                configurations: [],
+                defaultSettings: .recommended
+            )
+        ),
+        Target.target(
+            name: "PlanDoSee_macOS",
+            destinations: .macOS,
+            product: .app,
+            bundleId: bundleID,
+            deploymentTargets: .macOS(targetVersionMacOS),
+            infoPlist: .extendingDefault(with: [
+                "CFBundleShortVersionString": "\(version)",
+                "CFBundleVersion": "\(bundleVersion)",
+                "CFBundleDisplayName": "\(projectName)",
+            ]),
+            sources: [
+                "\(projectName)/App/**",
+                "\(projectName)/Core/**",
+                "\(projectName)/Feature/**",
+            ],
+            resources: [
+                "PlanDoSee/Core/Resources/GoogleService-Info.plist",
+                "PlanDoSee/Core/Resources/Assets.xcassets",
+            ],
             entitlements: "PlanDoSee/PlanDoSee.entitlements",
             dependencies: defaultDependency(),
             settings: .settings(
@@ -53,13 +86,5 @@ private func defaultDependency() -> [TargetDependency] {
         .external(name: "FirebaseFirestoreSwift"),
         .external(name: "Realm"),
         .external(name: "RealmSwift"),
-    ]
-}
-
-private func getResources() -> ResourceFileElements {
-    return [
-        "PlanDoSee/Core/Resources/GoogleService-Info.plist",
-        "PlanDoSee/Core/Resources/Assets.xcassets",
-        "PlanDoSee/Core/Resources/Launch Screen.storyboard",
     ]
 }
