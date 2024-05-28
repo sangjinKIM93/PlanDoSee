@@ -51,8 +51,6 @@
 		4899A94B2A46F40700EE9AC2 /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899A94A2A46F40700EE9AC2 /* TimeLine.swift */; };
 		4899A9502A47F23C00EE9AC2 /* DebounceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899A94F2A47F23C00EE9AC2 /* DebounceObject.swift */; };
 		48B3AEEE2AC522D30025678B /* KeypadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B3AEED2AC522D30025678B /* KeypadModifier.swift */; };
-		48B3AEF12AC56BBA0025678B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 48B3AEF02AC56BBA0025678B /* Realm */; };
-		48B3AEF32AC56BBA0025678B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48B3AEF22AC56BBA0025678B /* RealmSwift */; };
 		48D1A5052A963CC800EF9347 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1A5042A963CC800EF9347 /* Color+Extension.swift */; };
 		48D1A50A2A98F06300EF9347 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1A5092A98F06300EF9347 /* SettingView.swift */; };
 		48D1A50C2A99986D00EF9347 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1A50B2A99986D00EF9347 /* TodoList.swift */; };
@@ -65,12 +63,27 @@
 		48D96C922AC574D2008C85A1 /* OneThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D96C912AC574D2008C85A1 /* OneThingViewModel.swift */; };
 		48D96C942AC5BBF1008C85A1 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D96C932AC5BBF1008C85A1 /* TodoListViewModel.swift */; };
 		48D96C962AC70550008C85A1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D96C952AC70550008C85A1 /* Launch Screen.storyboard */; platformFilter = ios; };
+		48DB83082C069C8500F14A59 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 48DB83072C069C8500F14A59 /* Realm */; };
+		48DB830A2C069C8500F14A59 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48DB83092C069C8500F14A59 /* RealmSwift */; };
 		48E2D61F2AA301910048498B /* FocusTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D61E2AA301910048498B /* FocusTimer.swift */; };
 		48E2D6212AAC4CC60048498B /* PlanDoSeeMacosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6202AAC4CC60048498B /* PlanDoSeeMacosView.swift */; };
 		48E2D6242AAC57A30048498B /* WeekSeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6232AAC57A30048498B /* WeekSeeList.swift */; };
 		48E2D6272AAF44400048498B /* WeekSeeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2D6262AAF44400048498B /* WeekSeeItemView.swift */; };
 		48F191AE2ACB734D009DF668 /* DeleteAccountButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F191AD2ACB734D009DF668 /* DeleteAccountButtonView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4895EF682C04C2A800B84E34 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4804900C2A3D871C00C10DC9 /* PlanDoSee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanDoSee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,15 +148,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48B3AEF12AC56BBA0025678B /* Realm in Frameworks */,
 				481B3C122A4325F400837FBF /* FirebaseAuth in Frameworks */,
 				482C0B642B220C05006EDAC8 /* FirebaseAnalytics in Frameworks */,
 				482C0B742B220C05006EDAC8 /* FirebaseCrashlytics in Frameworks */,
 				482C0B7C2B220C05006EDAC8 /* FirebaseFirestore in Frameworks */,
+				48DB83082C069C8500F14A59 /* Realm in Frameworks */,
 				482C0B722B220C05006EDAC8 /* FirebaseAuthCombine-Community in Frameworks */,
-				48B3AEF32AC56BBA0025678B /* RealmSwift in Frameworks */,
 				480F6AAE2AC3E0790024CEAD /* FirebaseCrashlytics in Frameworks */,
 				482C0B702B220C05006EDAC8 /* FirebaseAuth in Frameworks */,
+				48DB830A2C069C8500F14A59 /* RealmSwift in Frameworks */,
 				482C0B802B220C05006EDAC8 /* FirebaseFirestoreSwift in Frameworks */,
 				480F6AAC2AC3E0720024CEAD /* FirebaseAnalytics in Frameworks */,
 			);
@@ -504,6 +517,7 @@
 				480490092A3D871C00C10DC9 /* Frameworks */,
 				4804900A2A3D871C00C10DC9 /* Resources */,
 				480F6AAF2AC3E1760024CEAD /* ShellScript */,
+				4895EF682C04C2A800B84E34 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -514,14 +528,14 @@
 				481B3C112A4325F400837FBF /* FirebaseAuth */,
 				480F6AAB2AC3E0720024CEAD /* FirebaseAnalytics */,
 				480F6AAD2AC3E0790024CEAD /* FirebaseCrashlytics */,
-				48B3AEF02AC56BBA0025678B /* Realm */,
-				48B3AEF22AC56BBA0025678B /* RealmSwift */,
 				482C0B632B220C05006EDAC8 /* FirebaseAnalytics */,
 				482C0B6F2B220C05006EDAC8 /* FirebaseAuth */,
 				482C0B712B220C05006EDAC8 /* FirebaseAuthCombine-Community */,
 				482C0B732B220C05006EDAC8 /* FirebaseCrashlytics */,
 				482C0B7B2B220C05006EDAC8 /* FirebaseFirestore */,
 				482C0B7F2B220C05006EDAC8 /* FirebaseFirestoreSwift */,
+				48DB83072C069C8500F14A59 /* Realm */,
+				48DB83092C069C8500F14A59 /* RealmSwift */,
 			);
 			productName = PlanDoSee;
 			productReference = 4804900C2A3D871C00C10DC9 /* PlanDoSee.app */;
@@ -897,7 +911,7 @@
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.42.4;
+				minimumVersion = 10.46.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -948,12 +962,12 @@
 			package = 481B3C102A4325F400837FBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
 		};
-		48B3AEF02AC56BBA0025678B /* Realm */ = {
+		48DB83072C069C8500F14A59 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 48B3AEEF2AC56BB90025678B /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		48B3AEF22AC56BBA0025678B /* RealmSwift */ = {
+		48DB83092C069C8500F14A59 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 48B3AEEF2AC56BB90025678B /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
